@@ -1,0 +1,516 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5403242E1A4B8B5300B61880 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403242D1A4B8B5300B61880 /* AppDelegate.swift */; };
+		540324321A4B8B5300B61880 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540324311A4B8B5300B61880 /* GameScene.swift */; };
+		540324341A4B8B5300B61880 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540324331A4B8B5300B61880 /* GameViewController.swift */; };
+		540324371A4B8B5300B61880 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 540324351A4B8B5300B61880 /* Main.storyboard */; };
+		540324391A4B8B5300B61880 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 540324381A4B8B5300B61880 /* Images.xcassets */; };
+		5403243C1A4B8B5300B61880 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5403243A1A4B8B5300B61880 /* LaunchScreen.xib */; };
+		540324481A4B8B5300B61880 /* SpaceEvadersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540324471A4B8B5300B61880 /* SpaceEvadersTests.swift */; };
+		540324621A4B8C0D00B61880 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324521A4B8C0D00B61880 /* alien.png */; };
+		540324631A4B8C0D00B61880 /* aliendisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324531A4B8C0D00B61880 /* aliendisabled.png */; };
+		540324641A4B8C0D00B61880 /* boss.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324541A4B8C0D00B61880 /* boss.png */; };
+		540324651A4B8C0D00B61880 /* dalek.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324551A4B8C0D00B61880 /* dalek.png */; };
+		540324661A4B8C0D00B61880 /* EvadeEnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324561A4B8C0D00B61880 /* EvadeEnd.png */; };
+		540324671A4B8C0D00B61880 /* EvadeIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324571A4B8C0D00B61880 /* EvadeIntro.png */; };
+		540324681A4B8C0D00B61880 /* fire0.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324581A4B8C0D00B61880 /* fire0.png */; };
+		540324691A4B8C0D00B61880 /* fire1.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324591A4B8C0D00B61880 /* fire1.png */; };
+		5403246A1A4B8C0D00B61880 /* fire2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5403245A1A4B8C0D00B61880 /* fire2.png */; };
+		5403246B1A4B8C0D00B61880 /* laser.png in Resources */ = {isa = PBXBuildFile; fileRef = 5403245B1A4B8C0D00B61880 /* laser.png */; };
+		5403246C1A4B8C0D00B61880 /* lasermove.png in Resources */ = {isa = PBXBuildFile; fileRef = 5403245C1A4B8C0D00B61880 /* lasermove.png */; };
+		5403246D1A4B8C0D00B61880 /* laserside.png in Resources */ = {isa = PBXBuildFile; fileRef = 5403245D1A4B8C0D00B61880 /* laserside.png */; };
+		5403246E1A4B8C0D00B61880 /* powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = 5403245E1A4B8C0D00B61880 /* powerup.png */; };
+		5403246F1A4B8C0D00B61880 /* rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 5403245F1A4B8C0D00B61880 /* rocket.png */; };
+		540324701A4B8C0D00B61880 /* shockwave.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324601A4B8C0D00B61880 /* shockwave.png */; };
+		540324711A4B8C0D00B61880 /* space1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 540324611A4B8C0D00B61880 /* space1.jpg */; };
+		541036881A55EFB000FA8BD2 /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541036871A55EFB000FA8BD2 /* Alien.swift */; };
+		5410368A1A55EFD200FA8BD2 /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541036891A55EFD200FA8BD2 /* Sprite.swift */; };
+		54E4AB1D1A4F663A004D80C3 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4AB1C1A4F663A004D80C3 /* GameOverScene.swift */; };
+		54E4AB1F1A4F6B56004D80C3 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		540324421A4B8B5300B61880 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 540324201A4B8B5300B61880 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 540324271A4B8B5300B61880;
+			remoteInfo = SpaceEvaders;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		540324281A4B8B5300B61880 /* SpaceEvaders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceEvaders.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5403242C1A4B8B5300B61880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5403242D1A4B8B5300B61880 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		540324311A4B8B5300B61880 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		540324331A4B8B5300B61880 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		540324361A4B8B5300B61880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		540324381A4B8B5300B61880 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5403243B1A4B8B5300B61880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		540324411A4B8B5300B61880 /* SpaceEvadersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceEvadersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		540324461A4B8B5300B61880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		540324471A4B8B5300B61880 /* SpaceEvadersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceEvadersTests.swift; sourceTree = "<group>"; };
+		540324521A4B8C0D00B61880 /* alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien.png; sourceTree = "<group>"; };
+		540324531A4B8C0D00B61880 /* aliendisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aliendisabled.png; sourceTree = "<group>"; };
+		540324541A4B8C0D00B61880 /* boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss.png; sourceTree = "<group>"; };
+		540324551A4B8C0D00B61880 /* dalek.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dalek.png; sourceTree = "<group>"; };
+		540324561A4B8C0D00B61880 /* EvadeEnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EvadeEnd.png; sourceTree = "<group>"; };
+		540324571A4B8C0D00B61880 /* EvadeIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EvadeIntro.png; sourceTree = "<group>"; };
+		540324581A4B8C0D00B61880 /* fire0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire0.png; sourceTree = "<group>"; };
+		540324591A4B8C0D00B61880 /* fire1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire1.png; sourceTree = "<group>"; };
+		5403245A1A4B8C0D00B61880 /* fire2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire2.png; sourceTree = "<group>"; };
+		5403245B1A4B8C0D00B61880 /* laser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser.png; sourceTree = "<group>"; };
+		5403245C1A4B8C0D00B61880 /* lasermove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lasermove.png; sourceTree = "<group>"; };
+		5403245D1A4B8C0D00B61880 /* laserside.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laserside.png; sourceTree = "<group>"; };
+		5403245E1A4B8C0D00B61880 /* powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup.png; sourceTree = "<group>"; };
+		5403245F1A4B8C0D00B61880 /* rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket.png; sourceTree = "<group>"; };
+		540324601A4B8C0D00B61880 /* shockwave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shockwave.png; sourceTree = "<group>"; };
+		540324611A4B8C0D00B61880 /* space1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space1.jpg; sourceTree = "<group>"; };
+		541036871A55EFB000FA8BD2 /* Alien.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alien.swift; sourceTree = "<group>"; };
+		541036891A55EFD200FA8BD2 /* Sprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sprite.swift; sourceTree = "<group>"; };
+		54E4AB1C1A4F663A004D80C3 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		540324251A4B8B5300B61880 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5403243E1A4B8B5300B61880 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5403241F1A4B8B5300B61880 = {
+			isa = PBXGroup;
+			children = (
+				5403242A1A4B8B5300B61880 /* SpaceEvaders */,
+				540324441A4B8B5300B61880 /* SpaceEvadersTests */,
+				540324291A4B8B5300B61880 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		540324291A4B8B5300B61880 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				540324281A4B8B5300B61880 /* SpaceEvaders.app */,
+				540324411A4B8B5300B61880 /* SpaceEvadersTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5403242A1A4B8B5300B61880 /* SpaceEvaders */ = {
+			isa = PBXGroup;
+			children = (
+				540324511A4B8C0D00B61880 /* images */,
+				5403242D1A4B8B5300B61880 /* AppDelegate.swift */,
+				540324311A4B8B5300B61880 /* GameScene.swift */,
+				541036871A55EFB000FA8BD2 /* Alien.swift */,
+				541036891A55EFD200FA8BD2 /* Sprite.swift */,
+				54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */,
+				54E4AB1C1A4F663A004D80C3 /* GameOverScene.swift */,
+				540324331A4B8B5300B61880 /* GameViewController.swift */,
+				540324351A4B8B5300B61880 /* Main.storyboard */,
+				540324381A4B8B5300B61880 /* Images.xcassets */,
+				5403243A1A4B8B5300B61880 /* LaunchScreen.xib */,
+				5403242B1A4B8B5300B61880 /* Supporting Files */,
+			);
+			path = SpaceEvaders;
+			sourceTree = "<group>";
+		};
+		5403242B1A4B8B5300B61880 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5403242C1A4B8B5300B61880 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		540324441A4B8B5300B61880 /* SpaceEvadersTests */ = {
+			isa = PBXGroup;
+			children = (
+				540324471A4B8B5300B61880 /* SpaceEvadersTests.swift */,
+				540324451A4B8B5300B61880 /* Supporting Files */,
+			);
+			path = SpaceEvadersTests;
+			sourceTree = "<group>";
+		};
+		540324451A4B8B5300B61880 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				540324461A4B8B5300B61880 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		540324511A4B8C0D00B61880 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				540324521A4B8C0D00B61880 /* alien.png */,
+				540324531A4B8C0D00B61880 /* aliendisabled.png */,
+				540324541A4B8C0D00B61880 /* boss.png */,
+				540324551A4B8C0D00B61880 /* dalek.png */,
+				540324561A4B8C0D00B61880 /* EvadeEnd.png */,
+				540324571A4B8C0D00B61880 /* EvadeIntro.png */,
+				540324581A4B8C0D00B61880 /* fire0.png */,
+				540324591A4B8C0D00B61880 /* fire1.png */,
+				5403245A1A4B8C0D00B61880 /* fire2.png */,
+				5403245B1A4B8C0D00B61880 /* laser.png */,
+				5403245C1A4B8C0D00B61880 /* lasermove.png */,
+				5403245D1A4B8C0D00B61880 /* laserside.png */,
+				5403245E1A4B8C0D00B61880 /* powerup.png */,
+				5403245F1A4B8C0D00B61880 /* rocket.png */,
+				540324601A4B8C0D00B61880 /* shockwave.png */,
+				540324611A4B8C0D00B61880 /* space1.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		540324271A4B8B5300B61880 /* SpaceEvaders */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5403244B1A4B8B5300B61880 /* Build configuration list for PBXNativeTarget "SpaceEvaders" */;
+			buildPhases = (
+				540324241A4B8B5300B61880 /* Sources */,
+				540324251A4B8B5300B61880 /* Frameworks */,
+				540324261A4B8B5300B61880 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpaceEvaders;
+			productName = SpaceEvaders;
+			productReference = 540324281A4B8B5300B61880 /* SpaceEvaders.app */;
+			productType = "com.apple.product-type.application";
+		};
+		540324401A4B8B5300B61880 /* SpaceEvadersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5403244E1A4B8B5300B61880 /* Build configuration list for PBXNativeTarget "SpaceEvadersTests" */;
+			buildPhases = (
+				5403243D1A4B8B5300B61880 /* Sources */,
+				5403243E1A4B8B5300B61880 /* Frameworks */,
+				5403243F1A4B8B5300B61880 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				540324431A4B8B5300B61880 /* PBXTargetDependency */,
+			);
+			name = SpaceEvadersTests;
+			productName = SpaceEvadersTests;
+			productReference = 540324411A4B8B5300B61880 /* SpaceEvadersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		540324201A4B8B5300B61880 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Tristen Miller";
+				TargetAttributes = {
+					540324271A4B8B5300B61880 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					540324401A4B8B5300B61880 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 540324271A4B8B5300B61880;
+					};
+				};
+			};
+			buildConfigurationList = 540324231A4B8B5300B61880 /* Build configuration list for PBXProject "SpaceEvaders" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5403241F1A4B8B5300B61880;
+			productRefGroup = 540324291A4B8B5300B61880 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				540324271A4B8B5300B61880 /* SpaceEvaders */,
+				540324401A4B8B5300B61880 /* SpaceEvadersTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		540324261A4B8B5300B61880 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5403246E1A4B8C0D00B61880 /* powerup.png in Resources */,
+				5403246A1A4B8C0D00B61880 /* fire2.png in Resources */,
+				540324681A4B8C0D00B61880 /* fire0.png in Resources */,
+				5403243C1A4B8B5300B61880 /* LaunchScreen.xib in Resources */,
+				540324651A4B8C0D00B61880 /* dalek.png in Resources */,
+				540324621A4B8C0D00B61880 /* alien.png in Resources */,
+				540324661A4B8C0D00B61880 /* EvadeEnd.png in Resources */,
+				5403246B1A4B8C0D00B61880 /* laser.png in Resources */,
+				540324641A4B8C0D00B61880 /* boss.png in Resources */,
+				540324391A4B8B5300B61880 /* Images.xcassets in Resources */,
+				540324371A4B8B5300B61880 /* Main.storyboard in Resources */,
+				540324631A4B8C0D00B61880 /* aliendisabled.png in Resources */,
+				540324691A4B8C0D00B61880 /* fire1.png in Resources */,
+				5403246D1A4B8C0D00B61880 /* laserside.png in Resources */,
+				5403246C1A4B8C0D00B61880 /* lasermove.png in Resources */,
+				540324701A4B8C0D00B61880 /* shockwave.png in Resources */,
+				540324671A4B8C0D00B61880 /* EvadeIntro.png in Resources */,
+				540324711A4B8C0D00B61880 /* space1.jpg in Resources */,
+				5403246F1A4B8C0D00B61880 /* rocket.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5403243F1A4B8B5300B61880 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		540324241A4B8B5300B61880 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54E4AB1F1A4F6B56004D80C3 /* MainMenuScene.swift in Sources */,
+				540324321A4B8B5300B61880 /* GameScene.swift in Sources */,
+				540324341A4B8B5300B61880 /* GameViewController.swift in Sources */,
+				541036881A55EFB000FA8BD2 /* Alien.swift in Sources */,
+				5410368A1A55EFD200FA8BD2 /* Sprite.swift in Sources */,
+				54E4AB1D1A4F663A004D80C3 /* GameOverScene.swift in Sources */,
+				5403242E1A4B8B5300B61880 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5403243D1A4B8B5300B61880 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540324481A4B8B5300B61880 /* SpaceEvadersTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		540324431A4B8B5300B61880 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 540324271A4B8B5300B61880 /* SpaceEvaders */;
+			targetProxy = 540324421A4B8B5300B61880 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		540324351A4B8B5300B61880 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540324361A4B8B5300B61880 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5403243A1A4B8B5300B61880 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5403243B1A4B8B5300B61880 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		540324491A4B8B5300B61880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5403244A1A4B8B5300B61880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5403244C1A4B8B5300B61880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SpaceEvaders/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5403244D1A4B8B5300B61880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SpaceEvaders/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5403244F1A4B8B5300B61880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SpaceEvadersTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpaceEvaders.app/SpaceEvaders";
+			};
+			name = Debug;
+		};
+		540324501A4B8B5300B61880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SpaceEvadersTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpaceEvaders.app/SpaceEvaders";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		540324231A4B8B5300B61880 /* Build configuration list for PBXProject "SpaceEvaders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				540324491A4B8B5300B61880 /* Debug */,
+				5403244A1A4B8B5300B61880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5403244B1A4B8B5300B61880 /* Build configuration list for PBXNativeTarget "SpaceEvaders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5403244C1A4B8B5300B61880 /* Debug */,
+				5403244D1A4B8B5300B61880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5403244E1A4B8B5300B61880 /* Build configuration list for PBXNativeTarget "SpaceEvadersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5403244F1A4B8B5300B61880 /* Debug */,
+				540324501A4B8B5300B61880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 540324201A4B8B5300B61880 /* Project object */;
+}

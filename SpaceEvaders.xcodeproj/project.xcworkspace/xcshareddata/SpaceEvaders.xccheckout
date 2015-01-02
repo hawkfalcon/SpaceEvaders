@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>69C1E8CC-E7E9-4DB8-9C21-6E6E99C52075</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SpaceEvaders</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6721C39F54686CBD132D41549FF794D282C8A551</key>
+		<string>https://github.com/hawkfalcon/SpaceEvaders.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SpaceEvaders.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6721C39F54686CBD132D41549FF794D282C8A551</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hawkfalcon/SpaceEvaders.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6721C39F54686CBD132D41549FF794D282C8A551</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6721C39F54686CBD132D41549FF794D282C8A551</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SpaceEvaders</string>
+		</dict>
+	</array>
+</dict>
+</plist>

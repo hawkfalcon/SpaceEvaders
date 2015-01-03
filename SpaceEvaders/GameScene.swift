@@ -15,12 +15,24 @@ class GameScene: SKScene {
     let scoreboard = SKLabelNode(text: "Score: 0")
     var rocket: Sprite!
     var aliens = NSMutableSet()
+    var fireArray = Array<SKTexture>();
     
     override func didMoveToView(view: SKView) {
         setupBackground()
-        rocket = Sprite(imageNamed:"rocket", name:"rocket", x: size.width/2, y: size.height/2)
-        rocket.addTo(self)
+        rocketSetup()
         scoreBoard()
+    }
+    
+    func rocketSetup() {
+        rocket = Sprite(imageNamed:"rocket", name:"rocket", x: size.width/2, y: size.height/2).addTo(self)
+        for index in 0...2 {
+            fireArray.append(SKTexture(imageNamed: "fire" + String(index)))
+        }
+        var fire = SKSpriteNode(texture:fireArray[0]);
+        fire.anchorPoint = CGPoint(x: 0.5, y: 1.3)
+        rocket.sprite.addChild(fire)
+        let animateAction = SKAction.animateWithTextures(self.fireArray, timePerFrame: 0.10);
+        fire.runAction(SKAction.repeatActionForever(animateAction))
     }
     
     func scoreBoard() {

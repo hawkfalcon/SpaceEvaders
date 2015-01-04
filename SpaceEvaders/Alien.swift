@@ -9,7 +9,6 @@
 import SpriteKit
 
 class Alien : Sprite {
-    var alien: Sprite!
     var startAtTop: Bool!
     var disabled: Bool = false
     

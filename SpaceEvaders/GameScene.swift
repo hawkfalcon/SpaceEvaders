@@ -15,6 +15,7 @@ class GameScene: SKScene {
     let scoreboard = SKLabelNode(text: "Score: 0")
     var rocket: Sprite!
     var aliens = NSMutableSet()
+    var powerups = NSMutableSet()
     var fireArray = Array<SKTexture>();
     
     override func didMoveToView(view: SKView) {
@@ -91,6 +92,8 @@ class GameScene: SKScene {
             spawnAliens(true)
             spawnAliens(false)
             alienLogic()
+            spawnPowerup()
+            hitPowerup()
         }
     }
     
@@ -98,10 +101,25 @@ class GameScene: SKScene {
         if Int(arc4random_uniform(1000)) < alienSpawnRate {
             let randomX = randomInRange(10, hi: Int(size.width))
             var startY = startAtTop.boolValue ? size.height : 0
-            let alien = Alien(x: CGFloat(randomX), y: startY, startAtTop: startAtTop)
-            alien.addTo(self)
+            let alien = Alien(x: CGFloat(randomX), y: startY, startAtTop: startAtTop).addTo(self)
             aliens.addObject(alien)
-            //print(aliens.count)
+        }
+    }
+    
+    func spawnPowerup() {
+        if Int(arc4random_uniform(1000)) < 1 {
+            var x = CGFloat(random() % Int(size.width))
+            var y = CGFloat(random() % Int(size.height))
+            var powerup = Powerup(x: x, y: y).addTo(self)
+            powerups.addObject(powerup)
+            powerup.sprite.runAction(
+                SKAction.sequence([
+                    SKAction.fadeAlphaBy(-0.75, duration: 2.0),
+                    SKAction.fadeAlphaBy(0.75, duration: 2.0),
+                    SKAction.fadeAlphaBy(-0.75, duration: 2.0),
+                    SKAction.removeFromParent()
+                ])
+            )
         }
     }
     
@@ -138,6 +156,16 @@ class GameScene: SKScene {
             if (y < 0 || y > size.height) {
                 alien.sprite.removeFromParent()
                 aliens.removeObject(alien)
+            }
+        }
+    }
+    
+    func hitPowerup() {
+        for powerup in powerups {
+            let powerup = powerup as Powerup
+            if CGRectIntersectsRect(CGRectInset(powerup.sprite.frame, 5, 5), self.rocket.sprite.frame) {
+                powerup.boom()
+                //powerup.sprite.removeFromParent()
             }
         }
     }

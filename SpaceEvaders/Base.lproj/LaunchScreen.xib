@@ -10,50 +10,13 @@
             <rect key="frame" x="0.0" y="0.0" width="725" height="485"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2014 Tristen Miller. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="20" y="444" width="686" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="LoR-wE-VvO"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SpaceEvaders" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="141" width="686" height="43"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="EvadeIntro.png" translatesAutoresizingMaskIntoConstraints="NO" id="KJY-Yc-8ok">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="EvadeIntro.png" translatesAutoresizingMaskIntoConstraints="NO" id="KJY-Yc-8ok">
                     <rect key="frame" x="-75" y="-80" width="900" height="600"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="KJY-Yc-8ok" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-75" id="1D5-82-2G6"/>
-                <constraint firstAttribute="bottom" secondItem="KJY-Yc-8ok" secondAttribute="bottom" constant="20" symbolic="YES" id="7CA-Pd-Fzu"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="7pc-2x-ARg"/>
-                <constraint firstAttribute="trailing" secondItem="KJY-Yc-8ok" secondAttribute="trailing" constant="20" symbolic="YES" id="EjD-TW-id8"/>
-                <constraint firstItem="KJY-Yc-8ok" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" symbolic="YES" id="NlT-yR-83t"/>
-                <constraint firstAttribute="trailing" secondItem="kId-c2-rCX" secondAttribute="trailing" constant="19" id="OKp-At-2YM"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="kId-c2-rCX" secondAttribute="leading" id="QgI-4P-5N6"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="trailing" secondItem="8ie-xW-0ye" secondAttribute="trailing" id="Um9-Fe-Gfy"/>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="d8U-ed-xFk"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="141" id="qdF-6k-lnt"/>
-                <constraint firstItem="KJY-Yc-8ok" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="zNg-9l-OcL"/>
-                <constraint firstItem="KJY-Yc-8ok" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-80" id="zxw-40-M4A"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="7CA-Pd-Fzu"/>
-                    <exclude reference="EjD-TW-id8"/>
-                    <exclude reference="NlT-yR-83t"/>
-                    <exclude reference="zNg-9l-OcL"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="456.5" y="429.5"/>
         </view>
     </objects>

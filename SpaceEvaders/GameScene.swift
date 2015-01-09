@@ -11,38 +11,17 @@ import SpriteKit
 class GameScene: SKScene {
     let alienSpawnRate = 5
     var isGameOver = false
-    var score: Int = 0
-    let scoreboard = SKLabelNode(text: "Score: 0")
-    var rocket: Sprite!
+    var scoreboard: Scoreboard!
+    var rocket: Rocket!
     var aliens = NSMutableSet()
     var powerups = NSMutableSet()
-    var fireArray = Array<SKTexture>();
     
     override func didMoveToView(view: SKView) {
         setupBackground()
-        rocketSetup()
-        scoreBoard()
+        rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as Rocket
+        scoreboard = Scoreboard(x: 50, y: size.height - size.height/5).addTo(self)
     }
-    
-    func rocketSetup() {
-        rocket = Sprite(imageNamed:"rocket", name:"rocket", x: size.width/2, y: size.height/2).addTo(self)
-        for index in 0...2 {
-            fireArray.append(SKTexture(imageNamed: "fire" + String(index)))
-        }
-        var fire = SKSpriteNode(texture:fireArray[0]);
-        fire.anchorPoint = CGPoint(x: 0.5, y: 1.3)
-        rocket.sprite.addChild(fire)
-        let animateAction = SKAction.animateWithTextures(self.fireArray, timePerFrame: 0.10);
-        fire.runAction(SKAction.repeatActionForever(animateAction))
-    }
-    
-    func scoreBoard() {
-        scoreboard.setScale(2.5)
-        scoreboard.position = CGPoint(x: size.width/6, y: size.height - size.height/5)
-        scoreboard.horizontalAlignmentMode = .Right
-        self.addChild(scoreboard)
-    }
-    
+
     func setupBackground() {
         let background = UIImage(named: "space1.jpg")
         backgroundColor = UIColor(patternImage: background!)
@@ -72,19 +51,24 @@ class GameScene: SKScene {
             ))
     }
     
+    var dragged: SKNode!
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        followFinger(touches)
+        let touch : UITouch = touches.anyObject() as UITouch
+        let touchedNode = self.nodeAtPoint(touch.locationInNode(self))
+        if (touchedNode.name == "tap") {
+            self.dragged = rocket.sprite
+        }
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        followFinger(touches)
+        let touch : UITouch = touches.anyObject() as UITouch
+        if (self.dragged != nil) {
+            self.dragged.position = touch.locationInNode(self)
+        }
     }
     
-    func followFinger(touches: NSSet!) {
-        for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            rocket.sprite.position = location
-        }
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        self.dragged = nil
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -129,7 +113,7 @@ class GameScene: SKScene {
     
     func gameOver() {
         isGameOver = true
-        let gameOverScene = GameOverScene(size: size, score: score)
+        let gameOverScene = GameOverScene(size: size, score: scoreboard.getScore())
         gameOverScene.scaleMode = scaleMode
         let reveal = SKTransition.crossFadeWithDuration(0.5)
         view?.presentScene(gameOverScene, transition: reveal)
@@ -148,8 +132,7 @@ class GameScene: SKScene {
                 let middle = size.height/2
                 if ((!alien.startAtTop.boolValue && y > middle) || (alien.startAtTop.boolValue && y < middle)) {
                     alien.setDisabled()
-                    score += 5
-                    scoreboard.text = "Score: " + String(score)
+                    scoreboard.addScore(5)
                 }
             }
             alien.moveTo(rocket.sprite.position.x, y: rocket.sprite.position.y)
@@ -164,8 +147,11 @@ class GameScene: SKScene {
         for powerup in powerups {
             let powerup = powerup as Powerup
             if CGRectIntersectsRect(CGRectInset(powerup.sprite.frame, 5, 5), self.rocket.sprite.frame) {
-                powerup.boom()
-                //powerup.sprite.removeFromParent()
+                powerups.removeObject(powerup)
+                var explosion = Explosion(x: powerup.sprite.position.x, y: powerup.sprite.position.y)
+                powerup.sprite.removeFromParent()
+                explosion.addTo(self)
+                explosion.boom(self)
             }
         }
     }

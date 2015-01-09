@@ -12,14 +12,4 @@ class Powerup : Sprite {
     init(x: CGFloat, y: CGFloat) {
         super.init(imageNamed: "powerup", name: "pu", x: x, y: y)
     }
-    
-    func boom() {
-        sprite.texture = SKTexture(imageNamed: "shockwave.png")
-        sprite.runAction(
-            SKAction.sequence([
-                SKAction.scaleBy(5, duration: 3),
-                SKAction.removeFromParent()
-            ])
-        )
-    }
 }

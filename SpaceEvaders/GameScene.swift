@@ -17,38 +17,10 @@ class GameScene: SKScene {
     var powerups = NSMutableSet()
     
     override func didMoveToView(view: SKView) {
-        setupBackground()
+        backgroundColor = UIColor.blackColor()
+        Background(main: self)
         rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as Rocket
         scoreboard = Scoreboard(x: 50, y: size.height - size.height/5).addTo(self)
-    }
-
-    func setupBackground() {
-        let background = UIImage(named: "space1.jpg")
-        backgroundColor = UIColor(patternImage: background!)
-        fadeMainLaser()
-        backAndForth()
-        Sprite(imageNamed: "laserside", x: size.width/100, y: size.height/2).addTo(self)
-        Sprite(imageNamed: "laserside", x: size.width - size.width/100, y: size.height/2).addTo(self)
-    }
-    
-    func fadeMainLaser() {
-        let laser = Sprite(imageNamed: "laser", x: size.width/2, y: size.height/2, scale: 2.3).addTo(self)
-        laser.sprite.runAction(SKAction.repeatActionForever(
-            SKAction.sequence([
-                SKAction.fadeAlphaBy(-0.75, duration: 1.0),
-                SKAction.fadeAlphaBy(0.75, duration: 1.0),
-                ])
-            ))
-    }
-    
-    func backAndForth() {
-        let lasermove = Sprite(imageNamed: "lasermove", x: 0, y: size.height/2).addTo(self)
-        lasermove.sprite.runAction(SKAction.repeatActionForever(
-            SKAction.sequence([
-                SKAction.moveTo(CGPoint(x: size.width, y: size.height/2), duration: 2),
-                SKAction.moveTo(CGPoint(x: 0, y: size.height/2), duration: 2),
-                ])
-            ))
     }
     
     var dragged: SKNode!
@@ -82,8 +54,8 @@ class GameScene: SKScene {
     }
     
     func spawnAliens(startAtTop: Bool) {
-        if Int(arc4random_uniform(1000)) < alienSpawnRate {
-            let randomX = randomInRange(10, hi: Int(size.width))
+        if random() % 1000 < alienSpawnRate {
+            let randomX = 10 + random() % Int(size.width) - 10
             var startY = startAtTop.boolValue ? size.height : 0
             let alien = Alien(x: CGFloat(randomX), y: startY, startAtTop: startAtTop).addTo(self)
             aliens.addObject(alien)
@@ -91,24 +63,20 @@ class GameScene: SKScene {
     }
     
     func spawnPowerup() {
-        if Int(arc4random_uniform(1000)) < 1 {
+        if random() % 1000 < 1 {
             var x = CGFloat(random() % Int(size.width))
             var y = CGFloat(random() % Int(size.height))
             var powerup = Powerup(x: x, y: y).addTo(self)
             powerups.addObject(powerup)
             powerup.sprite.runAction(
                 SKAction.sequence([
-                    SKAction.fadeAlphaBy(-0.75, duration: 2.0),
-                    SKAction.fadeAlphaBy(0.75, duration: 2.0),
-                    SKAction.fadeAlphaBy(-0.75, duration: 2.0),
+                    SKAction.fadeAlphaTo(1, duration: 0.5),
+                    SKAction.waitForDuration(4.5),
+                    SKAction.fadeAlphaTo(0, duration: 1.0),
                     SKAction.removeFromParent()
                 ])
             )
         }
-    }
-    
-    func randomInRange(lo: Int, hi : Int) -> Int {
-        return lo + Int(arc4random_uniform(UInt32(hi - lo + 1)))
     }
     
     func gameOver() {

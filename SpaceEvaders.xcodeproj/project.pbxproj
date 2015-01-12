@@ -48,9 +48,16 @@
 		547B0E061A5F8C0B00B3985C /* powerup13.png in Resources */ = {isa = PBXBuildFile; fileRef = 547B0DF71A5F8C0B00B3985C /* powerup13.png */; };
 		547B0E071A5F8C0B00B3985C /* powerup14.png in Resources */ = {isa = PBXBuildFile; fileRef = 547B0DF81A5F8C0B00B3985C /* powerup14.png */; };
 		547B0E081A5F8C0B00B3985C /* powerup15.png in Resources */ = {isa = PBXBuildFile; fileRef = 547B0DF91A5F8C0B00B3985C /* powerup15.png */; };
+		547B0E0D1A5FA36500B3985C /* timeburner.otf in Resources */ = {isa = PBXBuildFile; fileRef = 547B0E0C1A5FA2F800B3985C /* timeburner.otf */; };
+		547B0E0E1A5FA36700B3985C /* timeburner.otf in Resources */ = {isa = PBXBuildFile; fileRef = 547B0E0C1A5FA2F800B3985C /* timeburner.otf */; };
+		547BDB841A60A259009F1B50 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BDB831A60A259009F1B50 /* GameOver.swift */; };
+		547BDB871A60AD16009F1B50 /* Explode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547BDB851A60AD16009F1B50 /* Explode.sks */; };
+		547BDB8A1A60BE55009F1B50 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BDB891A60BE55009F1B50 /* MainMenu.swift */; };
+		547BDB8C1A60C1B1009F1B50 /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BDB8B1A60C1B1009F1B50 /* Pause.swift */; };
 		548983F91A57938E00C7BF63 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548983F81A57938E00C7BF63 /* Powerup.swift */; };
-		54E4AB1D1A4F663A004D80C3 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4AB1C1A4F663A004D80C3 /* GameOverScene.swift */; };
 		54E4AB1F1A4F6B56004D80C3 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */; };
+		54ECDC121A632A1600860C5E /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ECDC111A632A1600860C5E /* PauseMenu.swift */; };
+		54ECDC141A64376800860C5E /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ECDC131A64376800860C5E /* Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,9 +116,15 @@
 		547B0DF71A5F8C0B00B3985C /* powerup13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup13.png; sourceTree = "<group>"; };
 		547B0DF81A5F8C0B00B3985C /* powerup14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup14.png; sourceTree = "<group>"; };
 		547B0DF91A5F8C0B00B3985C /* powerup15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup15.png; sourceTree = "<group>"; };
+		547B0E0C1A5FA2F800B3985C /* timeburner.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = timeburner.otf; sourceTree = "<group>"; };
+		547BDB831A60A259009F1B50 /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		547BDB851A60AD16009F1B50 /* Explode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explode.sks; sourceTree = "<group>"; };
+		547BDB891A60BE55009F1B50 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		547BDB8B1A60C1B1009F1B50 /* Pause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
 		548983F81A57938E00C7BF63 /* Powerup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
-		54E4AB1C1A4F663A004D80C3 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		54ECDC111A632A1600860C5E /* PauseMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
+		54ECDC131A64376800860C5E /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,13 +166,14 @@
 		5403242A1A4B8B5300B61880 /* SpaceEvaders */ = {
 			isa = PBXGroup;
 			children = (
+				547B0E0C1A5FA2F800B3985C /* timeburner.otf */,
 				540324511A4B8C0D00B61880 /* images */,
 				540324311A4B8B5300B61880 /* GameScene.swift */,
+				547BDB821A60A21B009F1B50 /* Menu */,
 				547B0DAD1A5F5C9600B3985C /* Sprites */,
 				541036891A55EFD200FA8BD2 /* Sprite.swift */,
 				5403242D1A4B8B5300B61880 /* AppDelegate.swift */,
 				54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */,
-				54E4AB1C1A4F663A004D80C3 /* GameOverScene.swift */,
 				540324331A4B8B5300B61880 /* GameViewController.swift */,
 				540324351A4B8B5300B61880 /* Main.storyboard */,
 				540324381A4B8B5300B61880 /* Images.xcassets */,
@@ -222,6 +236,7 @@
 				548983F81A57938E00C7BF63 /* Powerup.swift */,
 				547B0DAB1A5F59BC00B3985C /* Rocket.swift */,
 				547B0DA91A5E105900B3985C /* Explosion.swift */,
+				547BDB851A60AD16009F1B50 /* Explode.sks */,
 				547B0DAE1A5F5D3E00B3985C /* Scoreboard.swift */,
 				547B0DB01A5F64CE00B3985C /* Background.swift */,
 			);
@@ -248,6 +263,18 @@
 				547B0DF91A5F8C0B00B3985C /* powerup15.png */,
 			);
 			name = powerup;
+			sourceTree = "<group>";
+		};
+		547BDB821A60A21B009F1B50 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				547BDB831A60A259009F1B50 /* GameOver.swift */,
+				54ECDC131A64376800860C5E /* Button.swift */,
+				547BDB891A60BE55009F1B50 /* MainMenu.swift */,
+				54ECDC111A632A1600860C5E /* PauseMenu.swift */,
+				547BDB8B1A60C1B1009F1B50 /* Pause.swift */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +360,7 @@
 			files = (
 				5403246A1A4B8C0D00B61880 /* fire2.png in Resources */,
 				547B0E051A5F8C0B00B3985C /* powerup12.png in Resources */,
+				547B0E0D1A5FA36500B3985C /* timeburner.otf in Resources */,
 				547B0E001A5F8C0B00B3985C /* powerup7.png in Resources */,
 				547B0E081A5F8C0B00B3985C /* powerup15.png in Resources */,
 				547B0E021A5F8C0B00B3985C /* powerup9.png in Resources */,
@@ -346,6 +374,7 @@
 				547B0DFF1A5F8C0B00B3985C /* powerup6.png in Resources */,
 				540324661A4B8C0D00B61880 /* EvadeEnd.png in Resources */,
 				5403246B1A4B8C0D00B61880 /* laser.png in Resources */,
+				547BDB871A60AD16009F1B50 /* Explode.sks in Resources */,
 				540324641A4B8C0D00B61880 /* boss.png in Resources */,
 				547B0E041A5F8C0B00B3985C /* powerup11.png in Resources */,
 				540324391A4B8B5300B61880 /* Images.xcassets in Resources */,
@@ -369,6 +398,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547B0E0E1A5FA36700B3985C /* timeburner.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,15 +409,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547BDB8A1A60BE55009F1B50 /* MainMenu.swift in Sources */,
 				54E4AB1F1A4F6B56004D80C3 /* MainMenuScene.swift in Sources */,
+				54ECDC121A632A1600860C5E /* PauseMenu.swift in Sources */,
+				54ECDC141A64376800860C5E /* Button.swift in Sources */,
 				540324321A4B8B5300B61880 /* GameScene.swift in Sources */,
 				548983F91A57938E00C7BF63 /* Powerup.swift in Sources */,
+				547BDB841A60A259009F1B50 /* GameOver.swift in Sources */,
 				547B0DAC1A5F59BC00B3985C /* Rocket.swift in Sources */,
 				540324341A4B8B5300B61880 /* GameViewController.swift in Sources */,
 				547B0DAA1A5E105900B3985C /* Explosion.swift in Sources */,
+				547BDB8C1A60C1B1009F1B50 /* Pause.swift in Sources */,
 				541036881A55EFB000FA8BD2 /* Alien.swift in Sources */,
 				5410368A1A55EFD200FA8BD2 /* Sprite.swift in Sources */,
-				54E4AB1D1A4F663A004D80C3 /* GameOverScene.swift in Sources */,
 				547B0DAF1A5F5D3E00B3985C /* Scoreboard.swift in Sources */,
 				5403242E1A4B8B5300B61880 /* AppDelegate.swift in Sources */,
 				547B0DB11A5F64CE00B3985C /* Background.swift in Sources */,

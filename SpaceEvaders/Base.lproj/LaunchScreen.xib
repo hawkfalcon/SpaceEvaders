@@ -9,18 +9,10 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="725" height="485"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="EvadeIntro.png" translatesAutoresizingMaskIntoConstraints="NO" id="KJY-Yc-8ok">
-                    <rect key="frame" x="-75" y="-80" width="900" height="600"/>
-                </imageView>
-            </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="456.5" y="429.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="EvadeIntro.png" width="900" height="600"/>
-    </resources>
 </document>

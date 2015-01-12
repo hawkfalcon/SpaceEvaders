@@ -14,7 +14,8 @@ class Explosion : Sprite {
     }
     
     func boom(main: GameScene) {
-        sprite.addChild(newExplosion())
+        let explode = SKEmitterNode(fileNamed: "Explode.sks")
+        sprite.addChild(explode)
         sprite.runAction(
             SKAction.sequence([
                 SKAction.scaleBy(7, duration: 0.5),
@@ -32,29 +33,5 @@ class Explosion : Sprite {
             main.aliens.removeObject(alien)
             alien.sprite.removeFromParent()
         }
-    }
-    
-    private func newExplosion() -> SKEmitterNode {
-        
-        let explosion = SKEmitterNode()
-        
-        let image = UIImage(named:"shockwave.png")!
-        explosion.particleTexture = SKTexture(image: image)
-        explosion.particleColor = UIColor.brownColor()
-        explosion.numParticlesToEmit = 20
-        explosion.particleBirthRate = 20
-        explosion.particleLifetime = 1
-        explosion.emissionAngleRange = 360
-        explosion.particleSpeed = 100
-        explosion.particleSpeedRange = 50
-        explosion.particleAlpha = 0.8
-        explosion.particleAlphaRange = 0.2
-        explosion.particleAlphaSpeed = -0.5
-        explosion.particleScale = 1.0
-        explosion.particleScaleRange = 0.5
-        explosion.particleScaleSpeed = -0.5
-        explosion.particleBlendMode = SKBlendMode.Add
-        
-        return explosion
     }
 }

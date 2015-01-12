@@ -15,6 +15,7 @@ class Scoreboard {
 
     init(x: CGFloat, y: CGFloat) {
         scoreboard.setScale(2.5)
+        scoreboard.fontName = "timeburner"
         scoreboard.position = CGPoint(x: x, y: y)
         scoreboard.horizontalAlignmentMode = .Left
     }

@@ -15,6 +15,7 @@ class Alien : Sprite {
     init(x: CGFloat, y: CGFloat, startAtTop:Bool) {
         super.init(imageNamed: "alien", name: "alien", x: x, y: y)
         self.startAtTop = startAtTop
+        sprite.runAction(SKAction.repeatActionForever(SKAction.rotateByAngle(1, duration: 1)))
     }
     
     func setDisabled() {

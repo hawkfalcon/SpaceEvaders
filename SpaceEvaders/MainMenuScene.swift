@@ -19,16 +19,34 @@ class MainMenuScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        let background = SKSpriteNode(imageNamed: "EvadeIntro")
-        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        background.setScale(2.3)
-        self.addChild(background)
+        backgroundColor = UIColor.blackColor()
+        stars()
+        spawnAliens()
+        let main = MainMenu(size: size).addTo(self)
     }
-    
+
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let gameScene = GameScene(size: size)
         gameScene.scaleMode = scaleMode
         let reveal = SKTransition.doorsOpenVerticalWithDuration(0.5)
         view?.presentScene(gameScene, transition: reveal)
+    }
+    
+    func stars() {
+        for _ in 1...500 {
+            let rand = random() % 6
+            let star = SKSpriteNode(color: UIColor.whiteColor(), size: CGSize(width: rand, height: rand))
+            star.position = CGPoint(x: random() % Int(size.width), y: random() % Int(size.height))
+            self.addChild(star)
+        }
+    }
+
+    
+    func spawnAliens() {
+        if random() % 500 < 1 {
+            let randomX = 10 + random() % Int(size.width) - 10
+            let alien = Alien(x: CGFloat(randomX), y: 0, startAtTop: true)
+            self.addChild(alien.sprite)
+        }
     }
 }

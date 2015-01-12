@@ -16,6 +16,7 @@ class Background {
         backAndForth(main)
         Sprite(imageNamed: "laserside", x: size.width/100, y: size.height/2).addTo(main)
         Sprite(imageNamed: "laserside", x: size.width - size.width/100, y: size.height/2).addTo(main)
+        stars(main)
     }
     
     func fadeMainLaser(main: GameScene) {
@@ -36,6 +37,15 @@ class Background {
                 SKAction.moveTo(CGPoint(x: 0, y: size.height/2), duration: 2),
                 ])
             ))
+    }
+    
+    func stars(main: GameScene) {
+        for _ in 1...500 {
+            let rand = random() % 6
+            let star = SKSpriteNode(color: UIColor.whiteColor(), size: CGSize(width: rand, height: rand))
+            star.position = CGPoint(x: random() % Int(main.size.width), y: random() % Int(main.size.height))
+            main.addChild(star)
+        }
     }
 
 }

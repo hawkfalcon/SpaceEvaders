@@ -13,7 +13,7 @@ class Rocket : Sprite {
 
     init(x: CGFloat, y: CGFloat) {
         super.init(imageNamed:"rocket", name:"rocket", x: x, y: y)
-        sprite.setScale(3)
+        sprite.setScale(2.5)
         fire()
         tapableArea()
     }
@@ -35,5 +35,22 @@ class Rocket : Sprite {
         sprite.addChild(fire)
         let animateAction = SKAction.animateWithTextures(self.fireArray, timePerFrame: 0.10);
         fire.runAction(SKAction.repeatActionForever(animateAction))
+    }
+    
+    func moveTo(x: CGFloat, y: CGFloat) {
+        var speed = 12 as CGFloat
+        var dx: CGFloat, dy: CGFloat
+        // Compute vector components in direction of the touch
+        dx = x - sprite.position.x
+        dy = y - sprite.position.y + 50
+        sprite.zRotation = atan2(dy + 100, dx) - CGFloat(M_PI_2)
+        //Do not move if tap is on sprite
+        if ((dx >= 1 || dx <= -1) && (dy >= 1 || dy <= 1)) {
+            let mag = sqrt(dx*dx+dy*dy)
+            // Normalize and scale
+            dx = dx/mag * speed
+            dy = (dy + 50)/mag * speed
+            sprite.position = CGPointMake(sprite.position.x+dx, sprite.position.y+dy)
+        }
     }
 }

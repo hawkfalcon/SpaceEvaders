@@ -12,39 +12,71 @@ class GameScene: SKScene {
     let alienSpawnRate = 5
     var isGameOver = false
     var scoreboard: Scoreboard!
+    var pause: Pause!
     var rocket: Rocket!
     var aliens = NSMutableSet()
     var powerups = NSMutableSet()
+    var dragMode = false
     
     override func didMoveToView(view: SKView) {
         backgroundColor = UIColor.blackColor()
         Background(main: self)
         rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as Rocket
         scoreboard = Scoreboard(x: 50, y: size.height - size.height/5).addTo(self)
+        pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
     }
     
+    var currentPosition: CGPoint!
+    var currentlyTouching = false
     var dragged: SKNode!
+    var pausemenu: PauseMenu!
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let touch : UITouch = touches.anyObject() as UITouch
-        let touchedNode = self.nodeAtPoint(touch.locationInNode(self))
+        let touch: UITouch = touches.anyObject() as UITouch
+        currentPosition = touch.locationInNode(self)
+        let touchedNode = self.nodeAtPoint(currentPosition)
+        if (touchedNode.name == "gameover") {
+            resetGame()
+        } else if (touchedNode.name == "pause") {
+            var pause = view?.paused.boolValue
+            pausemenu = PauseMenu(size: size).addTo(self)
+            pausemenu.pause.background.runAction(SKAction.runBlock({self.pauseUnpause()}))
+        } else if (touchedNode.name == "pausemenu") {
+            pausemenu.removeThis()
+            pauseUnpause()
+        } else {
+            currentlyTouching = true
+        }
         if (touchedNode.name == "tap") {
             self.dragged = rocket.sprite
         }
     }
     
+    func pauseUnpause() {
+        let pause = view?.paused.boolValue
+        view?.paused = !pause!
+    }
+    
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         let touch : UITouch = touches.anyObject() as UITouch
+        currentPosition = touch.locationInNode(self)
         if (self.dragged != nil) {
-            self.dragged.position = touch.locationInNode(self)
+            if (dragMode) {
+              self.dragged.position.x = currentPosition.x
+              self.dragged.position.y = currentPosition.y + 50
+            }
         }
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         self.dragged = nil
+        currentlyTouching = false
     }
     
     override func update(currentTime: CFTimeInterval) {
         if (!isGameOver) {
+            if (currentlyTouching && !dragMode) {
+                rocket.moveTo(currentPosition.x, y: currentPosition.y)
+            }
             spawnAliens(true)
             spawnAliens(false)
             alienLogic()
@@ -81,17 +113,24 @@ class GameScene: SKScene {
     
     func gameOver() {
         isGameOver = true
-        let gameOverScene = GameOverScene(size: size, score: scoreboard.getScore())
-        gameOverScene.scaleMode = scaleMode
-        let reveal = SKTransition.crossFadeWithDuration(0.5)
-        view?.presentScene(gameOverScene, transition: reveal)
+        let exp = Explosion(x: rocket.sprite.position.x, y: rocket.sprite.position.y).addTo(self) as Explosion
+        exp.boom(self)
+        rocket.sprite.removeFromParent()
+        let gameover = GameOver(size: size).addTo(self)
+        //self.view?.paused = true
+    }
+    
+    func resetGame() {
+        let gameScene = GameScene(size: size)
+        gameScene.scaleMode = scaleMode
+        let reveal = SKTransition.doorsOpenVerticalWithDuration(0.5)
+        view?.presentScene(gameScene, transition: reveal)
     }
     
     func alienLogic() {
         for alien in aliens {
             let alien = alien as Alien
-            if CGRectIntersectsRect(CGRectInset(alien.sprite.frame, 20, 20), self.rocket.sprite.frame) {
-                rocket.sprite.removeFromParent()
+            if CGRectIntersectsRect(CGRectInset(alien.sprite.frame, 25, 25), CGRectInset(self.rocket.sprite.frame, 10, 10)) {
                 gameOver()
             }
             let y = alien.sprite.position.y
@@ -100,7 +139,7 @@ class GameScene: SKScene {
                 let middle = size.height/2
                 if ((!alien.startAtTop.boolValue && y > middle) || (alien.startAtTop.boolValue && y < middle)) {
                     alien.setDisabled()
-                    scoreboard.addScore(5)
+                    scoreboard.addScore(1)
                 }
             }
             alien.moveTo(rocket.sprite.position.x, y: rocket.sprite.position.y)

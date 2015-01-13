@@ -21,8 +21,7 @@ class MainMenuScene: SKScene {
     override func didMoveToView(view: SKView) {
         backgroundColor = UIColor.blackColor()
         stars()
-        spawnAliens()
-        let main = MainMenu(size: size).addTo(self)
+        let main = PopupMenu(size: size, named: "Play", title: "Space Evaders", id: "start").addTo(self)
     }
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -38,15 +37,6 @@ class MainMenuScene: SKScene {
             let star = SKSpriteNode(color: UIColor.whiteColor(), size: CGSize(width: rand, height: rand))
             star.position = CGPoint(x: random() % Int(size.width), y: random() % Int(size.height))
             self.addChild(star)
-        }
-    }
-
-    
-    func spawnAliens() {
-        if random() % 500 < 1 {
-            let randomX = 10 + random() % Int(size.width) - 10
-            let alien = Alien(x: CGFloat(randomX), y: 0, startAtTop: true)
-            self.addChild(alien.sprite)
         }
     }
 }

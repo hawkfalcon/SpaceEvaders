@@ -29,20 +29,24 @@ class GameScene: SKScene {
     var currentPosition: CGPoint!
     var currentlyTouching = false
     var dragged: SKNode!
-    var pausemenu: PauseMenu!
+    var pausemenu: PopupMenu!
+    var isPaused = false
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch: UITouch = touches.anyObject() as UITouch
         currentPosition = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(currentPosition)
         if (touchedNode.name == "gameover") {
             resetGame()
-        } else if (touchedNode.name == "pause") {
-            var pause = view?.paused.boolValue
-            pausemenu = PauseMenu(size: size).addTo(self)
-            pausemenu.pause.background.runAction(SKAction.runBlock({self.pauseUnpause()}))
+        } else if (touchedNode.name == "pause" && !isPaused && !isGameOver) {
+            pausemenu = PopupMenu(size: size, named: "Continue?", title: "Paused", id: "pausemenu")
+            pausemenu.addTo(self)
+            pausemenu.button.background.runAction(SKAction.runBlock({self.pauseUnpause()}))
+            isPaused = true
         } else if (touchedNode.name == "pausemenu") {
             pausemenu.removeThis()
             pauseUnpause()
+            isPaused = false
         } else {
             currentlyTouching = true
         }
@@ -116,8 +120,7 @@ class GameScene: SKScene {
         let exp = Explosion(x: rocket.sprite.position.x, y: rocket.sprite.position.y).addTo(self) as Explosion
         exp.boom(self)
         rocket.sprite.removeFromParent()
-        let gameover = GameOver(size: size).addTo(self)
-        //self.view?.paused = true
+        let gameover = PopupMenu(size: size, named: "Play Again?", title: "Game Over!", id: "gameover").addTo(self)
     }
     
     func resetGame() {

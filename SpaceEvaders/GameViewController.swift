@@ -10,10 +10,13 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
+    var gameCenter: GameCenter!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let scene = MainMenuScene(size:CGSize(width: 2048, height: 1536))
+        let scene = MainMenuScene(vc: self, size:CGSize(width: 2048, height: 1536))
         let skView = self.view as SKView
+        self.gameCenter = GameCenter(rootViewController: self)
         //skView.showsFPS = true
         //skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
@@ -22,5 +25,10 @@ class GameViewController: UIViewController {
     }
     override func prefersStatusBarHidden() -> Bool  {
         return true
+    }
+    
+    func openGC() {
+        print("opening")
+        gameCenter.showGameCenter()
     }
 }

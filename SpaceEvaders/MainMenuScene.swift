@@ -10,8 +10,11 @@ import Foundation
 import SpriteKit
 
 class MainMenuScene: SKScene {
-    override init(size: CGSize) {
+    var viewController:GameViewController!
+
+    init(vc: GameViewController, size: CGSize) {
         super.init(size: size)
+        viewController = vc
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -25,10 +28,16 @@ class MainMenuScene: SKScene {
     }
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let gameScene = GameScene(size: size)
-        gameScene.scaleMode = scaleMode
-        let reveal = SKTransition.doorsOpenVerticalWithDuration(0.5)
-        view?.presentScene(gameScene, transition: reveal)
+        let touch: UITouch = touches.anyObject() as UITouch
+        let touchedNode = self.nodeAtPoint(touch.locationInNode(self))
+        if (touchedNode.name == "start") {
+            let gameScene = GameScene(vc: viewController, size: size)
+            gameScene.scaleMode = scaleMode
+            let reveal = SKTransition.doorsOpenVerticalWithDuration(0.5)
+            view?.presentScene(gameScene, transition: reveal)
+        } else if (touchedNode.name == "leaderboard") {
+            viewController.openGC()
+        }
     }
     
     func stars() {

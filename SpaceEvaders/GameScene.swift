@@ -7,8 +7,10 @@
 //
 
 import SpriteKit
+import GameKit
 
 class GameScene: SKScene {
+    var viewController:GameViewController!
     let alienSpawnRate = 5
     var isGameOver = false
     var scoreboard: Scoreboard!
@@ -18,11 +20,20 @@ class GameScene: SKScene {
     var powerups = NSMutableSet()
     var dragMode = false
     
+    init(vc: GameViewController, size: CGSize) {
+        super.init(size: size)
+        viewController = vc
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func didMoveToView(view: SKView) {
         backgroundColor = UIColor.blackColor()
         Background(main: self)
         rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as Rocket
-        scoreboard = Scoreboard(x: 50, y: size.height - size.height/5).addTo(self)
+        scoreboard = Scoreboard(vc: viewController, x: 50, y: size.height - size.height/5).addTo(self)
         pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
     }
     
@@ -47,6 +58,9 @@ class GameScene: SKScene {
             pausemenu.removeThis()
             pauseUnpause()
             isPaused = false
+        } else if (touchedNode.name == "leaderboard") {
+            print("Tapped")
+            viewController?.openGC()
         } else {
             currentlyTouching = true
         }
@@ -121,10 +135,13 @@ class GameScene: SKScene {
         exp.boom(self)
         rocket.sprite.removeFromParent()
         let gameover = PopupMenu(size: size, named: "Play Again?", title: "Game Over!", id: "gameover").addTo(self)
+        if (scoreboard.isHighscore) {
+            addChild(scoreboard.getHighscoreLabel(size))
+        }
     }
     
     func resetGame() {
-        let gameScene = GameScene(size: size)
+        let gameScene = GameScene(vc: viewController, size: size)
         gameScene.scaleMode = scaleMode
         let reveal = SKTransition.doorsOpenVerticalWithDuration(0.5)
         view?.presentScene(gameScene, transition: reveal)

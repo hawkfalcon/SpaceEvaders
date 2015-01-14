@@ -25,6 +25,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)
         loadAds()
+        addAd()
     }
     
     func loadAds() {
@@ -32,7 +33,6 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
         adBannerView.center = CGPoint(x: adBannerView.center.x, y: view.bounds.size.height - adBannerView.frame.size.height / 2)
         adBannerView.delegate = self
         adBannerView.hidden = true
-        view.addSubview(adBannerView)
     }
     
     override func prefersStatusBarHidden() -> Bool  {
@@ -41,6 +41,14 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
     
     func openGC() {
         gameCenter.showGameCenter()
+    }
+    
+    func addAd() {
+        view.addSubview(adBannerView)
+    }
+    
+    func removeAd() {
+        adBannerView.removeFromSuperview()
     }
     
     func bannerViewWillLoadAd(banner: ADBannerView!) {

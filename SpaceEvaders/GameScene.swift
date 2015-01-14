@@ -35,7 +35,7 @@ class GameScene: SKScene {
         rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as Rocket
         scoreboard = Scoreboard(vc: viewController, x: 50, y: size.height - size.height/5).addTo(self)
         pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
-        viewController.adBannerView.hidden = true
+        viewController.removeAd()
     }
     
     var currentPosition: CGPoint!
@@ -73,7 +73,7 @@ class GameScene: SKScene {
     func pauseUnpause() {
         let pause = view?.paused.boolValue
         view?.paused = !pause!
-        viewController.adBannerView.hidden = pause!
+        pause! ? viewController.removeAd() : viewController.addAd()
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
@@ -136,7 +136,7 @@ class GameScene: SKScene {
         let exp = Explosion(x: rocket.sprite.position.x, y: rocket.sprite.position.y).addTo(self) as Explosion
         exp.boom(self)
         rocket.sprite.removeFromParent()
-        viewController.adBannerView.hidden = false
+        viewController.addAd()
         let gameover = PopupMenu(size: size, named: "Play Again?", title: "Game Over!", id: "gameover").addTo(self)
         if (scoreboard.isHighscore) {
             addChild(scoreboard.getHighscoreLabel(size))

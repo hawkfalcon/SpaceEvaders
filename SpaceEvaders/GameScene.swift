@@ -62,7 +62,6 @@ class GameScene: SKScene {
         default:
             currentlyTouching = true
         }
-        
     }
     
     var pausemenu: PopupMenu!

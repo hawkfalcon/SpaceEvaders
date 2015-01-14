@@ -11,7 +11,8 @@ import SpriteKit
 
 class MainMenuScene: SKScene {
     var viewController:GameViewController?
-
+    var info: Sprite!
+    
     override init(size: CGSize) {
         super.init(size: size)
     }
@@ -23,31 +24,47 @@ class MainMenuScene: SKScene {
     override func didMoveToView(view: SKView) {
         backgroundColor = UIColor.blackColor()
         stars()
-        let main = PopupMenu(size: size, named: "Play", title: "Space Evaders", id: "start").addTo(self)
-        //otherButtons()
+        PopupMenu(size: size, named: "Play", title: "Space Evaders", id: "start").addTo(self)
+        otherButtons()
     }
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch: UITouch = touches.anyObject() as UITouch
         let touchedNode = self.nodeAtPoint(touch.locationInNode(self))
-        if (touchedNode.name == "start") {
+        if (touchedNode.name != nil) {
+            tappedButton(touchedNode.name!)
+        }
+    }
+    
+    func tappedButton(name: String) {
+        switch name {
+        case "start":
             let gameScene = GameScene(size: size)
             gameScene.scaleMode = scaleMode
             let reveal = SKTransition.doorsOpenVerticalWithDuration(0.5)
             gameScene.viewController = self.viewController
             view?.presentScene(gameScene, transition: reveal)
-        } else if (touchedNode.name == "leaderboard") {
+        case "leaderboard":
             viewController?.openGC()
+        case "info":
+            info = Sprite(imageNamed: "Howto", name: "howto", x: size.width/2, y: size.height/2)
+            info.sprite.size = CGSizeMake(size.width, size.height)
+            info.sprite.zPosition = 1001
+            addChild(info.sprite)
+        case "howto":
+            info.sprite.removeFromParent()
+        default:
+            println("???")
         }
     }
     
     func otherButtons() {
-        let info = Sprite(imageNamed: "info27", name: "info", x: size.width - size.width/15, y: size.height - size.height/5)
+        let info = Sprite(imageNamed: "info", name: "info", x: size.width - size.width/15, y: size.height - size.height/5)
         info.sprite.size = CGSizeMake(size.height/12, size.height/12)
         addChild(info.sprite)
-        let settings = Sprite(imageNamed: "settings21", name: "settings", x: size.width/15, y: size.height - size.height/5)
+        /*let settings = Sprite(imageNamed: "settings", name: "settings", x: size.width/15, y: size.height - size.height/5)
         settings.sprite.size = CGSizeMake(size.height/12, size.height/12)
-        addChild(settings.sprite)
+        addChild(settings.sprite)*/
     }
     
     func stars() {

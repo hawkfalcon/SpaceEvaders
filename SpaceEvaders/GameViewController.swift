@@ -8,9 +8,11 @@
 
 import UIKit
 import SpriteKit
+import iAd
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, ADBannerViewDelegate {
     var gameCenter: GameCenter!
+    var adBannerView: ADBannerView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +24,45 @@ class GameViewController: UIViewController {
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)
+        loadAds()
     }
+    
+    func loadAds() {
+        adBannerView = ADBannerView(frame: CGRectMake(0, 0, view.bounds.size.width, 32))
+        adBannerView.center = CGPoint(x: adBannerView.center.x, y: view.bounds.size.height - adBannerView.frame.size.height / 2)
+        adBannerView.delegate = self
+        adBannerView.hidden = true
+        view.addSubview(adBannerView)
+    }
+    
     override func prefersStatusBarHidden() -> Bool  {
         return true
     }
     
     func openGC() {
-        print("opening")
         gameCenter.showGameCenter()
     }
+    
+    func bannerViewWillLoadAd(banner: ADBannerView!) {
+        NSLog("bannerViewWillLoadAd")
+    }
+    
+    func bannerViewDidLoadAd(banner: ADBannerView!) {
+        NSLog("bannerViewDidLoadAd")
+        self.adBannerView.hidden = false
+    }
+    
+    func bannerViewActionDidFinish(banner: ADBannerView!) {
+        NSLog("bannerViewDidLoadAd")
+    }
+    
+    func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
+        NSLog("bannerViewActionShouldBegin")
+        return true
+    }
+    
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        NSLog("bannerView")
+    }
+
 }

@@ -14,9 +14,9 @@ class PopupMenu {
     var leaderboard: Sprite
 
     init(size: CGSize, named: String, title: String, id: String) {
-        self.button = Button(x: size.width/2, y: size.height/3, width: size.width/3, height: size.height/6, named: named, id: id)
+        self.button = Button(x: size.width/2 + size.width/12, y: size.height/3, width: size.width/3, height: size.height/6, named: named, id: id)
         self.title = SKLabelNode(text: "" + title)
-        leaderboard = Sprite(imageNamed: "games18.png", name: "leaderboard", x: size.width/4, y: size.height/3)
+        leaderboard = Sprite(imageNamed: "games18.png", name: "leaderboard", x: size.width/4 + size.width/12, y: size.height/3)
         leaderboard.sprite.size = CGSizeMake(size.height/6, size.height/6)
         addText(self.title, position: CGPointMake(size.width/2, 3*size.height/5))
     }

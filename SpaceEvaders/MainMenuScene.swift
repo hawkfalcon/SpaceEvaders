@@ -25,6 +25,7 @@ class MainMenuScene: SKScene {
         backgroundColor = UIColor.blackColor()
         stars()
         let main = PopupMenu(size: size, named: "Play", title: "Space Evaders", id: "start").addTo(self)
+        //otherButtons()
     }
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -38,6 +39,15 @@ class MainMenuScene: SKScene {
         } else if (touchedNode.name == "leaderboard") {
             viewController.openGC()
         }
+    }
+    
+    func otherButtons() {
+        let info = Sprite(imageNamed: "info27", name: "info", x: size.width - size.width/15, y: size.height - size.height/5)
+        info.sprite.size = CGSizeMake(size.height/12, size.height/12)
+        addChild(info.sprite)
+        let settings = Sprite(imageNamed: "settings21", name: "settings", x: size.width/15, y: size.height - size.height/5)
+        settings.sprite.size = CGSizeMake(size.height/12, size.height/12)
+        addChild(settings.sprite)
     }
     
     func stars() {

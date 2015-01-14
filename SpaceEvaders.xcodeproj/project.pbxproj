@@ -12,7 +12,6 @@
 		540324341A4B8B5300B61880 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540324331A4B8B5300B61880 /* GameViewController.swift */; };
 		540324371A4B8B5300B61880 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 540324351A4B8B5300B61880 /* Main.storyboard */; };
 		540324391A4B8B5300B61880 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 540324381A4B8B5300B61880 /* Images.xcassets */; };
-		5403243C1A4B8B5300B61880 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5403243A1A4B8B5300B61880 /* LaunchScreen.xib */; };
 		540324481A4B8B5300B61880 /* SpaceEvadersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540324471A4B8B5300B61880 /* SpaceEvadersTests.swift */; };
 		540324621A4B8C0D00B61880 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324521A4B8C0D00B61880 /* alien.png */; };
 		540324631A4B8C0D00B61880 /* aliendisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 540324531A4B8C0D00B61880 /* aliendisabled.png */; };
@@ -56,6 +55,7 @@
 		548983F91A57938E00C7BF63 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548983F81A57938E00C7BF63 /* Powerup.swift */; };
 		54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A2C7481A65A70A003746D3 /* GameKit.framework */; };
 		54A2C74B1A65AE94003746D3 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A2C74A1A65AE94003746D3 /* GameCenter.swift */; };
+		54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CDE1221A662D5900E18B95 /* LaunchScreen.xib */; };
 		54E4AB1F1A4F6B56004D80C3 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */; };
 		54ECDC121A632A1600860C5E /* PopupMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ECDC111A632A1600860C5E /* PopupMenu.swift */; };
 		54ECDC141A64376800860C5E /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ECDC131A64376800860C5E /* Button.swift */; };
@@ -83,7 +83,6 @@
 		540324331A4B8B5300B61880 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		540324361A4B8B5300B61880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		540324381A4B8B5300B61880 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5403243B1A4B8B5300B61880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		540324411A4B8B5300B61880 /* SpaceEvadersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceEvadersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		540324461A4B8B5300B61880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		540324471A4B8B5300B61880 /* SpaceEvadersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceEvadersTests.swift; sourceTree = "<group>"; };
@@ -128,6 +127,7 @@
 		548983F81A57938E00C7BF63 /* Powerup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
 		54A2C7481A65A70A003746D3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		54A2C74A1A65AE94003746D3 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
+		54CDE1221A662D5900E18B95 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		54ECDC111A632A1600860C5E /* PopupMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupMenu.swift; sourceTree = "<group>"; };
 		54ECDC131A64376800860C5E /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 				540324331A4B8B5300B61880 /* GameViewController.swift */,
 				540324351A4B8B5300B61880 /* Main.storyboard */,
 				540324381A4B8B5300B61880 /* Images.xcassets */,
-				5403243A1A4B8B5300B61880 /* LaunchScreen.xib */,
+				54CDE1221A662D5900E18B95 /* LaunchScreen.xib */,
 				5403242B1A4B8B5300B61880 /* Supporting Files */,
 			);
 			path = SpaceEvaders;
@@ -387,7 +387,6 @@
 				547B0E081A5F8C0B00B3985C /* powerup15.png in Resources */,
 				547B0E021A5F8C0B00B3985C /* powerup9.png in Resources */,
 				540324681A4B8C0D00B61880 /* fire0.png in Resources */,
-				5403243C1A4B8B5300B61880 /* LaunchScreen.xib in Resources */,
 				540324621A4B8C0D00B61880 /* alien.png in Resources */,
 				547B0DFA1A5F8C0B00B3985C /* powerup1.png in Resources */,
 				547B0DFE1A5F8C0B00B3985C /* powerup5.png in Resources */,
@@ -395,6 +394,7 @@
 				54ECDC211A64E99400860C5E /* settings21.png in Resources */,
 				547B0E061A5F8C0B00B3985C /* powerup13.png in Resources */,
 				547B0DFF1A5F8C0B00B3985C /* powerup6.png in Resources */,
+				54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */,
 				54ECDC201A64E99400860C5E /* info27.png in Resources */,
 				540324661A4B8C0D00B61880 /* EvadeEnd.png in Resources */,
 				5403246B1A4B8C0D00B61880 /* laser.png in Resources */,
@@ -478,14 +478,6 @@
 				540324361A4B8B5300B61880 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		5403243A1A4B8B5300B61880 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5403243B1A4B8B5300B61880 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

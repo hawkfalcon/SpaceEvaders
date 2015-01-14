@@ -242,6 +242,10 @@ class GameCenter: NSObject, GKGameCenterControllerDelegate {
             var gc = GKGameCenterViewController()
             gc.gameCenterDelegate = self
             self.vc.presentViewController(gc, animated: true, completion: nil)
+        } else {
+            var alert = UIAlertController(title: "Leaderboard", message: "Log in to GameCenter to see scores!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Okay!", style: UIAlertActionStyle.Default, handler: nil))
+            vc.presentViewController(alert, animated: true, completion: nil)
         }
     }
 }

@@ -14,11 +14,9 @@ class GameScene: SKScene {
     let alienSpawnRate = 5
     var isGameOver = false
     var scoreboard: Scoreboard!
-    var pause: Pause!
     var rocket: Rocket!
     var aliens = NSMutableSet()
     var powerups = NSMutableSet()
-    var dragMode = false
     
     init(vc: GameViewController, size: CGSize) {
         super.init(size: size)
@@ -34,67 +32,70 @@ class GameScene: SKScene {
         Background(main: self)
         rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as Rocket
         scoreboard = Scoreboard(vc: viewController, x: 50, y: size.height - size.height/5).addTo(self)
-        pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
+        Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
         viewController.removeAd()
     }
     
     var currentPosition: CGPoint!
     var currentlyTouching = false
-    var dragged: SKNode!
     var pausemenu: PopupMenu!
-    var isPaused = false
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch: UITouch = touches.anyObject() as UITouch
         currentPosition = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(currentPosition)
-        if (touchedNode.name == "gameover") {
+        if (touchedNode.name != nil) {
+           tappedButton(touchedNode.name!)
+        }
+    }
+    
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        let touch : UITouch = touches.anyObject() as UITouch
+        currentPosition = touch.locationInNode(self)
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        currentlyTouching = false
+    }
+    
+    func tappedButton(name: String) {
+        switch name {
+        case "gameover":
             resetGame()
-        } else if (touchedNode.name == "pause" && !isPaused && !isGameOver) {
-            pausemenu = PopupMenu(size: size, named: "Continue?", title: "Paused", id: "pausemenu")
-            pausemenu.addTo(self)
-            pausemenu.button.background.runAction(SKAction.runBlock({self.pauseUnpause()}))
-            isPaused = true
-        } else if (touchedNode.name == "pausemenu") {
-            pausemenu.removeThis()
-            pauseUnpause()
-            isPaused = false
-        } else if (touchedNode.name == "leaderboard") {
-            print("Tapped")
+        case "pause":
+            pauseGame()
+        case "leaderboard":
             viewController?.openGC()
-        } else {
+        default:
             currentlyTouching = true
         }
-        if (touchedNode.name == "tap") {
-            self.dragged = rocket.sprite
+        
+    }
+    
+    func pauseGame() {
+        let isPaused = view?.paused.boolValue
+        if (isPaused!) {
+            pauseUnpause()
+            pausemenu.removeThis()
+            viewController.removeAd()
+        } else {
+            if (!isGameOver) {
+                pausemenu = PopupMenu(size: size, named: "Continue?", title: "Paused", id: "pause")
+                pausemenu.addTo(self)
+                pausemenu.button.background.runAction(SKAction.runBlock({self.pauseUnpause()}))
+                viewController.addAd()
+            }
         }
     }
     
     func pauseUnpause() {
         let pause = view?.paused.boolValue
         view?.paused = !pause!
-        pause! ? viewController.removeAd() : viewController.addAd()
-    }
-    
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let touch : UITouch = touches.anyObject() as UITouch
-        currentPosition = touch.locationInNode(self)
-        if (self.dragged != nil) {
-            if (dragMode) {
-              self.dragged.position.x = currentPosition.x
-              self.dragged.position.y = currentPosition.y + 50
-            }
-        }
-    }
-    
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        self.dragged = nil
-        currentlyTouching = false
     }
     
     override func update(currentTime: CFTimeInterval) {
         if (!isGameOver) {
-            if (currentlyTouching && !dragMode) {
+            if (currentlyTouching) {
                 rocket.moveTo(currentPosition.x, y: currentPosition.y)
             }
             spawnAliens(true)

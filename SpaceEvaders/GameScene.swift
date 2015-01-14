@@ -10,35 +10,26 @@ import SpriteKit
 import GameKit
 
 class GameScene: SKScene {
-    var viewController:GameViewController!
+    var viewController:GameViewController?
     let alienSpawnRate = 5
     var isGameOver = false
     var scoreboard: Scoreboard!
     var rocket: Rocket!
     var aliens = NSMutableSet()
     var powerups = NSMutableSet()
-    
-    init(vc: GameViewController, size: CGSize) {
-        super.init(size: size)
-        viewController = vc
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     override func didMoveToView(view: SKView) {
         backgroundColor = UIColor.blackColor()
         Background(main: self)
         rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as Rocket
-        scoreboard = Scoreboard(vc: viewController, x: 50, y: size.height - size.height/5).addTo(self)
+        scoreboard = Scoreboard(x: 50, y: size.height - size.height/5).addTo(self)
+        scoreboard.viewController = self.viewController
         Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
-        viewController.removeAd()
+        viewController?.removeAd()
     }
     
     var currentPosition: CGPoint!
     var currentlyTouching = false
-    var pausemenu: PopupMenu!
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch: UITouch = touches.anyObject() as UITouch
@@ -46,6 +37,8 @@ class GameScene: SKScene {
         let touchedNode = self.nodeAtPoint(currentPosition)
         if (touchedNode.name != nil) {
            tappedButton(touchedNode.name!)
+        } else {
+            currentlyTouching = true
         }
     }
     
@@ -72,18 +65,19 @@ class GameScene: SKScene {
         
     }
     
+    var pausemenu: PopupMenu!
     func pauseGame() {
         let isPaused = view?.paused.boolValue
         if (isPaused!) {
             pauseUnpause()
             pausemenu.removeThis()
-            viewController.removeAd()
+            viewController?.removeAd()
         } else {
             if (!isGameOver) {
                 pausemenu = PopupMenu(size: size, named: "Continue?", title: "Paused", id: "pause")
                 pausemenu.addTo(self)
                 pausemenu.button.background.runAction(SKAction.runBlock({self.pauseUnpause()}))
-                viewController.addAd()
+                viewController?.addAd()
             }
         }
     }
@@ -137,15 +131,16 @@ class GameScene: SKScene {
         let exp = Explosion(x: rocket.sprite.position.x, y: rocket.sprite.position.y).addTo(self) as Explosion
         exp.boom(self)
         rocket.sprite.removeFromParent()
-        viewController.addAd()
-        let gameover = PopupMenu(size: size, named: "Play Again?", title: "Game Over!", id: "gameover").addTo(self)
-        if (scoreboard.isHighscore) {
+        viewController?.addAd()
+        PopupMenu(size: size, named: "Play Again?", title: "Game Over!", id: "gameover").addTo(self)
+        if (scoreboard.isHighscore()) {
             addChild(scoreboard.getHighscoreLabel(size))
         }
     }
     
     func resetGame() {
-        let gameScene = GameScene(vc: viewController, size: size)
+        let gameScene = GameScene(size: size)
+        gameScene.viewController = self.viewController
         gameScene.scaleMode = scaleMode
         let reveal = SKTransition.doorsOpenVerticalWithDuration(0.5)
         view?.presentScene(gameScene, transition: reveal)
@@ -161,7 +156,8 @@ class GameScene: SKScene {
             //disabled by laser
             if !alien.isDisabled() {
                 let middle = size.height/2
-                if ((!alien.startAtTop.boolValue && y > middle) || (alien.startAtTop.boolValue && y < middle)) {
+                let startAtTop = alien.startAtTop.boolValue
+                if ((!startAtTop && y > middle) || (startAtTop && y < middle)) {
                     alien.setDisabled()
                     scoreboard.addScore(1)
                 }

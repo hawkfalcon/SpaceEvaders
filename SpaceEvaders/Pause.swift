@@ -11,7 +11,7 @@ class Pause {
     var gameover: SKSpriteNode
     
     init(size: CGSize, x: CGFloat, y: CGFloat) {
-        gameover = SKSpriteNode(color: UIColor.clearColor(), size: CGSize(width: size.width/3, height: size.height/6))
+        gameover = SKSpriteNode(color: UIColor.clearColor(), size: CGSizeMake(size.width/3, size.height/6))
         gameover.position = CGPoint(x: x, y: y);
         gameover.zPosition = 1000
         gameover.name = "pause"

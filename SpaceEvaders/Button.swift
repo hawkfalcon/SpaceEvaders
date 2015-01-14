@@ -12,7 +12,7 @@ class Button {
     var background: SKSpriteNode
     
     init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, named: String, id: String) {
-        background = SKSpriteNode(color: UIColor.orangeColor(), size: CGSize(width: width, height: height))
+        background = SKSpriteNode(color: UIColor.orangeColor(), size: CGSizeMake(width, height))
         background.position = CGPointMake(x, y);
         background.zPosition = 1000
         background.name = id

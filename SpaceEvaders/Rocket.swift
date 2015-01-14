@@ -15,15 +15,6 @@ class Rocket : Sprite {
         super.init(imageNamed:"rocket", name:"rocket", x: x, y: y)
         sprite.setScale(2.5)
         fire()
-        tapableArea()
-    }
-    
-    func tapableArea() {
-        var tapableSprite = SKSpriteNode()
-       // tapableSprite.color = UIColor.whiteColor()
-        tapableSprite.size = CGSizeMake(sprite.size.width * 1.2, sprite.size.height)
-        tapableSprite.name = "tap"
-        sprite.addChild(tapableSprite)
     }
     
     func fire() {

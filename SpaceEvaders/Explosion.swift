@@ -24,7 +24,6 @@ class Explosion : Sprite {
                 SKAction.removeFromParent()
             ])
         )
-
     }
     
     func removeAliens(main: GameScene) {

@@ -14,21 +14,20 @@ class Scoreboard {
     var viewController:GameViewController?
     let scoreboard = SKLabelNode(text: "Score: 0")
     var score: Int = 0
-    var isHighscore = false
+    var isHighScore = false
 
-    init(vc: GameViewController, x: CGFloat, y: CGFloat) {
+    init(x: CGFloat, y: CGFloat) {
         scoreboard.setScale(2.5)
         scoreboard.fontName = "timeburner"
         scoreboard.position = CGPoint(x: x, y: y)
         scoreboard.horizontalAlignmentMode = .Left
-        viewController = vc
     }
     
     func highScore() {
         if score > NSUserDefaults.standardUserDefaults().integerForKey("highscore") {
             NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore")
             NSUserDefaults.standardUserDefaults().synchronize()
-            isHighscore = true
+            isHighScore = true
             viewController?.gameCenter.reportScore(score: score, leaderboardIdentifier: "leaderBoardID")
         }
     }
@@ -46,6 +45,10 @@ class Scoreboard {
     
     func getScore() -> Int {
         return score
+    }
+    
+    func isHighscore() -> Bool {
+        return isHighScore
     }
     
     func getHighscoreLabel(size: CGSize) -> SKLabelNode {

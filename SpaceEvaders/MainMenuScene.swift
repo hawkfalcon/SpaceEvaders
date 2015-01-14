@@ -10,11 +10,10 @@ import Foundation
 import SpriteKit
 
 class MainMenuScene: SKScene {
-    var viewController:GameViewController!
+    var viewController:GameViewController?
 
-    init(vc: GameViewController, size: CGSize) {
+    override init(size: CGSize) {
         super.init(size: size)
-        viewController = vc
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -32,12 +31,13 @@ class MainMenuScene: SKScene {
         let touch: UITouch = touches.anyObject() as UITouch
         let touchedNode = self.nodeAtPoint(touch.locationInNode(self))
         if (touchedNode.name == "start") {
-            let gameScene = GameScene(vc: viewController, size: size)
+            let gameScene = GameScene(size: size)
             gameScene.scaleMode = scaleMode
             let reveal = SKTransition.doorsOpenVerticalWithDuration(0.5)
+            gameScene.viewController = self.viewController
             view?.presentScene(gameScene, transition: reveal)
         } else if (touchedNode.name == "leaderboard") {
-            viewController.openGC()
+            viewController?.openGC()
         }
     }
     

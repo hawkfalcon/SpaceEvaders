@@ -26,7 +26,8 @@ class Background {
                 SKAction.fadeAlphaBy(-0.75, duration: 1.0),
                 SKAction.fadeAlphaBy(0.75, duration: 1.0),
                 ])
-            ))
+            )
+        )
     }
     
     func backAndForth(main: GameScene) {

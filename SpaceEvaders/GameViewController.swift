@@ -36,8 +36,16 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
         adBannerView.hidden = true
     }
     
+    override func shouldAutorotate() -> Bool{
+        return true
+    }
+    
     override func prefersStatusBarHidden() -> Bool  {
         return true
+    }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.LandscapeLeft.rawValue) | Int(UIInterfaceOrientationMask.LandscapeRight.rawValue)
     }
     
     func openGC() {

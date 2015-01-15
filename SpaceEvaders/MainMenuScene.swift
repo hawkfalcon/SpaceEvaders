@@ -13,14 +13,6 @@ class MainMenuScene: SKScene {
     var viewController:GameViewController?
     var info: Sprite!
     
-    override init(size: CGSize) {
-        super.init(size: size)
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func didMoveToView(view: SKView) {
         backgroundColor = UIColor.blackColor()
         stars()

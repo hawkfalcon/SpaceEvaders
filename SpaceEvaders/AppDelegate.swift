@@ -19,21 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(application: UIApplication) {
-        var view: SKView = self.window?.rootViewController?.view as SKView
-        view.paused = true
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        var view: SKView = self.window?.rootViewController?.view as SKView
-        view.paused = false
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        //Unused
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        //Unused
     }
 }
 

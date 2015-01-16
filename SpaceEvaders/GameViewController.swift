@@ -60,6 +60,10 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
         adBannerView.removeFromSuperview()
     }
     
+    func hasAd() -> Bool {
+       return adBannerView.isDescendantOfView(view)
+    }
+    
     func bannerViewWillLoadAd(banner: ADBannerView!) {
         NSLog("bannerViewWillLoadAd")
     }

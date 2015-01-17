@@ -27,6 +27,17 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
         skView.presentScene(scene)
         loadAds()
         addAd()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:Selector("setStayPaused:"), name: "stayPausedNotification", object: nil)
+    }
+    
+    func setStayPaused(notification: NSNotification) {
+        let skview = view as SKView
+        let scene = skview.scene
+        if (scene is GameScene) {
+          let gamescene = scene as GameScene
+          gamescene.removeDialog()
+          removeAd()
+        }
     }
     
     func loadAds() {

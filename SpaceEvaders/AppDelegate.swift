@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (restartAd) {
             var gvc: GameViewController = self.window?.rootViewController as GameViewController
             gvc.addAd()
+            NSNotificationCenter.defaultCenter().postNotificationName("stayPausedNotification", object:nil)
             restartAd = false
         }
     }

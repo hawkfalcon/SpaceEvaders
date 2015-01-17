@@ -69,7 +69,7 @@ class GameScene: SKScene {
         let isPaused = view?.paused.boolValue
         if (isPaused!) {
             pauseUnpause()
-            pausemenu.removeThis()
+            removeDialog()
             viewController?.removeAd()
         } else {
             if (!isGameOver) {
@@ -78,6 +78,12 @@ class GameScene: SKScene {
                 pausemenu.button.background.runAction(SKAction.runBlock({self.pauseUnpause()}))
                 viewController?.addAd()
             }
+        }
+    }
+    
+    func removeDialog() {
+        if (pausemenu != nil) {
+           pausemenu.removeThis()
         }
     }
     

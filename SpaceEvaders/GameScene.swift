@@ -104,7 +104,7 @@ class GameScene: SKScene {
     func removeDialog() {
         if (pausemenu != nil) {
            pausemenu.removeThis()
-           pause.addPause()
+           pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
         }
     }
     

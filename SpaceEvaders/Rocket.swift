@@ -13,7 +13,7 @@ class Rocket : Sprite {
 
     init(x: CGFloat, y: CGFloat) {
         super.init(imageNamed:"rocket", name:"rocket", x: x, y: y)
-        sprite.setScale(2.5)
+        self.setScale(2.5)
         fire()
     }
     
@@ -23,7 +23,7 @@ class Rocket : Sprite {
         }
         var fire = SKSpriteNode(texture:fireArray[0]);
         fire.anchorPoint = CGPoint(x: 0.5, y: 1.3)
-        sprite.addChild(fire)
+        self.addChild(fire)
         let animateAction = SKAction.animateWithTextures(self.fireArray, timePerFrame: 0.10);
         fire.runAction(SKAction.repeatActionForever(animateAction))
     }
@@ -32,16 +32,20 @@ class Rocket : Sprite {
         var speed = 12 as CGFloat
         var dx: CGFloat, dy: CGFloat
         // Compute vector components in direction of the touch
-        dx = x - sprite.position.x
-        dy = y - sprite.position.y + 50
-        sprite.zRotation = atan2(dy + 100, dx) - CGFloat(M_PI_2)
+        dx = x - self.position.x
+        dy = y - self.position.y + 50
+        self.zRotation = atan2(dy + 100, dx) - CGFloat(M_PI_2)
         //Do not move if tap is on sprite
         if ((dx >= 1 || dx <= -1) && (dy >= 1 || dy <= 1)) {
             let mag = sqrt(dx*dx+dy*dy)
             // Normalize and scale
             dx = dx/mag * speed
             dy = (dy + 50)/mag * speed
-            sprite.position = CGPointMake(sprite.position.x+dx, sprite.position.y+dy)
+            self.position = CGPointMake(self.position.x+dx, self.position.y+dy)
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

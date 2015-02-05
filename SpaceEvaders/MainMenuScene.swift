@@ -17,7 +17,6 @@ class MainMenuScene: SKScene {
         backgroundColor = UIColor.blackColor()
         stars()
         PopupMenu(size: size, named: "Play", title: "Space Evaders", id: "start").addTo(self)
-        otherButtons()
     }
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -40,23 +39,22 @@ class MainMenuScene: SKScene {
             viewController?.openGC()
         case "info":
             info = Sprite(imageNamed: "Howto", name: "howto", x: size.width/2, y: size.height/2)
-            info.sprite.size = CGSizeMake(size.width, size.height)
-            info.sprite.zPosition = 1001
-            addChild(info.sprite)
+            info.size = CGSizeMake(size.width, size.height)
+            info.zPosition = 1001
+            addChild(info)
         case "howto":
-            info.sprite.removeFromParent()
+            info.removeFromParent()
+        case "twitter":
+            socialMedia("twitter")
+        case "facebook":
+            socialMedia("facebook")
         default:
             println("???")
         }
     }
     
-    func otherButtons() {
-        let info = Sprite(imageNamed: "info", name: "info", x: size.width - size.width/15, y: size.height - size.height/5)
-        info.sprite.size = CGSizeMake(size.height/12, size.height/12)
-        addChild(info.sprite)
-        /*let settings = Sprite(imageNamed: "settings", name: "settings", x: size.width/15, y: size.height - size.height/5)
-        settings.sprite.size = CGSizeMake(size.height/12, size.height/12)
-        addChild(settings.sprite)*/
+    func socialMedia(social:String) {
+        NSNotificationCenter.defaultCenter().postNotificationName("social", object: nil, userInfo:["score":"-1", "type" : "com.apple.social." + social])
     }
     
     func stars() {

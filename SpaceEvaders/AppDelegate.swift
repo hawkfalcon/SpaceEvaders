@@ -13,27 +13,15 @@ import SpriteKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var restartAd: Bool = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
-        var gvc: GameViewController = self.window?.rootViewController as GameViewController
-        if (gvc.hasAd()) {
-            restartAd = true
-            gvc.removeAd()
-        }
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        if (restartAd) {
-            var gvc: GameViewController = self.window?.rootViewController as GameViewController
-            gvc.addAd()
-            NSNotificationCenter.defaultCenter().postNotificationName("stayPausedNotification", object:nil)
-            restartAd = false
-        }
     }
 
     func applicationDidEnterBackground(application: UIApplication) {

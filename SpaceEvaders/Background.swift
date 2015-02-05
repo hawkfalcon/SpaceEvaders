@@ -21,7 +21,7 @@ class Background {
     
     func fadeMainLaser(main: GameScene) {
         let laser = Sprite(imageNamed: "laser", x: size.width/2, y: size.height/2, scale: 2.3).addTo(main)
-        laser.sprite.runAction(SKAction.repeatActionForever(
+        laser.runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.fadeAlphaBy(-0.75, duration: 1.0),
                 SKAction.fadeAlphaBy(0.75, duration: 1.0),
@@ -32,7 +32,7 @@ class Background {
     
     func backAndForth(main: GameScene) {
         let lasermove = Sprite(imageNamed: "lasermove", x: 0, y: size.height/2).addTo(main)
-        lasermove.sprite.runAction(SKAction.repeatActionForever(
+        lasermove.runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.moveTo(CGPoint(x: size.width, y: size.height/2), duration: 2),
                 SKAction.moveTo(CGPoint(x: 0, y: size.height/2), duration: 2),

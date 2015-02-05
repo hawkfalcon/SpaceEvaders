@@ -9,14 +9,14 @@
 import SpriteKit
 
 class Explosion : Sprite {
-    init(x: CGFloat, y: CGFloat) {
+    required init(x: CGFloat, y: CGFloat) {
         super.init(imageNamed: "shockwave", name: "bm", x: x, y: y)
     }
     
     func boom(main: GameScene) {
         let explode = SKEmitterNode(fileNamed: "Explode.sks")
-        sprite.addChild(explode)
-        sprite.runAction(
+        self.addChild(explode)
+        self.runAction(
             SKAction.sequence([
                 SKAction.scaleBy(7, duration: 0.5),
                 SKAction.runBlock({self.removeAliens(main)}),
@@ -33,7 +33,11 @@ class Explosion : Sprite {
                 main.scoreboard.addScore(1)
             }
             main.aliens.removeObject(alien)
-            alien.sprite.removeFromParent()
+            alien.removeFromParent()
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

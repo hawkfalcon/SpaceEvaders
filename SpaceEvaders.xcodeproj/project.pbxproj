@@ -53,6 +53,8 @@
 		548983F91A57938E00C7BF63 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548983F81A57938E00C7BF63 /* Powerup.swift */; };
 		54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A2C7481A65A70A003746D3 /* GameKit.framework */; };
 		54A2C74B1A65AE94003746D3 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A2C74A1A65AE94003746D3 /* GameCenter.swift */; };
+		54B436381A832EF9008E592E /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436361A832EF9008E592E /* twitter.png */; };
+		54B436391A832EF9008E592E /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436371A832EF9008E592E /* facebook.png */; };
 		54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CDE1221A662D5900E18B95 /* LaunchScreen.xib */; };
 		54CDE1291A66514000E18B95 /* Howto.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CDE1281A66514000E18B95 /* Howto.png */; };
 		54E4AB1F1A4F6B56004D80C3 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */; };
@@ -124,6 +126,8 @@
 		548983F81A57938E00C7BF63 /* Powerup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
 		54A2C7481A65A70A003746D3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		54A2C74A1A65AE94003746D3 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
+		54B436361A832EF9008E592E /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
+		54B436371A832EF9008E592E /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		54CDE1221A662D5900E18B95 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		54CDE1281A66514000E18B95 /* Howto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Howto.png; sourceTree = "<group>"; };
 		54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 		540324511A4B8C0D00B61880 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				54B436361A832EF9008E592E /* twitter.png */,
+				54B436371A832EF9008E592E /* facebook.png */,
 				54CDE1281A66514000E18B95 /* Howto.png */,
 				54ECDC1A1A64E99400860C5E /* leaderboard.png */,
 				54ECDC1B1A64E99400860C5E /* home.png */,
@@ -382,6 +388,7 @@
 				547B0E0D1A5FA36500B3985C /* timeburner.otf in Resources */,
 				547B0E001A5F8C0B00B3985C /* powerup7.png in Resources */,
 				547B0E081A5F8C0B00B3985C /* powerup15.png in Resources */,
+				54B436391A832EF9008E592E /* facebook.png in Resources */,
 				547B0E021A5F8C0B00B3985C /* powerup9.png in Resources */,
 				540324681A4B8C0D00B61880 /* fire0.png in Resources */,
 				540324621A4B8C0D00B61880 /* alien.png in Resources */,
@@ -406,6 +413,7 @@
 				5403246D1A4B8C0D00B61880 /* laserside.png in Resources */,
 				547B0E011A5F8C0B00B3985C /* powerup8.png in Resources */,
 				547B0E031A5F8C0B00B3985C /* powerup10.png in Resources */,
+				54B436381A832EF9008E592E /* twitter.png in Resources */,
 				5403246C1A4B8C0D00B61880 /* lasermove.png in Resources */,
 				540324701A4B8C0D00B61880 /* shockwave.png in Resources */,
 				54ECDC1F1A64E99400860C5E /* home.png in Resources */,
@@ -562,9 +570,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SpaceEvaders/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -576,9 +586,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SpaceEvaders/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

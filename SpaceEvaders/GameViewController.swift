@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import iAd
+import Social
 
 class GameViewController: UIViewController, ADBannerViewDelegate {
     var gameCenter: GameCenter!
@@ -27,17 +28,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
         skView.presentScene(scene)
         loadAds()
         addAd()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:Selector("setStayPaused:"), name: "stayPausedNotification", object: nil)
-    }
-    
-    func setStayPaused(notification: NSNotification) {
-        let skview = view as SKView
-        let scene = skview.scene
-        if (scene is GameScene) {
-          let gamescene = scene as GameScene
-          gamescene.removeDialog()
-          removeAd()
-        }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "shareAction:", name: "social", object: nil)
     }
     
     func loadAds() {
@@ -54,9 +45,23 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
     override func prefersStatusBarHidden() -> Bool  {
         return true
     }
-    
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.LandscapeLeft.rawValue) | Int(UIInterfaceOrientationMask.LandscapeRight.rawValue)
+
+    func shareAction(notification:NSNotification) {
+        let score = notification.userInfo!["score"] as String
+        let type = notification.userInfo!["type"] as NSString
+        if SLComposeViewController.isAvailableForServiceType(type){
+            var social:SLComposeViewController = SLComposeViewController(forServiceType: type)
+            var text = "I scored " + score + " in Space Evaders! Can you beat that? https://appsto.re/us/lgcg5.i"
+            if (score == "-1") {
+                text = "Check out the iPhone game Space Evaders! https://appsto.re/us/lgcg5.i"
+            }
+            social.setInitialText(text)
+            self.presentViewController(social, animated: true, completion: nil)
+        } else {
+            var alert = UIAlertController(title: "Accounts", message: "Please login to your social media account to share!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "I will", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func openGC() {

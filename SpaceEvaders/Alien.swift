@@ -15,12 +15,12 @@ class Alien : Sprite {
     init(x: CGFloat, y: CGFloat, startAtTop:Bool) {
         super.init(imageNamed: "alien", name: "alien", x: x, y: y)
         self.startAtTop = startAtTop
-        sprite.runAction(SKAction.repeatActionForever(SKAction.rotateByAngle(1, duration: 1)))
+        self.runAction(SKAction.repeatActionForever(SKAction.rotateByAngle(1, duration: 1)))
     }
     
     func setDisabled() {
         disabled = true
-        sprite.texture = SKTexture(imageNamed: "aliendisabled")
+        self.texture = SKTexture(imageNamed: "aliendisabled")
     }
     
     func isDisabled() -> Bool {
@@ -33,13 +33,17 @@ class Alien : Sprite {
         var dy: CGFloat = startAtTop.boolValue ? -speed : speed
         if !isDisabled() {
             // Compute vector components in direction of the touch
-            dx = x - sprite.position.x
-            dy = y - sprite.position.y
+            dx = x - self.position.x
+            dy = y - self.position.y
             let mag = sqrt(dx*dx+dy*dy)
             // Normalize and scale
             dx = dx/mag * speed
             dy = dy/mag * speed
         }
-        sprite.position = CGPointMake(sprite.position.x+dx, sprite.position.y+dy)
+        self.position = CGPointMake(self.position.x+dx, self.position.y+dy)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

@@ -8,13 +8,13 @@
 import SpriteKit
 
 class Pause {
-    var gameover: SKSpriteNode
+    var pause: SKSpriteNode
     
     init(size: CGSize, x: CGFloat, y: CGFloat) {
-        gameover = SKSpriteNode(color: UIColor.clearColor(), size: CGSizeMake(size.width/3, size.height/6))
-        gameover.position = CGPoint(x: x, y: y);
-        gameover.zPosition = 1000
-        gameover.name = "pause"
+        pause = SKSpriteNode(color: UIColor.clearColor(), size: CGSizeMake(size.width/3, size.height/6))
+        pause.position = CGPoint(x: x, y: y);
+        pause.zPosition = 1000
+        pause.name = "pause"
         addPause()
     }
     
@@ -25,11 +25,15 @@ class Pause {
         text.fontSize = 100
         text.zRotation = CGFloat(M_PI_2)
         text.horizontalAlignmentMode = .Right
-        gameover.addChild(text)
+        pause.addChild(text)
     }
     
     func addTo(parentNode: GameScene) -> Pause {
-        parentNode.addChild(gameover)
+        parentNode.addChild(pause)
         return self
+    }
+    
+    func removeThis() {
+        pause.removeFromParent()
     }
 }

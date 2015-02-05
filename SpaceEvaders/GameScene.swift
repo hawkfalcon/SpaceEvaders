@@ -13,8 +13,11 @@ class GameScene: SKScene {
     var viewController:GameViewController?
     let alienSpawnRate = 5
     var isGameOver = false
+    var isPaused = false
     var scoreboard: Scoreboard!
     var rocket: Rocket!
+    var howto: Sprite!
+    var pause: Pause!
     var aliens = NSMutableSet()
     var powerups = NSMutableSet()
 
@@ -24,7 +27,7 @@ class GameScene: SKScene {
         rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as Rocket
         scoreboard = Scoreboard(x: 50, y: size.height - size.height/5).addTo(self)
         scoreboard.viewController = self.viewController
-        Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
+        pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
         viewController?.removeAd()
     }
     
@@ -59,23 +62,40 @@ class GameScene: SKScene {
             pauseGame()
         case "leaderboard":
             viewController?.openGC()
+        case "twitter":
+            socialMedia("twitter")
+        case "facebook":
+            socialMedia("facebook")
+        case "info":
+            howto = Sprite(imageNamed: "Howto", name: "howto", x: size.width/2, y: size.height/2)
+            howto.size = CGSizeMake(size.width, size.height)
+            howto.zPosition = 1001
+            addChild(howto)
+        case "howto":
+            howto.removeFromParent()
         default:
             currentlyTouching = true
         }
     }
     
+    func socialMedia(social:String) {
+        NSNotificationCenter.defaultCenter().postNotificationName("social", object: nil, userInfo:["score":String(scoreboard.getScore()), "type" : "com.apple.social." + social])
+    }
+    
     var pausemenu: PopupMenu!
     func pauseGame() {
-        let isPaused = view?.paused.boolValue
-        if (isPaused!) {
-            pauseUnpause()
+        if (isPaused) {
+            isPaused = false
+            speed = 1
             removeDialog()
             viewController?.removeAd()
         } else {
             if (!isGameOver) {
+                isPaused = true
+                speed = 0
+                pause.removeThis()
                 pausemenu = PopupMenu(size: size, named: "Continue?", title: "Paused", id: "pause")
                 pausemenu.addTo(self)
-                pausemenu.button.background.runAction(SKAction.runBlock({self.pauseUnpause()}))
                 viewController?.addAd()
             }
         }
@@ -84,16 +104,12 @@ class GameScene: SKScene {
     func removeDialog() {
         if (pausemenu != nil) {
            pausemenu.removeThis()
+           pause.addPause()
         }
     }
     
-    func pauseUnpause() {
-        let pause = view?.paused.boolValue
-        view?.paused = !pause!
-    }
-    
     override func update(currentTime: CFTimeInterval) {
-        if (!isGameOver) {
+        if (!isGameOver && !isPaused) {
             if (currentlyTouching) {
                 rocket.moveTo(currentPosition.x, y: currentPosition.y)
             }
@@ -120,7 +136,7 @@ class GameScene: SKScene {
             var y = CGFloat(random() % Int(size.height))
             var powerup = Powerup(x: x, y: y).addTo(self)
             powerups.addObject(powerup)
-            powerup.sprite.runAction(
+            powerup.runAction(
                 SKAction.sequence([
                     SKAction.fadeAlphaTo(1, duration: 0.5),
                     SKAction.waitForDuration(4.5),
@@ -133,10 +149,11 @@ class GameScene: SKScene {
     
     func gameOver() {
         isGameOver = true
-        let exp = Explosion(x: rocket.sprite.position.x, y: rocket.sprite.position.y).addTo(self) as Explosion
+        let exp = Explosion(x: rocket.position.x, y: rocket.position.y).addTo(self) as Explosion
         exp.boom(self)
-        rocket.sprite.removeFromParent()
+        rocket.removeFromParent()
         viewController?.addAd()
+        pause.removeThis()
         PopupMenu(size: size, named: "Play Again?", title: "Game Over!", id: "gameover").addTo(self)
         if (scoreboard.isHighscore()) {
             addChild(scoreboard.getHighscoreLabel(size))
@@ -154,10 +171,10 @@ class GameScene: SKScene {
     func alienLogic() {
         for alien in aliens {
             let alien = alien as Alien
-            if CGRectIntersectsRect(CGRectInset(alien.sprite.frame, 25, 25), CGRectInset(self.rocket.sprite.frame, 10, 10)) {
+            if CGRectIntersectsRect(CGRectInset(alien.frame, 25, 25), CGRectInset(rocket.frame, 10, 10)) {
                 gameOver()
             }
-            let y = alien.sprite.position.y
+            let y = alien.position.y
             //disabled by laser
             if !alien.isDisabled() {
                 let middle = size.height/2
@@ -167,9 +184,9 @@ class GameScene: SKScene {
                     scoreboard.addScore(1)
                 }
             }
-            alien.moveTo(rocket.sprite.position.x, y: rocket.sprite.position.y)
+            alien.moveTo(rocket.position.x, y: rocket.position.y)
             if (y < 0 || y > size.height) {
-                alien.sprite.removeFromParent()
+                alien.removeFromParent()
                 aliens.removeObject(alien)
             }
         }
@@ -178,10 +195,10 @@ class GameScene: SKScene {
     func hitPowerup() {
         for powerup in powerups {
             let powerup = powerup as Powerup
-            if CGRectIntersectsRect(CGRectInset(powerup.sprite.frame, 5, 5), self.rocket.sprite.frame) {
+            if CGRectIntersectsRect(CGRectInset(powerup.frame, 5, 5), rocket.frame) {
                 powerups.removeObject(powerup)
-                var explosion = Explosion(x: powerup.sprite.position.x, y: powerup.sprite.position.y)
-                powerup.sprite.removeFromParent()
+                var explosion = Explosion(x: powerup.position.x, y: powerup.position.y)
+                powerup.removeFromParent()
                 explosion.addTo(self)
                 explosion.boom(self)
             }

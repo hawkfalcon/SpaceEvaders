@@ -86,7 +86,7 @@ class GameScene: SKScene {
     func pauseGame() {
         if (isPaused) {
             isPaused = false
-            speed = 1
+            speed = 1 //todo why is this not working when you reopen the app?
             removeDialog()
             viewController?.removeAd()
         } else {

@@ -10,7 +10,7 @@ import SpriteKit
 
 class Explosion : Sprite {
     required init(x: CGFloat, y: CGFloat) {
-        super.init(imageNamed: "shockwave", name: "bm", x: x, y: y)
+        super.init(named: "shockwave", x: x, y: y)
     }
     
     func boom(main: GameScene) {

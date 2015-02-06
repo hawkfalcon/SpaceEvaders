@@ -13,7 +13,7 @@ class Alien : Sprite {
     var disabled: Bool = false
     
     init(x: CGFloat, y: CGFloat, startAtTop:Bool) {
-        super.init(imageNamed: "alien", name: "alien", x: x, y: y)
+        super.init(named: "alien", x: x, y: y)
         self.startAtTop = startAtTop
         self.runAction(SKAction.repeatActionForever(SKAction.rotateByAngle(1, duration: 1)))
     }

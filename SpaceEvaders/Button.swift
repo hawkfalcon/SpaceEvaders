@@ -28,7 +28,7 @@ class Button {
         background.addChild(text)
     }
     
-    func addTo(parentNode: SKScene) -> Button {
+    func addTo(parentNode: SKNode) -> Button {
         parentNode.addChild(background)
         return self
     }

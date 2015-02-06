@@ -9,50 +9,35 @@
 import SpriteKit
 
 class PopupMenu {
-    var button: Button
-    var title: SKLabelNode
-    var leaderboard: Sprite
-    var twitter: Sprite
-    var facebook: Sprite
-    var info: Sprite
+    var menu: SKNode
 
     init(size: CGSize, named: String, title: String, id: String) {
-        self.button = Button(x: size.width/2, y: size.height/3, width: size.width/3, height: size.height/6, named: named, id: id)
-        self.title = SKLabelNode(text: "" + title)
-        self.twitter = Sprite(imageNamed: "twitter", name: "twitter", x: 3*size.width/4, y: size.height/3 + size.height/26)
-        self.facebook = Sprite(imageNamed: "facebook", name: "facebook", x: 3*size.width/4, y: size.height/3 - size.height/26)
-        twitter.setScale(0.1)
-        facebook.setScale(0.1)
-        info = Sprite(imageNamed: "info", name: "info", x: size.width - size.width/15, y: size.height - size.height/5)
-        info.size = CGSizeMake(size.height/12, size.height/12)
-        leaderboard = Sprite(imageNamed: "leaderboard", name: "leaderboard", x: size.width/4, y: size.height/3)
-        leaderboard.size = CGSizeMake(size.height/6, size.height/6)
-        addText(self.title, position: CGPointMake(size.width/2, 3*size.height/5))
+        let width = size.width
+        let height = size.height
+        self.menu = SKNode()
+        Button(x: width/2, y: height/3, width: width/3, height: height/6, named: named, id: id).addTo(menu)
+        Sprite(named: "twitter", x: 3*width/4, y: height/3 + height/26, scale: 0.1).addTo(menu)
+        Sprite(named: "facebook", x: 3*width/4, y: height/3 - height/26, scale: 0.1).addTo(menu)
+        Sprite(named: "info", x: 14*width/15, y: 4*height/5, size: CGSizeMake(height/12, height/12)).addTo(menu)
+        Sprite(named: "leaderboard", x: width/4, y: height/3, size: CGSizeMake(height/6, height/6)).addTo(menu)
+        addTitle(title, position: CGPointMake(width/2, 3*height/5))
     }
     
-    func addText(node: SKLabelNode, position: CGPoint) {
+    func addTitle(title: String, position: CGPoint) {
+        var node = SKLabelNode(text: title)
         node.fontName = "timeburner"
         node.fontSize = 200
         node.color = UIColor.whiteColor()
         node.position = position
+        menu.addChild(node)
     }
     
     func addTo(parentNode: SKScene) -> PopupMenu {
-        button.addTo(parentNode)
-        twitter.addTo(parentNode)
-        facebook.addTo(parentNode)
-        leaderboard.addTo(parentNode)
-        info.addTo(parentNode)
-        parentNode.addChild(title)
+        parentNode.addChild(menu)
         return self
     }
     
     func removeThis() {
-        button.removeThis()
-        title.removeFromParent()
-        leaderboard.removeFromParent()
-        twitter.removeFromParent()
-        facebook.removeFromParent()
-        info.removeFromParent()
+        menu.removeFromParent()
     }
 }

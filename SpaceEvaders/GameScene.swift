@@ -67,7 +67,7 @@ class GameScene: SKScene {
         case "facebook":
             socialMedia("facebook")
         case "info":
-            howto = Sprite(imageNamed: "Howto", name: "howto", x: size.width/2, y: size.height/2)
+            howto = Sprite(named: "howto", x: size.width/2, y: size.height/2)
             howto.size = CGSizeMake(size.width, size.height)
             howto.zPosition = 1001
             addChild(howto)

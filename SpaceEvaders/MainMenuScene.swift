@@ -38,7 +38,7 @@ class MainMenuScene: SKScene {
         case "leaderboard":
             viewController?.openGC()
         case "info":
-            info = Sprite(imageNamed: "Howto", name: "howto", x: size.width/2, y: size.height/2)
+            info = Sprite(named: "howto", x: size.width/2, y: size.height/2)
             info.size = CGSizeMake(size.width, size.height)
             info.zPosition = 1001
             addChild(info)

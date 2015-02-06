@@ -12,7 +12,7 @@ class Rocket : Sprite {
     var fireArray = Array<SKTexture>();
 
     init(x: CGFloat, y: CGFloat) {
-        super.init(imageNamed:"rocket", name:"rocket", x: x, y: y)
+        super.init(named:"rocket", x: x, y: y)
         self.setScale(2.5)
         fire()
     }

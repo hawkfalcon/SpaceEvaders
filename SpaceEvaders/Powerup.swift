@@ -12,7 +12,7 @@ var bombArray = Array<SKTexture>();
 
 class Powerup : Sprite {
     init(x: CGFloat, y: CGFloat) {
-        super.init(imageNamed: "powerup1", name: "pu", x: x, y: y)
+        super.init(named: "powerup1", x: x, y: y)
         self.setScale(1.5)
         self.alpha = 0
         fire()

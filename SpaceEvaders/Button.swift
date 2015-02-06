@@ -9,31 +9,31 @@
 import SpriteKit
 
 class Button {
-    var background: SKSpriteNode
+    var button: SKSpriteNode
     
-    init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, named: String, id: String) {
-        background = SKSpriteNode(color: UIColor.orangeColor(), size: CGSizeMake(width, height))
-        background.position = CGPointMake(x, y);
-        background.zPosition = 1000
-        background.name = id
-        addText(named, id: id)
+    init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, label: String, id: String) {
+        button = SKSpriteNode(color: UIColor.orangeColor(), size: CGSizeMake(width, height))
+        button.position = CGPointMake(x, y);
+        button.zPosition = 1000
+        button.name = id
+        addText(label, id: id)
     }
     
-    func addText(named: String, id: String) {
-        let text = SKLabelNode(text: named)
+    func addText(label: String, id: String) {
+        let text = SKLabelNode(text: label)
         text.fontName = "timeburner"
         text.name = id
         text.fontSize = 100
         text.verticalAlignmentMode = .Center
-        background.addChild(text)
+        button.addChild(text)
     }
     
     func addTo(parentNode: SKNode) -> Button {
-        parentNode.addChild(background)
+        parentNode.addChild(button)
         return self
     }
     
     func removeThis() {
-        background.removeFromParent()
+        button.removeFromParent()
     }
 }

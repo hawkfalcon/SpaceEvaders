@@ -7,7 +7,6 @@
 //
 
 import SpriteKit
-import GameKit
 
 class GameScene: SKScene {
     var viewController:GameViewController?
@@ -16,7 +15,6 @@ class GameScene: SKScene {
     var isPaused = false
     var scoreboard: Scoreboard!
     var rocket: Rocket!
-    var howto: Sprite!
     var pause: Pause!
     var aliens = NSMutableSet()
     var powerups = NSMutableSet()
@@ -37,9 +35,14 @@ class GameScene: SKScene {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch: UITouch = touches.anyObject() as UITouch
         currentPosition = touch.locationInNode(self)
-        let touchedNode = self.nodeAtPoint(currentPosition)
-        if (touchedNode.name != nil) {
-           tappedButton(touchedNode.name!)
+        let touched = self.nodeAtPoint(currentPosition)
+        if (touched.name != nil) {
+            let name:String = touched.name!
+            if name == "howto" {
+                touched.removeFromParent()
+            } else {
+                tappedButton(name)
+            }
         } else {
             currentlyTouching = true
         }
@@ -63,23 +66,15 @@ class GameScene: SKScene {
         case "leaderboard":
             viewController?.openGC()
         case "twitter":
-            socialMedia("twitter")
+            Utility.socialMedia("twitter", score: String(scoreboard.getScore()))
         case "facebook":
-            socialMedia("facebook")
+            Utility.socialMedia("facebook", score: String(scoreboard.getScore()))
         case "info":
-            howto = Sprite(named: "howto", x: size.width/2, y: size.height/2)
-            howto.size = CGSizeMake(size.width, size.height)
+            let howto = Sprite(named: "howto", x: size.width/2, y: size.height/2, size: CGSizeMake(size.width, size.height)).addTo(self)
             howto.zPosition = 1001
-            addChild(howto)
-        case "howto":
-            howto.removeFromParent()
         default:
             currentlyTouching = true
         }
-    }
-    
-    func socialMedia(social:String) {
-        NSNotificationCenter.defaultCenter().postNotificationName("social", object: nil, userInfo:["score":String(scoreboard.getScore()), "type" : "com.apple.social." + social])
     }
     
     var pausemenu: PopupMenu!
@@ -94,7 +89,7 @@ class GameScene: SKScene {
                 isPaused = true
                 speed = 0
                 pause.removeThis()
-                pausemenu = PopupMenu(size: size, named: "Continue?", title: "Paused", id: "pause")
+                pausemenu = PopupMenu(size: size, title: "Paused", label: "Continue?", id: "pause")
                 pausemenu.addTo(self)
                 viewController?.addAd()
             }
@@ -154,7 +149,7 @@ class GameScene: SKScene {
         rocket.removeFromParent()
         viewController?.addAd()
         pause.removeThis()
-        PopupMenu(size: size, named: "Play Again?", title: "Game Over!", id: "gameover").addTo(self)
+        PopupMenu(size: size, title: "Game Over!", label: "Play Again?", id: "gameover").addTo(self)
         if (scoreboard.isHighscore()) {
             addChild(scoreboard.getHighscoreLabel(size))
         }

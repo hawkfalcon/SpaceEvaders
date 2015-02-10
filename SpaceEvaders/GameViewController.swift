@@ -58,7 +58,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
             social.setInitialText(text)
             self.presentViewController(social, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to your social media account to share!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Accounts", message: "Please login to your social media account to share!", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "I will", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }

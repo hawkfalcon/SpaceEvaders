@@ -21,7 +21,7 @@ class Rocket : Sprite {
         for index in 0...2 {
             fireArray.append(SKTexture(imageNamed: "fire\(index)"))
         }
-        var fire = SKSpriteNode(texture:fireArray[0]);
+        let fire = SKSpriteNode(texture:fireArray[0]);
         fire.anchorPoint = CGPoint(x: 0.5, y: 1.3)
         self.addChild(fire)
         let animateAction = SKAction.animateWithTextures(self.fireArray, timePerFrame: 0.10);

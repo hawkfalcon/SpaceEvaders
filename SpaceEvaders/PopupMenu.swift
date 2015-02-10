@@ -24,7 +24,7 @@ class PopupMenu {
     }
     
     func addTitle(title: String, position: CGPoint) {
-        var node = SKLabelNode(text: title)
+        let node = SKLabelNode(text: title)
         node.fontName = "timeburner"
         node.fontSize = 200
         node.color = UIColor.whiteColor()

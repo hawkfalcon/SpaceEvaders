@@ -11,7 +11,7 @@ import SpriteKit
 struct Utility {
 
     static func socialMedia(social:String, score:String) {
-        NSNotificationCenter.defaultCenter().postNotificationName("social", object: nil, userInfo:["score":score, "type" : "com.apple.social." + social])
+        NSNotificationCenter.defaultCenter().postNotificationName("social", object: nil, userInfo:["score":score, "type" : "com.apple.social.\(social)"])
     }
     
     static func skyFullofStars(width: CGFloat, height: CGFloat) -> SKNode {

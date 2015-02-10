@@ -29,7 +29,7 @@ class Explosion : Sprite {
     func removeAliens(main: GameScene) {
         for alien in main.aliens {
             let alien = alien as Alien
-            if (!alien.isDisabled() && !main.isGameOver) {
+            if !alien.isDisabled() && !main.isGameOver {
                 main.scoreboard.addScore(1)
             }
             main.aliens.removeObject(alien)
@@ -38,6 +38,6 @@ class Explosion : Sprite {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 }

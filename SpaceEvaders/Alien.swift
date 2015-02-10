@@ -28,7 +28,7 @@ class Alien : Sprite {
     }
     
     func moveTo(x: CGFloat, y: CGFloat) {
-        var speed = 4 as CGFloat
+        let speed: CGFloat = 4
         var dx: CGFloat = 0
         var dy: CGFloat = startAtTop.boolValue ? -speed : speed
         if !isDisabled() {
@@ -44,6 +44,6 @@ class Alien : Sprite {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 }

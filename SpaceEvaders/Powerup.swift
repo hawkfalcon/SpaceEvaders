@@ -20,13 +20,13 @@ class Powerup : Sprite {
 
     func fire() {
         for index in 1...15 {
-            bombArray.append(SKTexture(imageNamed: "powerup" + String(index)))
+            bombArray.append(SKTexture(imageNamed: "powerup\(index)"))
         }
         let animateAction = SKAction.animateWithTextures(bombArray, timePerFrame: 0.10);
         self.runAction(SKAction.repeatActionForever(animateAction))
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 }

@@ -13,23 +13,23 @@ import SpriteKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var restartAd: Bool = false
+    var restartAd = false
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         return true
     }
     
     func applicationWillResignActive(application: UIApplication) {
-        var gvc: GameViewController = self.window?.rootViewController as GameViewController
-        if (gvc.hasAd()) {
+        let gvc = self.window?.rootViewController as GameViewController
+        if gvc.hasAd() {
             restartAd = true
             gvc.removeAd()
         }
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        if (restartAd) {
-            var gvc: GameViewController = self.window?.rootViewController as GameViewController
+        if restartAd {
+            let gvc = self.window?.rootViewController as GameViewController
             gvc.addAd()
             restartAd = false
         }

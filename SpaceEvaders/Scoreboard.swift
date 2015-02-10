@@ -39,7 +39,7 @@ class Scoreboard {
     
     func addScore(score: Int) {
         self.score += score
-        scoreboard.text = "Score: " + String(self.score)
+        scoreboard.text = "Score: \(self.score)"
         highScore()
     }
     
@@ -52,7 +52,7 @@ class Scoreboard {
     }
     
     func getHighscoreLabel(size: CGSize) -> SKLabelNode {
-        var highscore = SKLabelNode(text: "High Score!")
+        let highscore = SKLabelNode(text: "High Score!")
         highscore.position = CGPointMake(size.width/2, size.height/2 + 50)
         highscore.fontColor = UIColor.redColor()
         highscore.fontSize = 80

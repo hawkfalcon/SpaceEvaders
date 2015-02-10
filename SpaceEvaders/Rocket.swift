@@ -19,9 +19,9 @@ class Rocket : Sprite {
     
     func fire() {
         for index in 0...2 {
-            fireArray.append(SKTexture(imageNamed: "fire" + String(index)))
+            fireArray.append(SKTexture(imageNamed: "fire\(index)"))
         }
-        var fire = SKSpriteNode(texture:fireArray[0]);
+        let fire = SKSpriteNode(texture:fireArray[0]);
         fire.anchorPoint = CGPoint(x: 0.5, y: 1.3)
         self.addChild(fire)
         let animateAction = SKAction.animateWithTextures(self.fireArray, timePerFrame: 0.10);
@@ -29,14 +29,14 @@ class Rocket : Sprite {
     }
     
     func moveTo(x: CGFloat, y: CGFloat) {
-        var speed = 12 as CGFloat
+        let speed: CGFloat = 12
         var dx: CGFloat, dy: CGFloat
         // Compute vector components in direction of the touch
         dx = x - self.position.x
         dy = y - self.position.y + 50
         self.zRotation = atan2(dy + 100, dx) - CGFloat(M_PI_2)
         //Do not move if tap is on sprite
-        if ((dx >= 1 || dx <= -1) && (dy >= 1 || dy <= 1)) {
+        if (dx >= 1 || dx <= -1) && (dy >= 1 || dy <= 1) {
             let mag = sqrt(dx*dx+dy*dy)
             // Normalize and scale
             dx = dx/mag * speed
@@ -46,6 +46,6 @@ class Rocket : Sprite {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 }

@@ -13,11 +13,10 @@ class GameScene: SKScene {
     let alienSpawnRate = 5
     var isGameOver = false
     var isPaused = false
+    var removeAliens = false
     var scoreboard: Scoreboard!
     var rocket: Rocket!
     var pause: Pause!
-    var aliens = NSMutableSet()
-    var powerups = NSMutableSet()
 
     override func didMoveToView(view: SKView) {
         backgroundColor = UIColor.blackColor()
@@ -104,15 +103,17 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
-        if !isGameOver && !isPaused {
-            if currentlyTouching {
-                rocket.moveTo(currentPosition.x, y: currentPosition.y)
+        if !isPaused {
+            if !isGameOver {
+                if currentlyTouching {
+                    rocket.moveTo(currentPosition.x, y: currentPosition.y)
+                }
+                spawnPowerup()
+                enumeratePowerups()
             }
             spawnAliens(true)
             spawnAliens(false)
-            alienLogic()
-            spawnPowerup()
-            hitPowerup()
+            enumerateAliens()
         }
     }
     
@@ -120,8 +121,7 @@ class GameScene: SKScene {
         if random() % 1000 < alienSpawnRate {
             let randomX = 10 + random() % Int(size.width) - 10
             var startY = startAtTop.boolValue ? size.height : 0
-            let alien = Alien(x: CGFloat(randomX), y: startY, startAtTop: startAtTop).addTo(self)
-            aliens.addObject(alien)
+            Alien(x: CGFloat(randomX), y: startY, startAtTop: startAtTop).addTo(self)
         }
     }
     
@@ -130,7 +130,6 @@ class GameScene: SKScene {
             var x = CGFloat(random() % Int(size.width))
             var y = CGFloat(random() % Int(size.height))
             var powerup = Powerup(x: x, y: y).addTo(self)
-            powerups.addObject(powerup)
             powerup.runAction(
                 SKAction.sequence([
                     SKAction.fadeAlphaTo(1, duration: 0.5),
@@ -163,37 +162,53 @@ class GameScene: SKScene {
         view?.presentScene(gameScene, transition: reveal)
     }
     
-    func alienLogic() {
-        for alien in aliens {
-            let alien = alien as Alien
+    func enumerateAliens() {
+        self.enumerateChildNodesWithName("alien") {
+            node, stop in
+            let alien = node as Alien
+            self.alienBrains(alien)
+        }
+        if (removeAliens) {
+            removeAliens = false
+        }
+    }
+    
+    func alienBrains(alien: Alien) {
+        let y = alien.position.y
+        if !isGameOver {
             if CGRectIntersectsRect(CGRectInset(alien.frame, 25, 25), CGRectInset(rocket.frame, 10, 10)) {
                 gameOver()
             }
-            let y = alien.position.y
             //disabled by laser
             if !alien.isDisabled() {
                 let middle = size.height/2
                 let startAtTop = alien.startAtTop.boolValue
                 if (!startAtTop && y > middle) || (startAtTop && y < middle) {
-                    alien.setDisabled()
-                    scoreboard.addScore(1)
+                     alien.setDisabled()
+                     scoreboard.addScore(1)
                 }
             }
-            alien.moveTo(rocket.position.x, y: rocket.position.y)
-            if y < 0 || y > size.height {
-                alien.removeFromParent()
-                aliens.removeObject(alien)
+            if removeAliens {
+                if !alien.isDisabled() {
+                    scoreboard.addScore(1)
+                    alien.removeFromParent()
+                }
             }
+            alien.moveTo(CGPointMake(rocket.position.x, rocket.position.y))
+        } else {
+            alien.move()
+        }
+        if y < 0 || y > size.height {
+            alien.removeFromParent()
         }
     }
     
-    func hitPowerup() {
-        for powerup in powerups {
-            let powerup = powerup as Powerup
-            if CGRectIntersectsRect(CGRectInset(powerup.frame, 5, 5), rocket.frame) {
-                powerups.removeObject(powerup)
-                var explosion = Explosion(x: powerup.position.x, y: powerup.position.y)
-                powerup.removeFromParent()
+    func enumeratePowerups() {
+        self.enumerateChildNodesWithName("powerup") {
+            node, stop in
+            if CGRectIntersectsRect(CGRectInset(node.frame, 5, 5), self.rocket.frame) {
+                var explosion = Explosion(x: node.position.x, y: node.position.y)
+                node.removeFromParent()
                 explosion.addTo(self)
                 explosion.boom(self)
             }

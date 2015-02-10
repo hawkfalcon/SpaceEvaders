@@ -11,6 +11,7 @@ import SpriteKit
 class Alien : Sprite {
     var startAtTop: Bool!
     var disabled: Bool = false
+    let vel: CGFloat = 4
     
     init(x: CGFloat, y: CGFloat, startAtTop:Bool) {
         super.init(named: "alien", x: x, y: y)
@@ -26,20 +27,26 @@ class Alien : Sprite {
     func isDisabled() -> Bool {
         return disabled
     }
-    
-    func moveTo(x: CGFloat, y: CGFloat) {
-        let speed: CGFloat = 4
-        var dx: CGFloat = 0
-        var dy: CGFloat = startAtTop.boolValue ? -speed : speed
-        if !isDisabled() {
-            // Compute vector components in direction of the touch
-            dx = x - self.position.x
-            dy = y - self.position.y
+
+    func moveTo(point: CGPoint) {
+        if isDisabled() {
+            move()
+        } else {
+            var dx = point.x - self.position.x
+            var dy = point.y - self.position.y
             let mag = sqrt(dx*dx+dy*dy)
             // Normalize and scale
-            dx = dx/mag * speed
-            dy = dy/mag * speed
+            dx = dx/mag * vel
+            dy = dy/mag * vel
+            moveBy(dx, dy: dy)
         }
+    }
+    
+    func move() {
+        moveBy(0, dy: startAtTop.boolValue ? -vel : vel)
+    }
+    
+    func moveBy(dx: CGFloat, dy: CGFloat) {
         self.position = CGPointMake(self.position.x+dx, self.position.y+dy)
     }
     

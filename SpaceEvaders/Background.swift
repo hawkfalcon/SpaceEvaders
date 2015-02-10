@@ -12,6 +12,7 @@ class Background {
     let background = SKNode()
     var size: CGSize
     init(main: GameScene) {
+        background.zPosition = -1
         self.size = main.size
         fadeMainLaser()
         backAndForth()

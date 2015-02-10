@@ -20,7 +20,7 @@ class Powerup : Sprite {
 
     func fire() {
         for index in 1...15 {
-            bombArray.append(SKTexture(imageNamed: "powerup" + String(index)))
+            bombArray.append(SKTexture(imageNamed: "powerup\(index)"))
         }
         let animateAction = SKAction.animateWithTextures(bombArray, timePerFrame: 0.10);
         self.runAction(SKAction.repeatActionForever(animateAction))

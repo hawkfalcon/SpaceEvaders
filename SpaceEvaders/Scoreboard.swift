@@ -39,7 +39,7 @@ class Scoreboard {
     
     func addScore(score: Int) {
         self.score += score
-        scoreboard.text = "Score: " + String(self.score)
+        scoreboard.text = "Score: \(self.score)"
         highScore()
     }
     

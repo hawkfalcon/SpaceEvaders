@@ -19,7 +19,7 @@ class Rocket : Sprite {
     
     func fire() {
         for index in 0...2 {
-            fireArray.append(SKTexture(imageNamed: "fire" + String(index)))
+            fireArray.append(SKTexture(imageNamed: "fire\(index)"))
         }
         var fire = SKSpriteNode(texture:fireArray[0]);
         fire.anchorPoint = CGPoint(x: 0.5, y: 1.3)

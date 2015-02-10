@@ -33,11 +33,11 @@ class GameScene: SKScene {
     var currentlyTouching = false
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let touch: UITouch = touches.anyObject() as UITouch
+        let touch = touches.anyObject() as UITouch
         currentPosition = touch.locationInNode(self)
         let touched = self.nodeAtPoint(currentPosition)
         if (touched.name != nil) {
-            let name:String = touched.name!
+            let name = touched.name!
             if name == "howto" {
                 touched.removeFromParent()
             } else {
@@ -49,7 +49,7 @@ class GameScene: SKScene {
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let touch : UITouch = touches.anyObject() as UITouch
+        let touch = touches.anyObject() as UITouch
         currentPosition = touch.locationInNode(self)
     }
     

@@ -29,7 +29,7 @@ class Rocket : Sprite {
     }
     
     func moveTo(x: CGFloat, y: CGFloat) {
-        var speed = 12 as CGFloat
+        let speed: CGFloat = 12
         var dx: CGFloat, dy: CGFloat
         // Compute vector components in direction of the touch
         dx = x - self.position.x

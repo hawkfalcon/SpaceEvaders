@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(application: UIApplication) {
-        var gvc: GameViewController = self.window?.rootViewController as GameViewController
+        let gvc = self.window?.rootViewController as GameViewController
         if (gvc.hasAd()) {
             restartAd = true
             gvc.removeAd()
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         if (restartAd) {
-            var gvc: GameViewController = self.window?.rootViewController as GameViewController
+            let gvc = self.window?.rootViewController as GameViewController
             gvc.addAd()
             restartAd = false
         }

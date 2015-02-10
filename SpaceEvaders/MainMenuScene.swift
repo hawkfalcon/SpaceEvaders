@@ -48,7 +48,7 @@ class MainMenuScene: SKScene {
         case "facebook":
             Utility.socialMedia("facebook", score: "-1")
         default:
-            println("???")
+            break
         }
     }
 }

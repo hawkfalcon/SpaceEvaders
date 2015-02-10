@@ -50,7 +50,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
         let score = notification.userInfo!["score"] as String
         let type = notification.userInfo!["type"] as NSString
         if SLComposeViewController.isAvailableForServiceType(type){
-            var social:SLComposeViewController = SLComposeViewController(forServiceType: type)
+            let social = SLComposeViewController(forServiceType: type)
             var text = "I scored " + score + " in Space Evaders! Can you beat that? https://appsto.re/us/lgcg5.i"
             if (score == "-1") {
                 text = "Check out the iPhone game Space Evaders! https://appsto.re/us/lgcg5.i"
@@ -58,7 +58,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
             social.setInitialText(text)
             self.presentViewController(social, animated: true, completion: nil)
         } else {
-            var alert = UIAlertController(title: "Accounts", message: "Please login to your social media account to share!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Accounts", message: "Please login to your social media account to share!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "I will", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }

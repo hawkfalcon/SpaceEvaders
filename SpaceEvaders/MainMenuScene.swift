@@ -20,7 +20,7 @@ class MainMenuScene: SKScene {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch: UITouch = touches.anyObject() as UITouch
         let touched = self.nodeAtPoint(touch.locationInNode(self))
-        if (touched.name != nil) {
+        if touched.name != nil {
             let name:String = touched.name!
             if name == "howto" {
                 touched.removeFromParent()

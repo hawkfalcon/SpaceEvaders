@@ -36,7 +36,7 @@ class GameScene: SKScene {
         let touch = touches.anyObject() as UITouch
         currentPosition = touch.locationInNode(self)
         let touched = self.nodeAtPoint(currentPosition)
-        if (touched.name != nil) {
+        if touched.name != nil {
             let name = touched.name!
             if name == "howto" {
                 touched.removeFromParent()
@@ -79,13 +79,13 @@ class GameScene: SKScene {
     
     var pausemenu: PopupMenu!
     func pauseGame() {
-        if (isPaused) {
+        if isPaused {
             isPaused = false
             speed = 1 //todo why is this not working when you reopen the app?
             removeDialog()
             viewController?.removeAd()
         } else {
-            if (!isGameOver) {
+            if !isGameOver {
                 isPaused = true
                 speed = 0
                 pause.removeThis()
@@ -97,15 +97,15 @@ class GameScene: SKScene {
     }
     
     func removeDialog() {
-        if (pausemenu != nil) {
+        if pausemenu != nil {
            pausemenu.removeThis()
            pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
         }
     }
     
     override func update(currentTime: CFTimeInterval) {
-        if (!isGameOver && !isPaused) {
-            if (currentlyTouching) {
+        if !isGameOver && !isPaused {
+            if currentlyTouching {
                 rocket.moveTo(currentPosition.x, y: currentPosition.y)
             }
             spawnAliens(true)
@@ -150,7 +150,7 @@ class GameScene: SKScene {
         viewController?.addAd()
         pause.removeThis()
         PopupMenu(size: size, title: "Game Over!", label: "Play Again?", id: "gameover").addTo(self)
-        if (scoreboard.isHighscore()) {
+        if scoreboard.isHighscore() {
             addChild(scoreboard.getHighscoreLabel(size))
         }
     }
@@ -174,13 +174,13 @@ class GameScene: SKScene {
             if !alien.isDisabled() {
                 let middle = size.height/2
                 let startAtTop = alien.startAtTop.boolValue
-                if ((!startAtTop && y > middle) || (startAtTop && y < middle)) {
+                if (!startAtTop && y > middle) || (startAtTop && y < middle) {
                     alien.setDisabled()
                     scoreboard.addScore(1)
                 }
             }
             alien.moveTo(rocket.position.x, y: rocket.position.y)
-            if (y < 0 || y > size.height) {
+            if y < 0 || y > size.height {
                 alien.removeFromParent()
                 aliens.removeObject(alien)
             }

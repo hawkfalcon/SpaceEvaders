@@ -29,7 +29,7 @@ class Explosion : Sprite {
     func removeAliens(main: GameScene) {
         for alien in main.aliens {
             let alien = alien as Alien
-            if (!alien.isDisabled() && !main.isGameOver) {
+            if !alien.isDisabled() && !main.isGameOver {
                 main.scoreboard.addScore(1)
             }
             main.aliens.removeObject(alien)

@@ -52,7 +52,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
         if SLComposeViewController.isAvailableForServiceType(type){
             let social = SLComposeViewController(forServiceType: type)
             var text = "I scored " + score + " in Space Evaders! Can you beat that? https://appsto.re/us/lgcg5.i"
-            if (score == "-1") {
+            if score == "-1" {
                 text = "Check out the iPhone game Space Evaders! https://appsto.re/us/lgcg5.i"
             }
             social.setInitialText(text)

@@ -37,8 +37,9 @@
 		54ECDC1F1A64E99400860C5E /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ECDC1B1A64E99400860C5E /* home.png */; };
 		54ECDC201A64E99400860C5E /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ECDC1C1A64E99400860C5E /* info.png */; };
 		54ECDC211A64E99400860C5E /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 54ECDC1D1A64E99400860C5E /* settings.png */; };
-		55AD86801A8E830900839E28 /* powerup.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 55AD867F1A8E830900839E28 /* powerup.atlas */; };
 		55AD86821A8E831E00839E28 /* game.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 55AD86811A8E831E00839E28 /* game.atlas */; };
+		55AD86841A8E86E000839E28 /* laser.png in Resources */ = {isa = PBXBuildFile; fileRef = 55AD86831A8E86E000839E28 /* laser.png */; };
+		55AD86861A8E871300839E28 /* powerup.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 55AD86851A8E871300839E28 /* powerup.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,8 +75,9 @@
 		54ECDC1B1A64E99400860C5E /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		54ECDC1C1A64E99400860C5E /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		54ECDC1D1A64E99400860C5E /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		55AD867F1A8E830900839E28 /* powerup.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = powerup.atlas; sourceTree = "<group>"; };
 		55AD86811A8E831E00839E28 /* game.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = game.atlas; sourceTree = "<group>"; };
+		55AD86831A8E86E000839E28 /* laser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser.png; sourceTree = "<group>"; };
+		55AD86851A8E871300839E28 /* powerup.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = powerup.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +150,9 @@
 				54ECDC1B1A64E99400860C5E /* home.png */,
 				54ECDC1C1A64E99400860C5E /* info.png */,
 				54ECDC1D1A64E99400860C5E /* settings.png */,
-				55AD867F1A8E830900839E28 /* powerup.atlas */,
+				55AD86851A8E871300839E28 /* powerup.atlas */,
 				55AD86811A8E831E00839E28 /* game.atlas */,
+				55AD86831A8E86E000839E28 /* laser.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -253,13 +256,14 @@
 				547B0E0D1A5FA36500B3985C /* timeburner.otf in Resources */,
 				54B436391A832EF9008E592E /* facebook.png in Resources */,
 				55AD86821A8E831E00839E28 /* game.atlas in Resources */,
+				55AD86841A8E86E000839E28 /* laser.png in Resources */,
 				54ECDC211A64E99400860C5E /* settings.png in Resources */,
 				54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */,
-				55AD86801A8E830900839E28 /* powerup.atlas in Resources */,
 				54ECDC201A64E99400860C5E /* info.png in Resources */,
 				54CDE1291A66514000E18B95 /* howto.png in Resources */,
 				547BDB871A60AD16009F1B50 /* Explode.sks in Resources */,
 				540324391A4B8B5300B61880 /* Images.xcassets in Resources */,
+				55AD86861A8E871300839E28 /* powerup.atlas in Resources */,
 				54ECDC1E1A64E99400860C5E /* leaderboard.png in Resources */,
 				540324371A4B8B5300B61880 /* Main.storyboard in Resources */,
 				54B436381A832EF9008E592E /* twitter.png in Resources */,

@@ -24,7 +24,6 @@
 		547BDB8C1A60C1B1009F1B50 /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BDB8B1A60C1B1009F1B50 /* Pause.swift */; };
 		548983F91A57938E00C7BF63 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548983F81A57938E00C7BF63 /* Powerup.swift */; };
 		54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A2C7481A65A70A003746D3 /* GameKit.framework */; };
-		54A2C74B1A65AE94003746D3 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A2C74A1A65AE94003746D3 /* GameCenter.swift */; };
 		54B436381A832EF9008E592E /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436361A832EF9008E592E /* twitter.png */; };
 		54B436391A832EF9008E592E /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436371A832EF9008E592E /* facebook.png */; };
 		54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CDE1221A662D5900E18B95 /* LaunchScreen.xib */; };
@@ -40,6 +39,7 @@
 		55AD86821A8E831E00839E28 /* game.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 55AD86811A8E831E00839E28 /* game.atlas */; };
 		55AD86841A8E86E000839E28 /* laser.png in Resources */ = {isa = PBXBuildFile; fileRef = 55AD86831A8E86E000839E28 /* laser.png */; };
 		55AD86861A8E871300839E28 /* powerup.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 55AD86851A8E871300839E28 /* powerup.atlas */; };
+		EB8A47DF1A979AE300CF6272 /* GCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A47DE1A979AE300CF6272 /* GCHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +62,6 @@
 		547BDB8B1A60C1B1009F1B50 /* Pause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
 		548983F81A57938E00C7BF63 /* Powerup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
 		54A2C7481A65A70A003746D3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		54A2C74A1A65AE94003746D3 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
 		54B436361A832EF9008E592E /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		54B436371A832EF9008E592E /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		54CDE1221A662D5900E18B95 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		55AD86811A8E831E00839E28 /* game.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = game.atlas; sourceTree = "<group>"; };
 		55AD86831A8E86E000839E28 /* laser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser.png; sourceTree = "<group>"; };
 		55AD86851A8E871300839E28 /* powerup.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = powerup.atlas; sourceTree = "<group>"; };
+		EB8A47DE1A979AE300CF6272 /* GCHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,13 +121,13 @@
 				541036891A55EFD200FA8BD2 /* Sprite.swift */,
 				54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */,
 				54D1EDC91A846FB50058E8DB /* Utility.swift */,
-				54A2C74A1A65AE94003746D3 /* GameCenter.swift */,
 				5403242D1A4B8B5300B61880 /* AppDelegate.swift */,
 				540324331A4B8B5300B61880 /* GameViewController.swift */,
 				540324351A4B8B5300B61880 /* Main.storyboard */,
 				540324381A4B8B5300B61880 /* Images.xcassets */,
 				54CDE1221A662D5900E18B95 /* LaunchScreen.xib */,
 				5403242B1A4B8B5300B61880 /* Supporting Files */,
+				EB8A47DE1A979AE300CF6272 /* GCHelper.swift */,
 			);
 			path = SpaceEvaders;
 			sourceTree = "<group>";
@@ -281,12 +281,12 @@
 				54E4AB1F1A4F6B56004D80C3 /* MainMenuScene.swift in Sources */,
 				54ECDC121A632A1600860C5E /* PopupMenu.swift in Sources */,
 				54ECDC141A64376800860C5E /* Button.swift in Sources */,
+				EB8A47DF1A979AE300CF6272 /* GCHelper.swift in Sources */,
 				540324321A4B8B5300B61880 /* GameScene.swift in Sources */,
 				548983F91A57938E00C7BF63 /* Powerup.swift in Sources */,
 				547B0DAC1A5F59BC00B3985C /* Rocket.swift in Sources */,
 				540324341A4B8B5300B61880 /* GameViewController.swift in Sources */,
 				547B0DAA1A5E105900B3985C /* Explosion.swift in Sources */,
-				54A2C74B1A65AE94003746D3 /* GameCenter.swift in Sources */,
 				547BDB8C1A60C1B1009F1B50 /* Pause.swift in Sources */,
 				541036881A55EFB000FA8BD2 /* Alien.swift in Sources */,
 				5410368A1A55EFD200FA8BD2 /* Sprite.swift in Sources */,

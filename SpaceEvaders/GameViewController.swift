@@ -10,16 +10,15 @@ import UIKit
 import SpriteKit
 import iAd
 import Social
+import GameKit
 
 class GameViewController: UIViewController, ADBannerViewDelegate {
-    var gameCenter: GameCenter!
     var adBannerView: ADBannerView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let scene = MainMenuScene(size:CGSize(width: 2048, height: 1536))
         let skView = self.view as SKView
-        self.gameCenter = GameCenter(rootViewController: self)
         //skView.showsFPS = true
         //skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
@@ -65,7 +64,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
     }
     
     func openGC() {
-        gameCenter.showGameCenter()
+        GCHelper.sharedInstance.showGameCenter(self, viewState: .Default)
     }
     
     func addAd() {

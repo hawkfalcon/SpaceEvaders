@@ -1,11 +1,3 @@
-//
-//  Sprite.swift
-//  SpaceEvaders
-//
-//  Created by Tristen Miller on 1/1/15.
-//  Copyright (c) 2015 Tristen Miller. All rights reserved.
-//
-
 import SpriteKit
 
 class Sprite : SKSpriteNode {

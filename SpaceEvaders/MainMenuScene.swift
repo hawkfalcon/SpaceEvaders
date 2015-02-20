@@ -1,11 +1,3 @@
-//
-//  MainMenuScene.swift
-//  SpaceEvaders
-//
-//  Created by Tristen Miller on 12/27/14.
-//  Copyright (c) 2014 Tristen Miller. All rights reserved.
-//
-
 import SpriteKit
 
 class MainMenuScene: SKScene {

@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  SpaceEvaders
-//
-//  Created by Tristen Miller on 12/24/14.
-//  Copyright (c) 2014 Tristen Miller. All rights reserved.
-//
-
 import UIKit
 import SpriteKit
 

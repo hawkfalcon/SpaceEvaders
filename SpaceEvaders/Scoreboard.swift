@@ -28,7 +28,7 @@ class Scoreboard {
             NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore")
             NSUserDefaults.standardUserDefaults().synchronize()
             isHighScore = true
-            viewController?.gameCenter.reportScore(score: score, leaderboardIdentifier: "leaderBoardID")
+            GCHelper.sharedInstance.reportLeaderboardIdentifier("leaderBoardID", score: score)
         }
     }
     

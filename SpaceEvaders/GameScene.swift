@@ -1,4 +1,5 @@
 import SpriteKit
+import AVFoundation
 
 class GameScene: SKScene {
     var viewController:GameViewController?
@@ -9,15 +10,23 @@ class GameScene: SKScene {
     var scoreboard: Scoreboard!
     var rocket: Rocket!
     var pause: Pause!
+    var audioPlayer = AVAudioPlayer()
 
     override func didMoveToView(view: SKView) {
+        if Utility.sound() {
+           runAction(SKAction.playSoundFileNamed("Start.mp3", waitForCompletion: false))
+        }
         backgroundColor = UIColor.blackColor()
-        Background(main: self)
+        Background(size: size, main: self)
         rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as Rocket
         scoreboard = Scoreboard(x: 50, y: size.height - size.height/5).addTo(self)
         scoreboard.viewController = self.viewController
         pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
         viewController?.removeAd()
+        if Utility.musicon() {
+           loopBackground("Chamber-of-Jewels")
+           audioPlayer.play()
+        }
     }
     
     var currentPosition: CGPoint!
@@ -29,14 +38,55 @@ class GameScene: SKScene {
         let touched = self.nodeAtPoint(currentPosition)
         if touched.name != nil {
             let name = touched.name!
-            if name == "howto" {
+            if name == "back" {
+                let parent = touched.parent
+                if parent?.name == "back" {
+                    let superp = parent?.parent
+                    superp?.removeFromParent()
+                } else {
+                    touched.removeFromParent()
+                    parent?.removeFromParent()
+                }
+            } else if name == "credits" {
+                let parent = touched.parent
                 touched.removeFromParent()
+                parent?.removeFromParent()
+                let howto = Sprite(named: "howto", x: size.width/2, y: size.height/2, size: CGSizeMake(size.width, size.height)).addTo(self)
+                howto.zPosition = 1004
+            } else if name == "howto" {
+                touched.removeFromParent()
+            } else if name == "sound" {
+                toggleSound(touched as SKSpriteNode)
+            } else if name == "music" {
+                toggleMusic(touched as SKSpriteNode)
             } else {
                 tappedButton(name)
             }
         } else {
             currentlyTouching = true
         }
+    }
+    
+    func toggleSound(sprite: SKSpriteNode) {
+        var next = "on"
+        if Utility.sound() {
+            next = "off"
+        }
+        sprite.texture = SKTexture(imageNamed: "sound\(next)")
+        Utility.toggleSound()
+    }
+    
+    func toggleMusic(sprite: SKSpriteNode) {
+        var next = "on"
+        if Utility.musicon() {
+            next = "off"
+            audioPlayer.stop()
+        } else {
+            loopBackground("Chamber-of-Jewels")
+            audioPlayer.play()
+        }
+        sprite.texture = SKTexture(imageNamed: "music\(next)")
+        Utility.toggleMusic()
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
@@ -61,8 +111,7 @@ class GameScene: SKScene {
         case "facebook":
             Utility.socialMedia("facebook", score: String(scoreboard.getScore()))
         case "info":
-            let howto = Sprite(named: "howto", x: size.width/2, y: size.height/2, size: CGSizeMake(size.width, size.height)).addTo(self)
-            howto.zPosition = 1001
+            Info(size: size).addTo(self)
         default:
             currentlyTouching = true
         }
@@ -71,12 +120,20 @@ class GameScene: SKScene {
     var pausemenu: PopupMenu!
     func pauseGame() {
         if isPaused {
+            if Utility.musicon() {
+                loopBackground("Chamber-of-Jewels")
+                audioPlayer.play()
+            }
             isPaused = false
-            speed = 1 //todo why is this not working when you reopen the app?
+            speed = 1
+            paused = false
             removeDialog()
             viewController?.removeAd()
         } else {
             if !isGameOver {
+                if Utility.musicon() {
+                    audioPlayer.stop()
+                }
                 isPaused = true
                 speed = 0
                 pause.removeThis()
@@ -136,6 +193,12 @@ class GameScene: SKScene {
     func gameOver() {
         isGameOver = true
         let exp = Explosion(x: rocket.position.x, y: rocket.position.y).addTo(self) as Explosion
+        if Utility.sound() {
+           runAction(SKAction.playSoundFileNamed("Death.mp3", waitForCompletion: false))
+        }
+        if Utility.musicon() {
+            audioPlayer.stop()
+        }
         exp.boom(self)
         rocket.removeFromParent()
         viewController?.addAd()
@@ -176,15 +239,18 @@ class GameScene: SKScene {
                 let middle = size.height/2
                 let startAtTop = alien.startAtTop.boolValue
                 if (!startAtTop && y > middle) || (startAtTop && y < middle) {
-                     alien.setDisabled()
-                     scoreboard.addScore(1)
+                    alien.setDisabled()
+                    scoreboard.addScore(1)
+                    if Utility.sound() {
+                       runAction(SKAction.playSoundFileNamed("Alien_Disable.mp3", waitForCompletion: false))
+                    }
                 }
             }
             if removeAliens {
                 if !alien.isDisabled() {
                     scoreboard.addScore(1)
-                    alien.removeFromParent()
                 }
+                alien.removeFromParent()
             }
             alien.moveTo(CGPointMake(rocket.position.x, rocket.position.y))
         } else {
@@ -199,11 +265,23 @@ class GameScene: SKScene {
         self.enumerateChildNodesWithName("powerup") {
             node, stop in
             if CGRectIntersectsRect(CGRectInset(node.frame, 5, 5), self.rocket.frame) {
+                if Utility.sound() {
+                   self.runAction(SKAction.playSoundFileNamed("Powerup.mp3", waitForCompletion: false))
+                }
                 var explosion = Explosion(x: node.position.x, y: node.position.y)
                 node.removeFromParent()
                 explosion.addTo(self)
                 explosion.boom(self)
             }
         }
+    }
+    
+    func loopBackground(name: String) {
+        var backgroundSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(name, ofType: "mp3")!)
+        var error: NSError?
+        audioPlayer = AVAudioPlayer(contentsOfURL: backgroundSound, error: &error)
+        audioPlayer.numberOfLoops = -1
+        audioPlayer.volume = 0.4
+        audioPlayer.prepareToPlay()
     }
 }

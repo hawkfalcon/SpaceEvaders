@@ -9,6 +9,11 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let sound = defaults.boolForKey("sound")
+        Utility.setSound(sound)
+        let music = defaults.boolForKey("music")
+        Utility.setMusic(music)
         let scene = MainMenuScene(size:CGSize(width: 2048, height: 1536))
         let skView = self.view as SKView
         //skView.showsFPS = true

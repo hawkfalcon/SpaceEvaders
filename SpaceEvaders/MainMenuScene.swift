@@ -12,14 +12,50 @@ class MainMenuScene: SKScene {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch = touches.anyObject() as UITouch
         let touched = self.nodeAtPoint(touch.locationInNode(self))
-        if touched.name != nil {
-            let name = touched.name!
-            if name == "howto" {
+        if let name = touched.name {
+            if name == "back" {
+                let parent = touched.parent
+                if parent?.name == "back" {
+                   let superp = parent?.parent
+                   superp?.removeFromParent()
+                } else {
+                   touched.removeFromParent()
+                   parent?.removeFromParent()
+                }
+            } else if name == "credits" {
+                let parent = touched.parent
                 touched.removeFromParent()
+                parent?.removeFromParent()
+                let howto = Sprite(named: "howto", x: size.width/2, y: size.height/2, size: CGSizeMake(size.width, size.height)).addTo(self)
+                howto.zPosition = 1004
+            } else if name == "howto" {
+                touched.removeFromParent()
+            } else if name == "sound" {
+               toggleSound(touched as SKSpriteNode)
+            } else if name == "music" {
+               toggleMusic(touched as SKSpriteNode)
             } else {
                 tappedButton(name)
             }
         }
+    }
+    
+    func toggleSound(sprite: SKSpriteNode) {
+        var next = "on"
+        if Utility.sound() {
+            next = "off"
+        }
+        sprite.texture = SKTexture(imageNamed: "sound\(next)")
+        Utility.toggleSound()
+    }
+    
+    func toggleMusic(sprite: SKSpriteNode) {
+        var next = "on"
+        if Utility.musicon() {
+            next = "off"
+        }
+        sprite.texture = SKTexture(imageNamed: "music\(next)")
+        Utility.toggleMusic()
     }
     
     func tappedButton(name: String) {
@@ -33,8 +69,7 @@ class MainMenuScene: SKScene {
         case "leaderboard":
             viewController?.openGC()
         case "info":
-            let info = Sprite(named: "howto", x: size.width/2, y: size.height/2, size: CGSizeMake(size.width, size.height)).addTo(self)
-            info.zPosition = 1001
+            Info(size: size).addTo(self)
         case "twitter":
             Utility.socialMedia("twitter", score: "-1")
         case "facebook":

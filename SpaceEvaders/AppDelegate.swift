@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             restartAd = true
             gvc.removeAd()
         }
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(Utility.sound(), forKey: "sound")
+        defaults.setObject(Utility.musicon(), forKey: "music")
     }
     
     func applicationDidBecomeActive(application: UIApplication) {

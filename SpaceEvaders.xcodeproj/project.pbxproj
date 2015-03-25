@@ -26,6 +26,17 @@
 		54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A2C7481A65A70A003746D3 /* GameKit.framework */; };
 		54B436381A832EF9008E592E /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436361A832EF9008E592E /* twitter.png */; };
 		54B436391A832EF9008E592E /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436371A832EF9008E592E /* facebook.png */; };
+		54BC177D1AC1ECF0000A7FED /* Start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 54BC17791AC1ECF0000A7FED /* Start.mp3 */; };
+		54BC177E1AC1ECF0000A7FED /* Powerup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 54BC177A1AC1ECF0000A7FED /* Powerup.mp3 */; };
+		54BC177F1AC1ECF0000A7FED /* Alien_Disable.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 54BC177B1AC1ECF0000A7FED /* Alien_Disable.mp3 */; };
+		54BC17801AC1ECF0000A7FED /* Death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 54BC177C1AC1ECF0000A7FED /* Death.mp3 */; };
+		54BC17821AC1F2BA000A7FED /* Chamber-of-Jewels.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 54BC17811AC1F2BA000A7FED /* Chamber-of-Jewels.mp3 */; };
+		54BC178E1AC1FABF000A7FED /* soundoff.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC178B1AC1FABF000A7FED /* soundoff.png */; };
+		54BC178F1AC1FABF000A7FED /* soundon.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC178C1AC1FABF000A7FED /* soundon.png */; };
+		54BC17931AC207C0000A7FED /* musicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC17911AC207C0000A7FED /* musicon.png */; };
+		54BC17971AC20F58000A7FED /* musicoff.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC17961AC20F58000A7FED /* musicoff.png */; };
+		54BC17991AC2230A000A7FED /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC17981AC2230A000A7FED /* Info.swift */; };
+		54BC179D1AC22FA4000A7FED /* credits.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC179C1AC22FA4000A7FED /* credits.png */; };
 		54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CDE1221A662D5900E18B95 /* LaunchScreen.xib */; };
 		54CDE1291A66514000E18B95 /* howto.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CDE1281A66514000E18B95 /* howto.png */; };
 		54D1EDCA1A846FB50058E8DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D1EDC91A846FB50058E8DB /* Utility.swift */; };
@@ -64,6 +75,17 @@
 		54A2C7481A65A70A003746D3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		54B436361A832EF9008E592E /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		54B436371A832EF9008E592E /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		54BC17791AC1ECF0000A7FED /* Start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Start.mp3; sourceTree = "<group>"; };
+		54BC177A1AC1ECF0000A7FED /* Powerup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Powerup.mp3; sourceTree = "<group>"; };
+		54BC177B1AC1ECF0000A7FED /* Alien_Disable.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Alien_Disable.mp3; sourceTree = "<group>"; };
+		54BC177C1AC1ECF0000A7FED /* Death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Death.mp3; sourceTree = "<group>"; };
+		54BC17811AC1F2BA000A7FED /* Chamber-of-Jewels.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Chamber-of-Jewels.mp3"; sourceTree = "<group>"; };
+		54BC178B1AC1FABF000A7FED /* soundoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundoff.png; sourceTree = "<group>"; };
+		54BC178C1AC1FABF000A7FED /* soundon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundon.png; sourceTree = "<group>"; };
+		54BC17911AC207C0000A7FED /* musicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicon.png; sourceTree = "<group>"; };
+		54BC17961AC20F58000A7FED /* musicoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicoff.png; sourceTree = "<group>"; };
+		54BC17981AC2230A000A7FED /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		54BC179C1AC22FA4000A7FED /* credits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credits.png; sourceTree = "<group>"; };
 		54CDE1221A662D5900E18B95 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		54CDE1281A66514000E18B95 /* howto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = howto.png; sourceTree = "<group>"; };
 		54D1EDC91A846FB50058E8DB /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -114,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				547B0E0C1A5FA2F800B3985C /* timeburner.otf */,
+				54BC17781AC1ECE1000A7FED /* sounds */,
 				540324511A4B8C0D00B61880 /* images */,
 				540324311A4B8B5300B61880 /* GameScene.swift */,
 				547BDB821A60A21B009F1B50 /* Menu */,
@@ -143,11 +166,13 @@
 		540324511A4B8C0D00B61880 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				54BC17851AC1F910000A7FED /* buttons */,
 				54B436361A832EF9008E592E /* twitter.png */,
 				54B436371A832EF9008E592E /* facebook.png */,
 				54CDE1281A66514000E18B95 /* howto.png */,
 				54ECDC1A1A64E99400860C5E /* leaderboard.png */,
 				54ECDC1B1A64E99400860C5E /* home.png */,
+				54BC179C1AC22FA4000A7FED /* credits.png */,
 				54ECDC1C1A64E99400860C5E /* info.png */,
 				54ECDC1D1A64E99400860C5E /* settings.png */,
 				55AD86851A8E871300839E28 /* powerup.atlas */,
@@ -177,8 +202,33 @@
 				54ECDC111A632A1600860C5E /* PopupMenu.swift */,
 				54ECDC131A64376800860C5E /* Button.swift */,
 				547BDB8B1A60C1B1009F1B50 /* Pause.swift */,
+				54BC17981AC2230A000A7FED /* Info.swift */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		54BC17781AC1ECE1000A7FED /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				54BC17791AC1ECF0000A7FED /* Start.mp3 */,
+				54BC177A1AC1ECF0000A7FED /* Powerup.mp3 */,
+				54BC177B1AC1ECF0000A7FED /* Alien_Disable.mp3 */,
+				54BC177C1AC1ECF0000A7FED /* Death.mp3 */,
+				54BC17811AC1F2BA000A7FED /* Chamber-of-Jewels.mp3 */,
+			);
+			name = sounds;
+			path = images;
+			sourceTree = "<group>";
+		};
+		54BC17851AC1F910000A7FED /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				54BC178B1AC1FABF000A7FED /* soundoff.png */,
+				54BC178C1AC1FABF000A7FED /* soundon.png */,
+				54BC17911AC207C0000A7FED /* musicon.png */,
+				54BC17961AC20F58000A7FED /* musicoff.png */,
+			);
+			name = buttons;
 			sourceTree = "<group>";
 		};
 		55AD867E1A8E81FD00839E28 /* Frameworks */ = {
@@ -255,19 +305,29 @@
 			files = (
 				547B0E0D1A5FA36500B3985C /* timeburner.otf in Resources */,
 				54B436391A832EF9008E592E /* facebook.png in Resources */,
+				54BC17821AC1F2BA000A7FED /* Chamber-of-Jewels.mp3 in Resources */,
 				55AD86821A8E831E00839E28 /* game.atlas in Resources */,
 				55AD86841A8E86E000839E28 /* laser.png in Resources */,
+				54BC178E1AC1FABF000A7FED /* soundoff.png in Resources */,
 				54ECDC211A64E99400860C5E /* settings.png in Resources */,
+				54BC177D1AC1ECF0000A7FED /* Start.mp3 in Resources */,
 				54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */,
 				54ECDC201A64E99400860C5E /* info.png in Resources */,
 				54CDE1291A66514000E18B95 /* howto.png in Resources */,
 				547BDB871A60AD16009F1B50 /* Explode.sks in Resources */,
 				540324391A4B8B5300B61880 /* Images.xcassets in Resources */,
 				55AD86861A8E871300839E28 /* powerup.atlas in Resources */,
+				54BC177E1AC1ECF0000A7FED /* Powerup.mp3 in Resources */,
 				54ECDC1E1A64E99400860C5E /* leaderboard.png in Resources */,
 				540324371A4B8B5300B61880 /* Main.storyboard in Resources */,
+				54BC17801AC1ECF0000A7FED /* Death.mp3 in Resources */,
+				54BC178F1AC1FABF000A7FED /* soundon.png in Resources */,
+				54BC17971AC20F58000A7FED /* musicoff.png in Resources */,
+				54BC17931AC207C0000A7FED /* musicon.png in Resources */,
 				54B436381A832EF9008E592E /* twitter.png in Resources */,
 				54ECDC1F1A64E99400860C5E /* home.png in Resources */,
+				54BC179D1AC22FA4000A7FED /* credits.png in Resources */,
+				54BC177F1AC1ECF0000A7FED /* Alien_Disable.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +354,7 @@
 				547B0DAF1A5F5D3E00B3985C /* Scoreboard.swift in Sources */,
 				5403242E1A4B8B5300B61880 /* AppDelegate.swift in Sources */,
 				547B0DB11A5F64CE00B3985C /* Background.swift in Sources */,
+				54BC17991AC2230A000A7FED /* Info.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -382,7 +443,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

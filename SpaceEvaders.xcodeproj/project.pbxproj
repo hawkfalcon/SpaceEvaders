@@ -23,6 +23,8 @@
 		547BDB871A60AD16009F1B50 /* Explode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 547BDB851A60AD16009F1B50 /* Explode.sks */; };
 		547BDB8C1A60C1B1009F1B50 /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547BDB8B1A60C1B1009F1B50 /* Pause.swift */; };
 		548983F91A57938E00C7BF63 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548983F81A57938E00C7BF63 /* Powerup.swift */; };
+		549C4AB71AC34BB500F26917 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549C4AB51AC34BB500F26917 /* Crashlytics.framework */; };
+		549C4AB81AC34BB500F26917 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549C4AB61AC34BB500F26917 /* Fabric.framework */; };
 		54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A2C7481A65A70A003746D3 /* GameKit.framework */; };
 		54B436381A832EF9008E592E /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436361A832EF9008E592E /* twitter.png */; };
 		54B436391A832EF9008E592E /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436371A832EF9008E592E /* facebook.png */; };
@@ -72,6 +74,8 @@
 		547BDB851A60AD16009F1B50 /* Explode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explode.sks; sourceTree = "<group>"; };
 		547BDB8B1A60C1B1009F1B50 /* Pause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
 		548983F81A57938E00C7BF63 /* Powerup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
+		549C4AB51AC34BB500F26917 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		549C4AB61AC34BB500F26917 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		54A2C7481A65A70A003746D3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		54B436361A832EF9008E592E /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		54B436371A832EF9008E592E /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
@@ -108,7 +112,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				541A8A071A65F1FE0058AB46 /* iAd.framework in Frameworks */,
+				549C4AB71AC34BB500F26917 /* Crashlytics.framework in Frameworks */,
 				54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */,
+				549C4AB81AC34BB500F26917 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +124,8 @@
 		5403241F1A4B8B5300B61880 = {
 			isa = PBXGroup;
 			children = (
+				549C4AB51AC34BB500F26917 /* Crashlytics.framework */,
+				549C4AB61AC34BB500F26917 /* Fabric.framework */,
 				5403242A1A4B8B5300B61880 /* SpaceEvaders */,
 				55AD867E1A8E81FD00839E28 /* Frameworks */,
 				540324291A4B8B5300B61880 /* Products */,
@@ -175,9 +183,9 @@
 				54BC179C1AC22FA4000A7FED /* credits.png */,
 				54ECDC1C1A64E99400860C5E /* info.png */,
 				54ECDC1D1A64E99400860C5E /* settings.png */,
+				55AD86831A8E86E000839E28 /* laser.png */,
 				55AD86851A8E871300839E28 /* powerup.atlas */,
 				55AD86811A8E831E00839E28 /* game.atlas */,
-				55AD86831A8E86E000839E28 /* laser.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -250,6 +258,7 @@
 				540324241A4B8B5300B61880 /* Sources */,
 				540324251A4B8B5300B61880 /* Frameworks */,
 				540324261A4B8B5300B61880 /* Resources */,
+				549C4AB41AC34B9800F26917 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -332,6 +341,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		549C4AB41AC34B9800F26917 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 5dab386aae7cdc92e5cbafb6b6cd742f0f4bfddb d88d3fb9680ac1f88a048b6225ca791db21fced7895d229b793767f81f8eb206";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		540324241A4B8B5300B61880 /* Sources */ = {
@@ -458,6 +484,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SpaceEvaders/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -474,6 +504,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SpaceEvaders/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

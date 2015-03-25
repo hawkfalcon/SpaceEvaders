@@ -22,7 +22,6 @@ class GameScene: SKScene {
         scoreboard = Scoreboard(x: 50, y: size.height - size.height/5).addTo(self)
         scoreboard.viewController = self.viewController
         pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
-        viewController?.removeAd()
         if Utility.musicon() {
            loopBackground("Chamber-of-Jewels")
            audioPlayer.play()
@@ -128,7 +127,6 @@ class GameScene: SKScene {
             speed = 1
             paused = false
             removeDialog()
-            viewController?.removeAd()
         } else {
             if !isGameOver {
                 if Utility.musicon() {
@@ -139,7 +137,6 @@ class GameScene: SKScene {
                 pause.removeThis()
                 pausemenu = PopupMenu(size: size, title: "Paused", label: "Continue?", id: "pause")
                 pausemenu.addTo(self)
-                viewController?.addAd()
             }
         }
     }
@@ -191,17 +188,16 @@ class GameScene: SKScene {
     }
     
     func gameOver() {
+        if Utility.sound() {
+            runAction(SKAction.playSoundFileNamed("Death.mp3", waitForCompletion: false))
+        }
         isGameOver = true
         let exp = Explosion(x: rocket.position.x, y: rocket.position.y).addTo(self) as Explosion
-        if Utility.sound() {
-           runAction(SKAction.playSoundFileNamed("Death.mp3", waitForCompletion: false))
-        }
         if Utility.musicon() {
             audioPlayer.stop()
         }
         exp.boom(self)
         rocket.removeFromParent()
-        viewController?.addAd()
         pause.removeThis()
         PopupMenu(size: size, title: "Game Over!", label: "Play Again?", id: "gameover").addTo(self)
         if scoreboard.isHighscore() {

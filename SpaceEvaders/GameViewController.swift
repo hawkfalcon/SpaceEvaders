@@ -1,11 +1,9 @@
 import UIKit
 import SpriteKit
-import iAd
 import Social
 import GameKit
 
-class GameViewController: UIViewController, ADBannerViewDelegate {
-    var adBannerView: ADBannerView!
+class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +20,11 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
         scene.scaleMode = .AspectFill
         scene.viewController = self
         skView.presentScene(scene)
-        loadAds()
-        addAd()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "shareAction:", name: "social", object: nil)
     }
     
-    func loadAds() {
-        adBannerView = ADBannerView(frame: CGRectMake(0, 0, view.bounds.size.width, 32))
-        adBannerView.center = CGPoint(x: adBannerView.center.x, y: view.bounds.size.height - adBannerView.frame.size.height / 2)
-        adBannerView.delegate = self
-        adBannerView.hidden = true
+    func viewControllerForPresentingModalView() -> UIViewController {
+        return self
     }
     
     override func shouldAutorotate() -> Bool{
@@ -63,39 +56,4 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
     func openGC() {
         GCHelper.sharedInstance.showGameCenter(self, viewState: .Default)
     }
-    
-    func addAd() {
-        view.addSubview(adBannerView)
-    }
-    
-    func removeAd() {
-        adBannerView.removeFromSuperview()
-    }
-    
-    func hasAd() -> Bool {
-       return adBannerView.isDescendantOfView(view)
-    }
-    
-    func bannerViewWillLoadAd(banner: ADBannerView!) {
-        NSLog("bannerViewWillLoadAd")
-    }
-    
-    func bannerViewDidLoadAd(banner: ADBannerView!) {
-        NSLog("bannerViewDidLoadAd")
-        self.adBannerView.hidden = false
-    }
-    
-    func bannerViewActionDidFinish(banner: ADBannerView!) {
-        NSLog("bannerViewDidLoadAd")
-    }
-    
-    func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
-        NSLog("bannerViewActionShouldBegin")
-        return true
-    }
-    
-    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        NSLog("bannerView")
-    }
-
 }

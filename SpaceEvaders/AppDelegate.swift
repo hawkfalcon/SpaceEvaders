@@ -1,34 +1,26 @@
 import UIKit
 import SpriteKit
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var restartAd = false
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Fabric.with([Crashlytics()])
         GCHelper.sharedInstance.authenticateLocalUser()
         return true
     }
     
     func applicationWillResignActive(application: UIApplication) {
-        let gvc = self.window?.rootViewController as GameViewController
-        if gvc.hasAd() {
-            restartAd = true
-            gvc.removeAd()
-        }
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(Utility.sound(), forKey: "sound")
         defaults.setObject(Utility.musicon(), forKey: "music")
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        if restartAd {
-            let gvc = self.window?.rootViewController as GameViewController
-            gvc.addAd()
-            restartAd = false
-        }
     }
 
     func applicationDidEnterBackground(application: UIApplication) {

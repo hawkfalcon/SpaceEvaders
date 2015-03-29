@@ -30,6 +30,10 @@ class MainMenuScene: SKScene {
                 howto.zPosition = 1004
             } else if name == "howto" {
                 touched.removeFromParent()
+            } else if name == "settings" {
+                let parent = touched.parent! as SKNode
+                touched.removeFromParent()
+                OptionsMenu(menu: parent, size: size)
             } else if name == "sound" {
                toggleSound(touched as SKSpriteNode)
             } else if name == "music" {
@@ -42,20 +46,20 @@ class MainMenuScene: SKScene {
     
     func toggleSound(sprite: SKSpriteNode) {
         var next = "on"
-        if Utility.sound() {
+        if Options.sound() {
             next = "off"
         }
         sprite.texture = SKTexture(imageNamed: "sound\(next)")
-        Utility.toggleSound()
+        Options.toggleSound()
     }
     
     func toggleMusic(sprite: SKSpriteNode) {
         var next = "on"
-        if Utility.musicon() {
+        if Options.musicon() {
             next = "off"
         }
         sprite.texture = SKTexture(imageNamed: "music\(next)")
-        Utility.toggleMusic()
+        Options.toggleMusic()
     }
     
     func tappedButton(name: String) {

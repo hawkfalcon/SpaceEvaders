@@ -21,7 +21,8 @@ class Alien : Sprite {
     }
 
     func moveTo(point: CGPoint) {
-        if isDisabled() {
+        let height = parent?.scene?.size.height
+        if isDisabled() || position.y > height! - 200 || position.y < 200 {
             move()
         } else {
             var dx = point.x - self.position.x

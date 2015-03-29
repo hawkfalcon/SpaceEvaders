@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillResignActive(application: UIApplication) {
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(Utility.sound(), forKey: "sound")
-        defaults.setObject(Utility.musicon(), forKey: "music")
+        defaults.setObject(Options.sound(), forKey: "sound")
+        defaults.setObject(Options.musicon(), forKey: "music")
     }
     
     func applicationDidBecomeActive(application: UIApplication) {

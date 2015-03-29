@@ -39,6 +39,8 @@
 		54BC17971AC20F58000A7FED /* musicoff.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC17961AC20F58000A7FED /* musicoff.png */; };
 		54BC17991AC2230A000A7FED /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC17981AC2230A000A7FED /* Info.swift */; };
 		54BC179D1AC22FA4000A7FED /* credits.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC179C1AC22FA4000A7FED /* credits.png */; };
+		54C242F51AC8AEE8005385C2 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C242F41AC8AEE8005385C2 /* Options.swift */; };
+		54C242F91AC8C26C005385C2 /* OptionsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C242F81AC8C26C005385C2 /* OptionsMenu.swift */; };
 		54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CDE1221A662D5900E18B95 /* LaunchScreen.xib */; };
 		54CDE1291A66514000E18B95 /* howto.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CDE1281A66514000E18B95 /* howto.png */; };
 		54D1EDCA1A846FB50058E8DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D1EDC91A846FB50058E8DB /* Utility.swift */; };
@@ -90,6 +92,8 @@
 		54BC17961AC20F58000A7FED /* musicoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicoff.png; sourceTree = "<group>"; };
 		54BC17981AC2230A000A7FED /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		54BC179C1AC22FA4000A7FED /* credits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credits.png; sourceTree = "<group>"; };
+		54C242F41AC8AEE8005385C2 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		54C242F81AC8C26C005385C2 /* OptionsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsMenu.swift; sourceTree = "<group>"; };
 		54CDE1221A662D5900E18B95 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		54CDE1281A66514000E18B95 /* howto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = howto.png; sourceTree = "<group>"; };
 		54D1EDC91A846FB50058E8DB /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				541036891A55EFD200FA8BD2 /* Sprite.swift */,
 				54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */,
 				54D1EDC91A846FB50058E8DB /* Utility.swift */,
+				54C242F41AC8AEE8005385C2 /* Options.swift */,
 				5403242D1A4B8B5300B61880 /* AppDelegate.swift */,
 				540324331A4B8B5300B61880 /* GameViewController.swift */,
 				540324351A4B8B5300B61880 /* Main.storyboard */,
@@ -208,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				54ECDC111A632A1600860C5E /* PopupMenu.swift */,
+				54C242F81AC8C26C005385C2 /* OptionsMenu.swift */,
 				54ECDC131A64376800860C5E /* Button.swift */,
 				547BDB8B1A60C1B1009F1B50 /* Pause.swift */,
 				54BC17981AC2230A000A7FED /* Info.swift */,
@@ -368,7 +374,9 @@
 				54ECDC121A632A1600860C5E /* PopupMenu.swift in Sources */,
 				54ECDC141A64376800860C5E /* Button.swift in Sources */,
 				EB8A47DF1A979AE300CF6272 /* GCHelper.swift in Sources */,
+				54C242F51AC8AEE8005385C2 /* Options.swift in Sources */,
 				540324321A4B8B5300B61880 /* GameScene.swift in Sources */,
+				54C242F91AC8C26C005385C2 /* OptionsMenu.swift in Sources */,
 				548983F91A57938E00C7BF63 /* Powerup.swift in Sources */,
 				547B0DAC1A5F59BC00B3985C /* Rocket.swift in Sources */,
 				540324341A4B8B5300B61880 /* GameViewController.swift in Sources */,

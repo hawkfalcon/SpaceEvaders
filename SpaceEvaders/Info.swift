@@ -17,9 +17,6 @@ class Info {
         let bt = Button(x: 0, y: -y/3, width: x*2/3, height: y/3, label: "Back", id: "back").addTo(info)
         bt.button.zPosition = 1003
         addPause(x, y: y)
-        //let stars = Utility.skyFullofStars(size.width, height: size.height)
-        //stars.name = "howto"
-        //info.addChild(stars)
     }
     
     func addPause(x: CGFloat, y: CGFloat) {

@@ -1,34 +1,6 @@
-import Foundation
 import SpriteKit
 
 struct Utility {
-    static var sounds = true
-    static var music = true
-
-    static func sound() -> Bool {
-        return sounds
-    }
-    
-    static func toggleSound() {
-        sounds = !sounds
-    }
-    
-    static func setSound(val: Bool) {
-       sounds = val
-    }
-    
-    static func musicon() -> Bool {
-        return music
-    }
-    
-    static func toggleMusic() {
-        music = !music
-    }
-    
-    static func setMusic(val: Bool) {
-        music = val
-    }
-    
     static func socialMedia(social:String, score:String) {
         NSNotificationCenter.defaultCenter().postNotificationName("social", object: nil, userInfo:["score":score, "type" : "com.apple.social.\(social)"])
     }
@@ -42,5 +14,9 @@ struct Utility {
             sky.addChild(star)
         }
         return sky
+    }
+    
+    static func checkPremium() -> Bool {
+        return Options.isPremium()
     }
 }

@@ -1,7 +1,7 @@
 struct Options {
-    enum Mode {
-        case Follow
-        case Inertia
+    enum Mode: String {
+        case Follow = "follow"
+        case Inertia = "inertia"
     }
     
     static var mode = Mode.Follow

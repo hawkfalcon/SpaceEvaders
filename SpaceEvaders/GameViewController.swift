@@ -12,8 +12,12 @@ class GameViewController: UIViewController {
         Options.setSound(sound)
         let music = defaults.boolForKey("music")
         Options.setMusic(music)
+        let mode = defaults.stringForKey("mode")
+        if mode != nil {
+           Options.setMode(Options.Mode(rawValue: mode!)!)
+        }
         let scene = MainMenuScene(size:CGSize(width: 2048, height: 1536))
-        let skView = self.view as SKView
+        let skView = self.view as! SKView
         //skView.showsFPS = true
         //skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
@@ -36,10 +40,10 @@ class GameViewController: UIViewController {
     }
 
     func shareAction(notification:NSNotification) {
-        let score = notification.userInfo!["score"] as String
-        let type = notification.userInfo!["type"] as NSString
-        if SLComposeViewController.isAvailableForServiceType(type){
-            let social = SLComposeViewController(forServiceType: type)
+        let score = notification.userInfo!["score"] as! String
+        let type = notification.userInfo!["type"] as! NSString
+        if SLComposeViewController.isAvailableForServiceType(type as String){
+            let social = SLComposeViewController(forServiceType: type as String)
             var text = "I scored \(score) in Space Evaders! Can you beat that? https://appsto.re/us/lgcg5.i"
             if score == "-1" {
                 text = "Check out the iPhone game Space Evaders! https://appsto.re/us/lgcg5.i"

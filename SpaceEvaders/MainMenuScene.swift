@@ -9,8 +9,8 @@ class MainMenuScene: SKScene {
         PopupMenu(size: size, title: "Space Evaders", label: "Play", id: "start").addTo(self)
     }
 
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let touch = touches.anyObject() as UITouch
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch = touches.first as! UITouch
         let touched = self.nodeAtPoint(touch.locationInNode(self))
         if let name = touched.name {
             if name == "back" {
@@ -35,9 +35,11 @@ class MainMenuScene: SKScene {
                 touched.removeFromParent()
                 OptionsMenu(menu: parent, size: size)
             } else if name == "sound" {
-               toggleSound(touched as SKSpriteNode)
+               toggleSound(touched as! SKSpriteNode)
             } else if name == "music" {
-               toggleMusic(touched as SKSpriteNode)
+               toggleMusic(touched as! SKSpriteNode)
+            } else if name == "mode" {
+                toggleMode(touched as! SKSpriteNode)
             } else {
                 tappedButton(name)
             }
@@ -60,6 +62,17 @@ class MainMenuScene: SKScene {
         }
         sprite.texture = SKTexture(imageNamed: "music\(next)")
         Options.toggleMusic()
+    }
+    
+    func toggleMode(sprite: SKSpriteNode) {
+        var next = "inertia"
+        if Options.getMode() == .Follow {
+            next = "follow"
+            Options.setMode(.Inertia)
+        } else {
+            Options.setMode(.Follow)
+        }
+        sprite.texture = SKTexture(imageNamed: "\(next)mode")
     }
     
     func tappedButton(name: String) {

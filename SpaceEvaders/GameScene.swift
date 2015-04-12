@@ -5,7 +5,7 @@ class GameScene: SKScene {
     var viewController:GameViewController?
     let alienSpawnRate = 5
     var isGameOver = false
-    var isPaused = false
+    var gamePaused = false
     var removeAliens = false
     var scoreboard: Scoreboard!
     var rocket: Rocket!
@@ -18,7 +18,7 @@ class GameScene: SKScene {
         }
         backgroundColor = UIColor.blackColor()
         Background(size: size, main: self)
-        rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as Rocket
+        rocket = Rocket(x: size.width/2, y: size.height/2).addTo(self) as! Rocket
         scoreboard = Scoreboard(x: 50, y: size.height - size.height/5).addTo(self)
         scoreboard.viewController = self.viewController
         pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
@@ -31,8 +31,8 @@ class GameScene: SKScene {
     var currentPosition: CGPoint!
     var currentlyTouching = false
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let touch = touches.anyObject() as UITouch
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch = touches.first as! UITouch
         currentPosition = touch.locationInNode(self)
         let touched = self.nodeAtPoint(currentPosition)
         if touched.name != nil {
@@ -59,9 +59,11 @@ class GameScene: SKScene {
                 touched.removeFromParent()
                 OptionsMenu(menu: parent, size: size)
             } else if name == "sound" {
-                toggleSound(touched as SKSpriteNode)
+                toggleSound(touched as! SKSpriteNode)
             } else if name == "music" {
-                toggleMusic(touched as SKSpriteNode)
+                toggleMusic(touched as! SKSpriteNode)
+            } else if name == "mode" {
+                toggleMode(touched as! SKSpriteNode)
             } else {
                 tappedButton(name)
             }
@@ -92,12 +94,23 @@ class GameScene: SKScene {
         Options.toggleMusic()
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let touch = touches.anyObject() as UITouch
+    func toggleMode(sprite: SKSpriteNode) {
+        var next = "inertia"
+        if Options.getMode() == .Follow {
+            next = "follow"
+            Options.setMode(.Inertia)
+        } else {
+            Options.setMode(.Follow)
+        }
+        sprite.texture = SKTexture(imageNamed: "\(next)mode")
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch = touches.first as! UITouch
         currentPosition = touch.locationInNode(self)
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         if Options.mode == .Follow {
            currentlyTouching = false
         }
@@ -124,12 +137,12 @@ class GameScene: SKScene {
     
     var pausemenu: PopupMenu!
     func pauseGame() {
-        if isPaused {
+        if gamePaused {
             if Options.musicon() {
                 loopBackground("Chamber-of-Jewels")
                 audioPlayer.play()
             }
-            isPaused = false
+            gamePaused = false
             speed = 1
             paused = false
             removeDialog()
@@ -138,7 +151,7 @@ class GameScene: SKScene {
                 if Options.musicon() {
                     audioPlayer.stop()
                 }
-                isPaused = true
+                gamePaused = true
                 speed = 0
                 pause.removeThis()
                 pausemenu = PopupMenu(size: size, title: "Paused", label: "Continue?", id: "pause")
@@ -155,7 +168,7 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
-        if !isPaused {
+        if !gamePaused {
             if !isGameOver {
                 if currentlyTouching {
                     rocket.moveTo(currentPosition.x, y: currentPosition.y)
@@ -210,7 +223,7 @@ class GameScene: SKScene {
             runAction(SKAction.playSoundFileNamed("Death.mp3", waitForCompletion: false))
         }
         isGameOver = true
-        let exp = Explosion(x: rocket.position.x, y: rocket.position.y).addTo(self) as Explosion
+        let exp = Explosion(x: rocket.position.x, y: rocket.position.y).addTo(self) as! Explosion
         if Options.musicon() {
             audioPlayer.stop()
         }
@@ -234,7 +247,7 @@ class GameScene: SKScene {
     func enumerateAliens() {
         self.enumerateChildNodesWithName("alien") {
             node, stop in
-            let alien = node as Alien
+            let alien = node as! Alien
             self.alienBrains(alien)
         }
         if (removeAliens) {

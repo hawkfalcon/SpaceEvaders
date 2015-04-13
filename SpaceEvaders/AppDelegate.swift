@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(Options.sound(), forKey: "sound")
         defaults.setObject(Options.musicon(), forKey: "music")
+        defaults.setObject(Options.useIndicators(), forKey: "indicator")
         defaults.setObject(Options.getMode().rawValue, forKey: "mode")
     }
     

@@ -64,6 +64,8 @@ class GameScene: SKScene {
                 toggleMusic(touched as! SKSpriteNode)
             } else if name == "mode" {
                 toggleMode(touched as! SKSpriteNode)
+            } else if name == "indicator" {
+                toggleIndicator(touched as! SKSpriteNode)
             } else {
                 tappedButton(name)
             }
@@ -92,6 +94,15 @@ class GameScene: SKScene {
         }
         sprite.texture = SKTexture(imageNamed: "music\(next)")
         Options.toggleMusic()
+    }
+    
+    func toggleIndicator(sprite: SKSpriteNode) {
+        var next = "on"
+        if Options.useIndicators() {
+            next = "off"
+        }
+        sprite.texture = SKTexture(imageNamed: "indicator\(next)")
+        Options.toggleIndicators()
     }
     
     func toggleMode(sprite: SKSpriteNode) {

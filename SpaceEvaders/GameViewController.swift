@@ -12,6 +12,8 @@ class GameViewController: UIViewController {
         Options.setSound(sound)
         let music = defaults.boolForKey("music")
         Options.setMusic(music)
+        let indicator = defaults.boolForKey("indicator")
+        Options.setIndicator(indicator)
         let mode = defaults.stringForKey("mode")
         if mode != nil {
            Options.setMode(Options.Mode(rawValue: mode!)!)

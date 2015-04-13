@@ -7,7 +7,7 @@ struct Options {
     static var mode = Mode.Follow
     static var sounds = true
     static var music = true
-    static var premium = false
+    static var premium = true
     static var indicators = false
     
     static func sound() -> Bool {
@@ -56,5 +56,9 @@ struct Options {
     
     static func toggleIndicators() {
         indicators = !indicators
+    }
+    
+    static func setIndicator(val: Bool) {
+        indicators = val
     }
 }

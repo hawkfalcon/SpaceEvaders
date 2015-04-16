@@ -17,6 +17,6 @@ struct Utility {
     }
     
     static func checkPremium() -> Bool {
-        return Options.isPremium()
+        return Options.option.get("premium")
     }
 }

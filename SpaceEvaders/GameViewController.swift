@@ -8,15 +8,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let defaults = NSUserDefaults.standardUserDefaults()
-        let sound = defaults.boolForKey("sound")
-        Options.setSound(sound)
-        let music = defaults.boolForKey("music")
-        Options.setMusic(music)
-        let indicator = defaults.boolForKey("indicator")
-        Options.setIndicator(indicator)
-        let mode = defaults.stringForKey("mode")
-        if mode != nil {
-           Options.setMode(Options.Mode(rawValue: mode!)!)
+        if let options: [String:Bool] = defaults.dictionaryForKey("options") as? [String:Bool] {
+           Options.option.setOptions(options)
         }
         let scene = MainMenuScene(size:CGSize(width: 2048, height: 1536))
         let skView = self.view as! SKView

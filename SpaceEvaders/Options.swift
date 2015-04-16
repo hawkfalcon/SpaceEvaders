@@ -1,64 +1,37 @@
-struct Options {
-    enum Mode: String {
-        case Follow = "follow"
-        case Inertia = "inertia"
+class Options {
+    class var option: Options {
+        return _Options
     }
     
-    static var mode = Mode.Follow
-    static var sounds = true
-    static var music = true
-    static var premium = true
-    static var indicators = false
+    var options:[String: Bool]
     
-    static func sound() -> Bool {
-        return sounds
+    init(options:[String: Bool]) {
+        self.options = options
     }
     
-    static func toggleSound() {
-        sounds = !sounds
+    func getOptions() -> [String: Bool] {
+        return self.options
     }
     
-    static func setSound(val: Bool) {
-        sounds = val
+    func setOptions(options: [String: Bool]) {
+        self.options = options
     }
     
-    static func musicon() -> Bool {
-        return music
+    func get(option: String) -> Bool {
+        return options[option]!
     }
     
-    static func toggleMusic() {
-        music = !music
+    func toggle(option: String) {
+        if let opt = options[option] {
+            options[option] = !opt
+        }
     }
     
-    static func setMusic(val: Bool) {
-        music = val
-    }
-    
-    static func isPremium() -> Bool {
-        return premium
-    }
-    
-    static func setPremium() {
-        premium = true
-    }
-    
-    static func getMode() -> Mode {
-        return mode
-    }
-    
-    static func setMode(mode: Mode) {
-        self.mode = mode
-    }
-    
-    static func useIndicators() -> Bool {
-        return indicators
-    }
-    
-    static func toggleIndicators() {
-        indicators = !indicators
-    }
-    
-    static func setIndicator(val: Bool) {
-        indicators = val
+    func set(option: String, val: Bool) {
+        options[option] = val
     }
 }
+
+private let _Options = Options(options:
+    ["premium": false, "sound":true, "music":true, "indicators":false, "follow":true]
+)

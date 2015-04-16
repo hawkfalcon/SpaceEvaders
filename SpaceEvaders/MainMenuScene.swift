@@ -34,58 +34,25 @@ class MainMenuScene: SKScene {
                 let parent = touched.parent! as SKNode
                 touched.removeFromParent()
                 OptionsMenu(menu: parent, size: size)
-            } else if name == "sound" {
-               toggleSound(touched as! SKSpriteNode)
-            } else if name == "music" {
-               toggleMusic(touched as! SKSpriteNode)
-            } else if name == "mode" {
-                toggleMode(touched as! SKSpriteNode)
-            } else if name == "indicator" {
-                toggleIndicator(touched as! SKSpriteNode)
+            } else if startsWith(name, "option") {
+                toggle(name, sprite: touched as! SKSpriteNode)
             } else {
                 tappedButton(name)
             }
         }
     }
     
-    func toggleSound(sprite: SKSpriteNode) {
+    func toggle(option: String, sprite: SKSpriteNode) {
+        let opt = option.stringByReplacingOccurrencesOfString("option_", withString: "")
+        NSLog(option)
         var next = "on"
-        if Options.sound() {
+        if Options.option.get(opt) {
             next = "off"
         }
-        sprite.texture = SKTexture(imageNamed: "sound\(next)")
-        Options.toggleSound()
+        sprite.texture = SKTexture(imageNamed: "\(opt)\(next)")
+        Options.option.toggle(opt)
     }
-    
-    func toggleMusic(sprite: SKSpriteNode) {
-        var next = "on"
-        if Options.musicon() {
-            next = "off"
-        }
-        sprite.texture = SKTexture(imageNamed: "music\(next)")
-        Options.toggleMusic()
-    }
-    
-    func toggleIndicator(sprite: SKSpriteNode) {
-        var next = "on"
-        if Options.useIndicators() {
-            next = "off"
-        }
-        sprite.texture = SKTexture(imageNamed: "indicator\(next)")
-        Options.toggleIndicators()
-    }
-    
-    func toggleMode(sprite: SKSpriteNode) {
-        var next = "inertia"
-        if Options.getMode() == .Follow {
-            next = "follow"
-            Options.setMode(.Inertia)
-        } else {
-            Options.setMode(.Follow)
-        }
-        sprite.texture = SKTexture(imageNamed: "\(next)mode")
-    }
-    
+
     func tappedButton(name: String) {
         switch name {
         case "start":

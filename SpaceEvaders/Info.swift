@@ -8,14 +8,14 @@ class Info {
         let y = size.height/2
         info = SKSpriteNode(color: UIColor.blackColor(), size: size)
         info.position = CGPoint(x: x, y: y)
-        info.zPosition = 1002
+        info.zPosition = 7
         info.name = "howto"
         let bg = Background(size: size, main: info)
         bg.background.name = "howto"
-        bg.background.zPosition = 1001
+        bg.background.zPosition = 6
         bg.background.position = CGPoint(x: -x, y: -y)
         let bt = Button(x: 0, y: -y/3, width: x*2/3, height: y/3, label: "Back", id: "back").addTo(info)
-        bt.button.zPosition = 1003
+        bt.button.zPosition = 10
         addPause(x, y: y)
     }
     
@@ -38,7 +38,7 @@ class Info {
         addText("all aliens", size: 60, x: x - 350, y: -350)
         let credit = Sprite(named: "credits", x: x - 300, y: y - 400).addTo(info)
         credit.setScale(0.2)
-        credit.zPosition = 1003
+        credit.zPosition = 10
     }
     
     func addText(text: String, size: CGFloat, x: CGFloat, y: CGFloat) {

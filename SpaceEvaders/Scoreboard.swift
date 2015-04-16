@@ -13,6 +13,7 @@ class Scoreboard {
         scoreboard.fontName = "timeburner"
         scoreboard.position = CGPoint(x: x, y: y)
         scoreboard.horizontalAlignmentMode = .Left
+        scoreboard.zPosition = 10
     }
     
     func highScore() {

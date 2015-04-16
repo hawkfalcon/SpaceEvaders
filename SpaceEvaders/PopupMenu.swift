@@ -7,6 +7,7 @@ class PopupMenu {
         let width = size.width
         let height = size.height
         self.menu = SKNode()
+        menu.zPosition = 5
         Button(x: width/2, y: height/3, width: width/3, height: height/6, label: label, id: id).addTo(menu)
         Sprite(named: "twitter", x: 3*width/4, y: height/3 + height/26, scale: 0.1).addTo(menu)
         Sprite(named: "facebook", x: 3*width/4, y: height/3 - height/26, scale: 0.1).addTo(menu)

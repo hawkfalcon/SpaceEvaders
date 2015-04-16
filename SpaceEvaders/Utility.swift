@@ -19,4 +19,55 @@ struct Utility {
     static func checkPremium() -> Bool {
         return Options.option.get("premium")
     }
+    
+    static func pressButton(main: SKScene, touched: SKNode, score: String) {
+        let size = main.size
+        if let name = touched.name {
+            if startsWith(name, "option") {
+               toggle(name, sprite: touched as! SKSpriteNode)
+            }
+            switch name {
+            case "info":
+                Info(size: size).addTo(main)
+            case "twitter":
+                socialMedia("twitter", score: score)
+            case "facebook":
+                socialMedia("facebook", score: score)
+            case "back":
+                let parent = touched.parent
+                if parent?.name == "back" {
+                    let superp = parent?.parent
+                    superp?.removeFromParent()
+                } else {
+                    touched.removeFromParent()
+                    parent?.removeFromParent()
+                }
+            case "credits":
+                let parent = touched.parent
+                touched.removeFromParent()
+                parent?.removeFromParent()
+                let howto = Sprite(named: "howto", x: size.width/2, y: size.height/2, size: CGSizeMake(size.width, size.height))
+                howto.zPosition = 20
+                howto.addTo(main)
+            case "howto":
+                touched.removeFromParent()
+            case "settings":
+                let parent = touched.parent! as SKNode
+                touched.removeFromParent()
+                OptionsMenu(menu: parent, size: size)
+            default:
+                break
+            }
+        }
+    }
+
+    static func toggle(option: String, sprite: SKSpriteNode) {
+        let opt = option.stringByReplacingOccurrencesOfString("option_", withString: "")
+        var next = "on"
+        if Options.option.get(opt) {
+            next = "off"
+        }
+        sprite.texture = SKTexture(imageNamed: "\(opt)\(next)")
+        Options.option.toggle(opt)
+    }
 }

@@ -6,7 +6,7 @@ class Button {
     init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, label: String, id: String) {
         button = SKSpriteNode(color: UIColor.orangeColor(), size: CGSizeMake(width, height))
         button.position = CGPointMake(x, y);
-        button.zPosition = 1000
+        button.zPosition = 10
         button.name = id
         addText(label, id: id)
     }

@@ -26,8 +26,6 @@ class GameScene: SKScene {
            loopBackground("Chamber-of-Jewels")
            audioPlayer.play()
         }
-        let abc = Options.option.get("music")
-        NSLog("woah \(abc)")
     }
     
     var currentPosition: CGPoint!
@@ -37,57 +35,30 @@ class GameScene: SKScene {
         let touch = touches.first as! UITouch
         currentPosition = touch.locationInNode(self)
         let touched = self.nodeAtPoint(currentPosition)
-        if touched.name != nil {
-            let name = touched.name!
-            if name == "back" {
-                let parent = touched.parent
-                if parent?.name == "back" {
-                    let superp = parent?.parent
-                    superp?.removeFromParent()
+        if let name = touched.name {
+            switch name {
+            case "gameover":
+                resetGame()
+            case "pause":
+                pauseGame()
+            case "leaderboard":
+                viewController?.openGC()
+            case "option_music":
+                if Options.option.get("music") {
+                    audioPlayer.stop()
                 } else {
-                    touched.removeFromParent()
-                    parent?.removeFromParent()
+                    loopBackground("Chamber-of-Jewels")
+                    audioPlayer.play()
                 }
-            } else if name == "credits" {
-                let parent = touched.parent
-                touched.removeFromParent()
-                parent?.removeFromParent()
-                let howto = Sprite(named: "howto", x: size.width/2, y: size.height/2, size: CGSizeMake(size.width, size.height)).addTo(self)
-                howto.zPosition = 1004
-            } else if name == "howto" {
-                touched.removeFromParent()
-            } else if name == "settings" {
-                let parent = touched.parent! as SKNode
-                touched.removeFromParent()
-                OptionsMenu(menu: parent, size: size)
-            } else if startsWith(name, "option") {
-                toggle(name, sprite: touched as! SKSpriteNode)
-            } else {
-                tappedButton(name)
+            default:
+                currentlyTouching = true
             }
+            Utility.pressButton(self, touched: touched, score: String(scoreboard.getScore()))
         } else {
             currentlyTouching = true
         }
     }
-    
-    func toggle(option: String, sprite: SKSpriteNode) {
-        let option = option.stringByReplacingOccurrencesOfString("option_", withString: "")
-        var next = "on"
-        if Options.option.get(option) {
-            next = "off"
-        }
-        sprite.texture = SKTexture(imageNamed: "\(option)\(next)")
-        if option == "music" {
-           if Options.option.get("music") {
-               audioPlayer.stop()
-           } else {
-               loopBackground("Chamber-of-Jewels")
-               audioPlayer.play()
-           }
-        }
-        Options.option.toggle(option)
-    }
-    
+
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
         let touch = touches.first as! UITouch
         currentPosition = touch.locationInNode(self)
@@ -96,25 +67,6 @@ class GameScene: SKScene {
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         if Options.option.get("follow") {
            currentlyTouching = false
-        }
-    }
-    
-    func tappedButton(name: String) {
-        switch name {
-        case "gameover":
-            resetGame()
-        case "pause":
-            pauseGame()
-        case "leaderboard":
-            viewController?.openGC()
-        case "twitter":
-            Utility.socialMedia("twitter", score: String(scoreboard.getScore()))
-        case "facebook":
-            Utility.socialMedia("facebook", score: String(scoreboard.getScore()))
-        case "info":
-            Info(size: size).addTo(self)
-        default:
-            currentlyTouching = true
         }
     }
     
@@ -171,10 +123,10 @@ class GameScene: SKScene {
             var startY = startAtTop.boolValue ? size.height : 0
             var arrowY = startAtTop.boolValue ? size.height - 200 : 200
             let alien = Alien(x: CGFloat(randomX), y: startY, startAtTop: startAtTop).addTo(self)
-            alien.zPosition = 1000
+            alien.zPosition = 2
             if Utility.checkPremium() && Options.option.get("indicators") {
                 let arrow = Sprite(named: "credits", x: CGFloat(randomX), y: arrowY, scale: 0.05).addTo(self)
-                arrow.zPosition = 20
+                arrow.zPosition = 1
                 arrow.runAction(
                     SKAction.sequence([
                         SKAction.fadeAlphaTo(0.5, duration: 1),

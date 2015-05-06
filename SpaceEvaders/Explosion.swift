@@ -14,7 +14,7 @@ class Explosion : Sprite {
                 SKAction.runBlock({main.removeAliens = true}),
                 SKAction.fadeAlphaBy(-0.9, duration: 0.6),
                 SKAction.removeFromParent()
-            ])
+                ])
         )
     }
     

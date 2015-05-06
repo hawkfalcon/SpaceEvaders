@@ -2,7 +2,7 @@ import SpriteKit
 
 class Background {
     let background = SKNode()
-
+    
     var size: CGSize
     init(size: CGSize, main: SKNode) {
         background.zPosition = -1
@@ -21,8 +21,8 @@ class Background {
             SKAction.sequence([
                 SKAction.fadeAlphaBy(-0.75, duration: 1.0),
                 SKAction.fadeAlphaBy(0.75, duration: 1.0),
-            ])
-        ))
+                ])
+            ))
     }
     
     func backAndForth() {
@@ -31,7 +31,7 @@ class Background {
             SKAction.sequence([
                 SKAction.moveTo(CGPoint(x: size.width, y: size.height/2), duration: 2),
                 SKAction.moveTo(CGPoint(x: 0, y: size.height/2), duration: 2),
-            ])
-        ))
+                ])
+            ))
     }
 }

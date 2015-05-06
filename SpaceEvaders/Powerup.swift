@@ -10,7 +10,7 @@ class Powerup : Sprite {
         self.alpha = 0
         fire()
     }
-
+    
     func fire() {
         for index in 1...15 {
             bombArray.append(SKTexture(imageNamed: "powerup\(index)"))

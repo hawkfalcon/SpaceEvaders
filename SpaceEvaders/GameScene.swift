@@ -11,10 +11,10 @@ class GameScene: SKScene {
     var rocket: Rocket!
     var pause: Pause!
     var audioPlayer = AVAudioPlayer()
-
+    
     override func didMoveToView(view: SKView) {
         if Options.option.get("sound") {
-           runAction(SKAction.playSoundFileNamed("Start.mp3", waitForCompletion: false))
+            runAction(SKAction.playSoundFileNamed("Start.mp3", waitForCompletion: false))
         }
         backgroundColor = UIColor.blackColor()
         Background(size: size, main: self)
@@ -23,8 +23,8 @@ class GameScene: SKScene {
         scoreboard.viewController = self.viewController
         pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
         if Options.option.get("music") {
-           loopBackground("Chamber-of-Jewels")
-           audioPlayer.play()
+            loopBackground("Chamber-of-Jewels")
+            audioPlayer.play()
         }
     }
     
@@ -58,7 +58,7 @@ class GameScene: SKScene {
             currentlyTouching = true
         }
     }
-
+    
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
         let touch = touches.first as! UITouch
         currentPosition = touch.locationInNode(self)
@@ -66,7 +66,7 @@ class GameScene: SKScene {
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         if Options.option.get("follow") {
-           currentlyTouching = false
+            currentlyTouching = false
         }
     }
     
@@ -97,8 +97,8 @@ class GameScene: SKScene {
     
     func removeDialog() {
         if pausemenu != nil {
-           pausemenu.removeThis()
-           pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
+            pausemenu.removeThis()
+            pause = Pause(size: size, x: size.width - 50, y: size.height - size.height/6).addTo(self)
         }
     }
     
@@ -131,7 +131,7 @@ class GameScene: SKScene {
                     SKAction.sequence([
                         SKAction.fadeAlphaTo(0.5, duration: 1),
                         SKAction.removeFromParent(),
-                    ])
+                        ])
                 )
             }
         }
@@ -148,7 +148,7 @@ class GameScene: SKScene {
                     SKAction.waitForDuration(4.5),
                     SKAction.fadeAlphaTo(0, duration: 1.0),
                     SKAction.removeFromParent()
-                ])
+                    ])
             )
         }
     }
@@ -204,7 +204,7 @@ class GameScene: SKScene {
                     alien.setDisabled()
                     scoreboard.addScore(1)
                     if Options.option.get("sound") {
-                       runAction(SKAction.playSoundFileNamed("Alien_Disable.mp3", waitForCompletion: false))
+                        runAction(SKAction.playSoundFileNamed("Alien_Disable.mp3", waitForCompletion: false))
                     }
                 }
             }
@@ -228,7 +228,7 @@ class GameScene: SKScene {
             node, stop in
             if CGRectIntersectsRect(CGRectInset(node.frame, 5, 5), self.rocket.frame) {
                 if Options.option.get("sound") {
-                   self.runAction(SKAction.playSoundFileNamed("Powerup.mp3", waitForCompletion: false))
+                    self.runAction(SKAction.playSoundFileNamed("Powerup.mp3", waitForCompletion: false))
                 }
                 var explosion = Explosion(x: node.position.x, y: node.position.y)
                 node.removeFromParent()

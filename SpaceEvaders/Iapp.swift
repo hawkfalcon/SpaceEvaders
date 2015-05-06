@@ -25,7 +25,7 @@ class Iapp {
         addText("Premium unlocks two neat features and is the only purchase in this app", size: 50, x: 0, y: 200)
         addText("Switch between follow(default) and inertia modes", size: 60, x: 0, y: 50)
         addText("Add indicators to see where the aliens will spawn next", size: 60, x: 60, y: -50)
-
+        
     }
     
     func addText(text: String, size: CGFloat, x: CGFloat, y: CGFloat) {

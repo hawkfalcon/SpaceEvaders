@@ -2,7 +2,7 @@ import SpriteKit
 
 class Rocket : Sprite {
     var fireArray = Array<SKTexture>();
-
+    
     init(x: CGFloat, y: CGFloat) {
         super.init(named:"rocket", x: x, y: y)
         self.setScale(2.5)

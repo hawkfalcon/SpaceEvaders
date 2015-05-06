@@ -62,7 +62,7 @@ struct Utility {
             }
         }
     }
-
+    
     static func toggle(option: String, sprite: SKSpriteNode, main: SKScene) {
         let opt = option.stringByReplacingOccurrencesOfString("option_", withString: "")
         if opt == "indicators" || opt == "follow" {

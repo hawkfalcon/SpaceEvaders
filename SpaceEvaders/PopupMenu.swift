@@ -2,7 +2,7 @@ import SpriteKit
 
 class PopupMenu {
     var menu: SKNode
-
+    
     init(size: CGSize, title: String, label: String, id: String) {
         let width = size.width
         let height = size.height

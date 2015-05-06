@@ -19,11 +19,11 @@ class Alien : Sprite {
     func isDisabled() -> Bool {
         return disabled
     }
-
+    
     func moveTo(point: CGPoint) {
         let height = parent?.scene?.size.height
         if height == nil {
-           return
+            return
         }
         if isDisabled() || position.y > height! - 200 || position.y < 200 {
             move()

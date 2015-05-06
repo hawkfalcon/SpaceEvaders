@@ -7,7 +7,7 @@ class Scoreboard {
     let scoreboard = SKLabelNode(text: "Score: 0")
     var score: Int = 0
     var isHighScore = false
-
+    
     init(x: CGFloat, y: CGFloat) {
         scoreboard.setScale(2.5)
         scoreboard.fontName = "timeburner"

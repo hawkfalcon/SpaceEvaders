@@ -1,13 +1,13 @@
 import SpriteKit
 
 struct Utility {
-    static func socialMedia(social:String, score:String) {
-        NSNotificationCenter.defaultCenter().postNotificationName("social", object: nil, userInfo:["score":score, "type" : "com.apple.social.\(social)"])
+    static func socialMedia(social: String, score: String) {
+        NSNotificationCenter.defaultCenter().postNotificationName("social", object: nil, userInfo: ["score": score, "type": "com.apple.social.\(social)"])
     }
-    
+
     static func skyFullofStars(width: CGFloat, height: CGFloat) -> SKNode {
         let sky = SKNode()
-        for _ in 1...500 {
+        for _ in 1 ... 500 {
             let rand = random() % 6
             let star = SKSpriteNode(color: UIColor.whiteColor(), size: CGSize(width: rand, height: rand))
             star.position = CGPoint(x: random() % Int(width), y: random() % Int(height))
@@ -15,11 +15,11 @@ struct Utility {
         }
         return sky
     }
-    
+
     static func checkPremium() -> Bool {
         return Options.option.get("premium")
     }
-    
+
     static func pressButton(main: SKScene, touched: SKNode, score: String) {
         let size = main.size
         if let name = touched.name {
@@ -48,7 +48,7 @@ struct Utility {
                 let parent = touched.parent
                 touched.removeFromParent()
                 parent?.removeFromParent()
-                let howto = Sprite(named: "howto", x: size.width/2, y: size.height/2, size: CGSizeMake(size.width, size.height))
+                let howto = Sprite(named: "howto", x: size.width / 2, y: size.height / 2, size: CGSizeMake(size.width, size.height))
                 howto.zPosition = 20
                 howto.addTo(main)
             case "howto":
@@ -62,7 +62,7 @@ struct Utility {
             }
         }
     }
-    
+
     static func toggle(option: String, sprite: SKSpriteNode, main: SKScene) {
         let opt = option.stringByReplacingOccurrencesOfString("option_", withString: "")
         if opt == "indicators" || opt == "follow" {

@@ -14,8 +14,10 @@
 		540324341A4B8B5300B61880 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540324331A4B8B5300B61880 /* GameViewController.swift */; };
 		540324371A4B8B5300B61880 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 540324351A4B8B5300B61880 /* Main.storyboard */; };
 		540324391A4B8B5300B61880 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 540324381A4B8B5300B61880 /* Images.xcassets */; };
+		54055C721AF07D1500FDD966 /* Iapp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54055C711AF07D1500FDD966 /* Iapp.swift */; };
 		541036881A55EFB000FA8BD2 /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541036871A55EFB000FA8BD2 /* Alien.swift */; };
 		5410368A1A55EFD200FA8BD2 /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541036891A55EFD200FA8BD2 /* Sprite.swift */; };
+		5414AC491AEEA2E10039724D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5414AC481AEEA2E10039724D /* StoreKit.framework */; };
 		541A8A071A65F1FE0058AB46 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 541A8A061A65F1FE0058AB46 /* iAd.framework */; };
 		547B0DAA1A5E105900B3985C /* Explosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B0DA91A5E105900B3985C /* Explosion.swift */; };
 		547B0DAC1A5F59BC00B3985C /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B0DAB1A5F59BC00B3985C /* Rocket.swift */; };
@@ -71,8 +73,10 @@
 		540324331A4B8B5300B61880 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		540324361A4B8B5300B61880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		540324381A4B8B5300B61880 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		54055C711AF07D1500FDD966 /* Iapp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iapp.swift; sourceTree = "<group>"; };
 		541036871A55EFB000FA8BD2 /* Alien.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alien.swift; sourceTree = "<group>"; };
 		541036891A55EFD200FA8BD2 /* Sprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sprite.swift; sourceTree = "<group>"; };
+		5414AC481AEEA2E10039724D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		541A8A061A65F1FE0058AB46 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		547B0DA91A5E105900B3985C /* Explosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explosion.swift; sourceTree = "<group>"; };
 		547B0DAB1A5F59BC00B3985C /* Rocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			files = (
 				541A8A071A65F1FE0058AB46 /* iAd.framework in Frameworks */,
 				549C4AB71AC34BB500F26917 /* Crashlytics.framework in Frameworks */,
+				5414AC491AEEA2E10039724D /* StoreKit.framework in Frameworks */,
 				54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */,
 				549C4AB81AC34BB500F26917 /* Fabric.framework in Frameworks */,
 			);
@@ -225,6 +230,7 @@
 				54ECDC131A64376800860C5E /* Button.swift */,
 				547BDB8B1A60C1B1009F1B50 /* Pause.swift */,
 				54BC17981AC2230A000A7FED /* Info.swift */,
+				54055C711AF07D1500FDD966 /* Iapp.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 		55AD867E1A8E81FD00839E28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5414AC481AEEA2E10039724D /* StoreKit.framework */,
 				541A8A061A65F1FE0058AB46 /* iAd.framework */,
 				54A2C7481A65A70A003746D3 /* GameKit.framework */,
 			);
@@ -301,6 +308,9 @@
 						DevelopmentTeam = 6VJ9C2YY26;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 						};
@@ -401,6 +411,7 @@
 				541036881A55EFB000FA8BD2 /* Alien.swift in Sources */,
 				5410368A1A55EFD200FA8BD2 /* Sprite.swift in Sources */,
 				54D1EDCA1A846FB50058E8DB /* Utility.swift in Sources */,
+				54055C721AF07D1500FDD966 /* Iapp.swift in Sources */,
 				547B0DAF1A5F5D3E00B3985C /* Scoreboard.swift in Sources */,
 				5403242E1A4B8B5300B61880 /* AppDelegate.swift in Sources */,
 				547B0DB11A5F64CE00B3985C /* Background.swift in Sources */,

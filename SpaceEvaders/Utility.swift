@@ -24,9 +24,11 @@ struct Utility {
         let size = main.size
         if let name = touched.name {
             if startsWith(name, "option") {
-               toggle(name, sprite: touched as! SKSpriteNode)
+                toggle(name, sprite: touched as! SKSpriteNode, main: main)
             }
             switch name {
+            case "purchase":
+                NSNotificationCenter.defaultCenter().postNotificationName("premium", object: nil)
             case "info":
                 Info(size: size).addTo(main)
             case "twitter":
@@ -61,8 +63,14 @@ struct Utility {
         }
     }
 
-    static func toggle(option: String, sprite: SKSpriteNode) {
+    static func toggle(option: String, sprite: SKSpriteNode, main: SKScene) {
         let opt = option.stringByReplacingOccurrencesOfString("option_", withString: "")
+        if opt == "indicators" || opt == "follow" {
+            if !Options.option.get("premium") {
+                Iapp(size: main.size).addTo(main)
+                return
+            }
+        }
         var next = "on"
         if Options.option.get(opt) {
             next = "off"

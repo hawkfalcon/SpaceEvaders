@@ -75,6 +75,9 @@ struct Utility {
         if Options.option.get(opt) {
             next = "off"
         }
+        var text = FadeText(x: 0, y: -70, label: "\(opt) \(next)")
+        text.addTo(sprite)
+
         sprite.texture = SKTexture(imageNamed: "\(opt)\(next)")
         Options.option.toggle(opt)
     }

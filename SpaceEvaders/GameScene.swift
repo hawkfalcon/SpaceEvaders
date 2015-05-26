@@ -48,7 +48,7 @@ class GameScene: SKScene {
                     audioPlayer.stop()
                 } else {
                     loopBackground("Chamber-of-Jewels")
-                    audioPlayer.play()
+                    //audioPlayer.play()
                 }
             default:
                 currentlyTouching = true
@@ -78,7 +78,7 @@ class GameScene: SKScene {
                 audioPlayer.play()
             }
             gamePaused = false
-            speed = 1
+            //speed = 1
             paused = false
             removeDialog()
         } else {
@@ -87,7 +87,7 @@ class GameScene: SKScene {
                     audioPlayer.stop()
                 }
                 gamePaused = true
-                speed = 0
+                //speed = 0
                 pause.removeThis()
                 pausemenu = PopupMenu(size: size, title: "Paused", label: "Continue?", id: "pause")
                 pausemenu.addTo(self)

@@ -15,6 +15,7 @@
 		540324371A4B8B5300B61880 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 540324351A4B8B5300B61880 /* Main.storyboard */; };
 		540324391A4B8B5300B61880 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 540324381A4B8B5300B61880 /* Images.xcassets */; };
 		54055C721AF07D1500FDD966 /* Iapp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54055C711AF07D1500FDD966 /* Iapp.swift */; };
+		540A9B161B1534F200A8F6E0 /* FadeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A9B151B1534F200A8F6E0 /* FadeText.swift */; };
 		541036881A55EFB000FA8BD2 /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541036871A55EFB000FA8BD2 /* Alien.swift */; };
 		5410368A1A55EFD200FA8BD2 /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541036891A55EFD200FA8BD2 /* Sprite.swift */; };
 		5414AC491AEEA2E10039724D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5414AC481AEEA2E10039724D /* StoreKit.framework */; };
@@ -30,6 +31,7 @@
 		549C4AB71AC34BB500F26917 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549C4AB51AC34BB500F26917 /* Crashlytics.framework */; };
 		549C4AB81AC34BB500F26917 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549C4AB61AC34BB500F26917 /* Fabric.framework */; };
 		54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A2C7481A65A70A003746D3 /* GameKit.framework */; };
+		54A773311B016951002CE7F3 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A773301B016951002CE7F3 /* launch.png */; };
 		54B436381A832EF9008E592E /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436361A832EF9008E592E /* twitter.png */; };
 		54B436391A832EF9008E592E /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436371A832EF9008E592E /* facebook.png */; };
 		54BC177D1AC1ECF0000A7FED /* Start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 54BC17791AC1ECF0000A7FED /* Start.mp3 */; };
@@ -74,6 +76,7 @@
 		540324361A4B8B5300B61880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		540324381A4B8B5300B61880 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		54055C711AF07D1500FDD966 /* Iapp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iapp.swift; sourceTree = "<group>"; };
+		540A9B151B1534F200A8F6E0 /* FadeText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeText.swift; sourceTree = "<group>"; };
 		541036871A55EFB000FA8BD2 /* Alien.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alien.swift; sourceTree = "<group>"; };
 		541036891A55EFD200FA8BD2 /* Sprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sprite.swift; sourceTree = "<group>"; };
 		5414AC481AEEA2E10039724D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -89,6 +92,7 @@
 		549C4AB51AC34BB500F26917 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		549C4AB61AC34BB500F26917 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		54A2C7481A65A70A003746D3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		54A773301B016951002CE7F3 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
 		54B436361A832EF9008E592E /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		54B436371A832EF9008E592E /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		54BC17791AC1ECF0000A7FED /* Start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Start.mp3; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				54ECDC1C1A64E99400860C5E /* info.png */,
 				54ECDC1D1A64E99400860C5E /* settings.png */,
 				55AD86831A8E86E000839E28 /* laser.png */,
+				54A773301B016951002CE7F3 /* launch.png */,
 				55AD86851A8E871300839E28 /* powerup.atlas */,
 				55AD86811A8E831E00839E28 /* game.atlas */,
 			);
@@ -225,6 +230,7 @@
 		547BDB821A60A21B009F1B50 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				540A9B151B1534F200A8F6E0 /* FadeText.swift */,
 				54ECDC111A632A1600860C5E /* PopupMenu.swift */,
 				54C242F81AC8C26C005385C2 /* OptionsMenu.swift */,
 				54ECDC131A64376800860C5E /* Button.swift */,
@@ -346,6 +352,7 @@
 				55AD86821A8E831E00839E28 /* game.atlas in Resources */,
 				55AD86841A8E86E000839E28 /* laser.png in Resources */,
 				54BC178E1AC1FABF000A7FED /* soundoff.png in Resources */,
+				54A773311B016951002CE7F3 /* launch.png in Resources */,
 				54ECDC211A64E99400860C5E /* settings.png in Resources */,
 				54BC177D1AC1ECF0000A7FED /* Start.mp3 in Resources */,
 				54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */,
@@ -409,6 +416,7 @@
 				547B0DAA1A5E105900B3985C /* Explosion.swift in Sources */,
 				547BDB8C1A60C1B1009F1B50 /* Pause.swift in Sources */,
 				541036881A55EFB000FA8BD2 /* Alien.swift in Sources */,
+				540A9B161B1534F200A8F6E0 /* FadeText.swift in Sources */,
 				5410368A1A55EFD200FA8BD2 /* Sprite.swift in Sources */,
 				54D1EDCA1A846FB50058E8DB /* Utility.swift in Sources */,
 				54055C721AF07D1500FDD966 /* Iapp.swift in Sources */,
@@ -524,7 +532,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SpaceEvaders/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -544,7 +552,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SpaceEvaders/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

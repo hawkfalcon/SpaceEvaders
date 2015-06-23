@@ -19,7 +19,6 @@
 		541036881A55EFB000FA8BD2 /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541036871A55EFB000FA8BD2 /* Alien.swift */; };
 		5410368A1A55EFD200FA8BD2 /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541036891A55EFD200FA8BD2 /* Sprite.swift */; };
 		5414AC491AEEA2E10039724D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5414AC481AEEA2E10039724D /* StoreKit.framework */; };
-		541A8A071A65F1FE0058AB46 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 541A8A061A65F1FE0058AB46 /* iAd.framework */; };
 		547B0DAA1A5E105900B3985C /* Explosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B0DA91A5E105900B3985C /* Explosion.swift */; };
 		547B0DAC1A5F59BC00B3985C /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B0DAB1A5F59BC00B3985C /* Rocket.swift */; };
 		547B0DAF1A5F5D3E00B3985C /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B0DAE1A5F5D3E00B3985C /* Scoreboard.swift */; };
@@ -31,7 +30,8 @@
 		549C4AB71AC34BB500F26917 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549C4AB51AC34BB500F26917 /* Crashlytics.framework */; };
 		549C4AB81AC34BB500F26917 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549C4AB61AC34BB500F26917 /* Fabric.framework */; };
 		54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A2C7481A65A70A003746D3 /* GameKit.framework */; };
-		54A773311B016951002CE7F3 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A773301B016951002CE7F3 /* launch.png */; };
+		54A317941B3A037A00D8CB16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54A317931B3A037A00D8CB16 /* LaunchScreen.storyboard */; };
+		54A317961B3A06E100D8CB16 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A317951B3A06E100D8CB16 /* launch.png */; };
 		54B436381A832EF9008E592E /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436361A832EF9008E592E /* twitter.png */; };
 		54B436391A832EF9008E592E /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B436371A832EF9008E592E /* facebook.png */; };
 		54BC177D1AC1ECF0000A7FED /* Start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 54BC17791AC1ECF0000A7FED /* Start.mp3 */; };
@@ -47,7 +47,6 @@
 		54BC179D1AC22FA4000A7FED /* credits.png in Resources */ = {isa = PBXBuildFile; fileRef = 54BC179C1AC22FA4000A7FED /* credits.png */; };
 		54C242F51AC8AEE8005385C2 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C242F41AC8AEE8005385C2 /* Options.swift */; };
 		54C242F91AC8C26C005385C2 /* OptionsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C242F81AC8C26C005385C2 /* OptionsMenu.swift */; };
-		54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CDE1221A662D5900E18B95 /* LaunchScreen.xib */; };
 		54CDE1291A66514000E18B95 /* howto.png in Resources */ = {isa = PBXBuildFile; fileRef = 54CDE1281A66514000E18B95 /* howto.png */; };
 		54D1EDCA1A846FB50058E8DB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D1EDC91A846FB50058E8DB /* Utility.swift */; };
 		54E4AB1F1A4F6B56004D80C3 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */; };
@@ -92,7 +91,8 @@
 		549C4AB51AC34BB500F26917 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		549C4AB61AC34BB500F26917 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		54A2C7481A65A70A003746D3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		54A773301B016951002CE7F3 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
+		54A317931B3A037A00D8CB16 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		54A317951B3A06E100D8CB16 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
 		54B436361A832EF9008E592E /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		54B436371A832EF9008E592E /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		54BC17791AC1ECF0000A7FED /* Start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Start.mp3; sourceTree = "<group>"; };
@@ -108,7 +108,6 @@
 		54BC179C1AC22FA4000A7FED /* credits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credits.png; sourceTree = "<group>"; };
 		54C242F41AC8AEE8005385C2 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		54C242F81AC8C26C005385C2 /* OptionsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsMenu.swift; sourceTree = "<group>"; };
-		54CDE1221A662D5900E18B95 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		54CDE1281A66514000E18B95 /* howto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = howto.png; sourceTree = "<group>"; };
 		54D1EDC91A846FB50058E8DB /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		54E4AB1E1A4F6B56004D80C3 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
@@ -131,7 +130,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				541A8A071A65F1FE0058AB46 /* iAd.framework in Frameworks */,
 				549C4AB71AC34BB500F26917 /* Crashlytics.framework in Frameworks */,
 				5414AC491AEEA2E10039724D /* StoreKit.framework in Frameworks */,
 				54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */,
@@ -178,9 +176,9 @@
 				540324331A4B8B5300B61880 /* GameViewController.swift */,
 				540324351A4B8B5300B61880 /* Main.storyboard */,
 				540324381A4B8B5300B61880 /* Images.xcassets */,
-				54CDE1221A662D5900E18B95 /* LaunchScreen.xib */,
 				5403242B1A4B8B5300B61880 /* Supporting Files */,
 				EB8A47DE1A979AE300CF6272 /* GCHelper.swift */,
+				54A317931B3A037A00D8CB16 /* LaunchScreen.storyboard */,
 			);
 			path = SpaceEvaders;
 			sourceTree = "<group>";
@@ -203,10 +201,10 @@
 				54ECDC1A1A64E99400860C5E /* leaderboard.png */,
 				54ECDC1B1A64E99400860C5E /* home.png */,
 				54BC179C1AC22FA4000A7FED /* credits.png */,
+				54A317951B3A06E100D8CB16 /* launch.png */,
 				54ECDC1C1A64E99400860C5E /* info.png */,
 				54ECDC1D1A64E99400860C5E /* settings.png */,
 				55AD86831A8E86E000839E28 /* laser.png */,
-				54A773301B016951002CE7F3 /* launch.png */,
 				55AD86851A8E871300839E28 /* powerup.atlas */,
 				55AD86811A8E831E00839E28 /* game.atlas */,
 			);
@@ -352,10 +350,9 @@
 				55AD86821A8E831E00839E28 /* game.atlas in Resources */,
 				55AD86841A8E86E000839E28 /* laser.png in Resources */,
 				54BC178E1AC1FABF000A7FED /* soundoff.png in Resources */,
-				54A773311B016951002CE7F3 /* launch.png in Resources */,
+				54A317961B3A06E100D8CB16 /* launch.png in Resources */,
 				54ECDC211A64E99400860C5E /* settings.png in Resources */,
 				54BC177D1AC1ECF0000A7FED /* Start.mp3 in Resources */,
-				54CDE1231A662D5900E18B95 /* LaunchScreen.xib in Resources */,
 				54ECDC201A64E99400860C5E /* info.png in Resources */,
 				54CDE1291A66514000E18B95 /* howto.png in Resources */,
 				54EE9E0A1ADB4E9400F5608F /* indicatorsoff.png in Resources */,
@@ -376,6 +373,7 @@
 				54ECDC1F1A64E99400860C5E /* home.png in Resources */,
 				54BC179D1AC22FA4000A7FED /* credits.png in Resources */,
 				54BC177F1AC1ECF0000A7FED /* Alien_Disable.mp3 in Resources */,
+				54A317941B3A037A00D8CB16 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DaI-9y-FTg">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="mAJ-2T-AHv">
+            <objects>
+                <viewController id="DaI-9y-FTg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mMu-3q-MDE"/>
+                        <viewControllerLayoutGuide type="bottom" id="qVK-VO-htA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k3h-MB-aWE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch.png" translatesAutoresizingMaskIntoConstraints="NO" id="WSv-jt-a9X">
+                                <rect key="frame" x="0.0" y="-8" width="600" height="614"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WSv-jt-a9X" firstAttribute="top" secondItem="k3h-MB-aWE" secondAttribute="topMargin" constant="-8" id="Mxc-8O-y6Q"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="WSv-jt-a9X" secondAttribute="bottom" constant="-6" id="eZY-kx-e9O"/>
+                            <constraint firstItem="WSv-jt-a9X" firstAttribute="leading" secondItem="k3h-MB-aWE" secondAttribute="leading" id="fpX-y3-bAE"/>
+                            <constraint firstAttribute="trailing" secondItem="WSv-jt-a9X" secondAttribute="trailing" id="wAH-fE-q2s"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFD-hO-eu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="257" y="340"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launch.png" width="960" height="640"/>
+    </resources>
+</document>

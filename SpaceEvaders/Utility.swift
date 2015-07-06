@@ -29,6 +29,8 @@ struct Utility {
             switch name {
             case "purchase":
                 NSNotificationCenter.defaultCenter().postNotificationName("premium", object: nil)
+            case "restore":
+                NSNotificationCenter.defaultCenter().postNotificationName("restore", object: nil)
             case "info":
                 Info(size: size).addTo(main)
             case "twitter":

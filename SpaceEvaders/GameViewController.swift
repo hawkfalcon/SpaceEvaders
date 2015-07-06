@@ -24,6 +24,7 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         skView.presentScene(scene)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "shareAction:", name: "social", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "unlockPremium:", name: "premium", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "restore:", name: "restore", object: nil)
 
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
     }
@@ -62,6 +63,13 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         GCHelper.sharedInstance.showGameCenter(self, viewState: .Default)
     }
 
+    func restore(notifaction: NSNotification) {
+        print("Restoring purchase!")
+        if (SKPaymentQueue.canMakePayments()) {
+            SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+        }
+    }
+    
     func unlockPremium(notification: NSNotification) {
         if (SKPaymentQueue.canMakePayments()) {
             var productID: NSSet = NSSet(object: self.product_id!)
@@ -103,7 +111,7 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         for transaction: AnyObject in transactions {
             if let trans: SKPaymentTransaction = transaction as? SKPaymentTransaction {
                 switch trans.transactionState {
-                case .Purchased:
+                case .Purchased, .Restored:
                     println("Product Purchased")
                     SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                     Options.option.set("premium", val: true)
@@ -112,11 +120,6 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
                     println("Purchased Failed")
                     SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                     break
-
-                case .Restored:
-                    println("Already Purchased")
-                    SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
-
                 default:
                     break
                 }

@@ -5,7 +5,7 @@ import GameKit
 import StoreKit
 
 class GameViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
-    var product_id: NSString?
+    var product_id: String?
 
     override func viewDidLoad() {
         product_id = "PREMIUM"
@@ -64,7 +64,7 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     }
 
     func restore(notifaction: NSNotification) {
-        print("Restoring purchase!")
+        print("Restoring purchase!", terminator: "")
         if (SKPaymentQueue.canMakePayments()) {
             SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
         }
@@ -72,52 +72,51 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     
     func unlockPremium(notification: NSNotification) {
         if (SKPaymentQueue.canMakePayments()) {
-            var productID: NSSet = NSSet(object: self.product_id!)
-            var productsRequest: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as Set<NSObject>)
+            let productID = Set(arrayLiteral: self.product_id!)
+            let productsRequest: SKProductsRequest = SKProductsRequest(productIdentifiers: productID)
             productsRequest.delegate = self
             productsRequest.start()
-            println("Fetching Products")
+            print("Fetching Products")
         } else {
-            println("Can't make purchases")
+            print("Can't make purchases")
         }
     }
 
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
-        var count: Int = response.products.count
+        let count: Int = response.products.count
         if (count > 0) {
-            var validProducts = response.products
-            var validProduct: SKProduct = response.products[0] as! SKProduct
+            let validProduct: SKProduct = response.products[0] 
             if (validProduct.productIdentifier == self.product_id) {
-                println(validProduct.localizedTitle)
-                println(validProduct.localizedDescription)
-                println(validProduct.price)
+                print(validProduct.localizedTitle)
+                print(validProduct.localizedDescription)
+                print(validProduct.price)
                 buyProduct(validProduct)
             } else {
-                println(validProduct.productIdentifier)
+                print(validProduct.productIdentifier)
             }
         } else {
-            println("nothing")
+            print("nothing")
         }
     }
 
 
-    func request(request: SKRequest!, didFailWithError error: NSError!) {
-        println("Error Fetching product information")
+    func request(request: SKRequest, didFailWithError error: NSError) {
+        print("Error Fetching product information")
     }
 
-    func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
-        println("Received Payment Transaction Response from Apple")
+    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print("Received Payment Transaction Response from Apple")
 
         for transaction: AnyObject in transactions {
             if let trans: SKPaymentTransaction = transaction as? SKPaymentTransaction {
                 switch trans.transactionState {
                 case .Purchased, .Restored:
-                    println("Product Purchased")
+                    print("Product Purchased")
                     SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                     Options.option.set("premium", val: true)
                     break
                 case .Failed:
-                    println("Purchased Failed")
+                    print("Purchased Failed")
                     SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                     break
                 default:
@@ -128,8 +127,8 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     }
 
     func buyProduct(product: SKProduct) {
-        println("Sending the Payment Request to Apple")
-        var payment = SKPayment(product: product)
+        print("Sending the Payment Request to Apple")
+        let payment = SKPayment(product: product)
         SKPaymentQueue.defaultQueue().addPayment(payment)
     }
 }

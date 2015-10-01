@@ -10,10 +10,11 @@ class Info {
         info.position = CGPoint(x: x, y: y)
         info.zPosition = 7
         info.name = "howto"
-        let bg = Background(size: size, main: info)
-        bg.background.name = "howto"
-        bg.background.zPosition = 6
-        bg.background.position = CGPoint(x: -x, y: -y)
+        let bg = Background(size: size).addTo(info);
+        bg.name = "howto"
+        bg.zPosition = 6
+        bg.position = CGPoint(x: -x, y: -y)
+        
         let bt = Button(x: 0, y: -y / 3, width: x * 2 / 3, height: y / 3, label: "Back", id: "back").addTo(info)
         bt.button.zPosition = 10
         addPause(x, y: y)

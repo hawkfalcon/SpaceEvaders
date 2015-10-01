@@ -4,7 +4,7 @@ class Background {
     let background = SKNode()
 
     var size: CGSize
-    init(size: CGSize, main: SKNode) {
+    init(size: CGSize) {
         background.zPosition = -1
         self.size = size
         fadeMainLaser()
@@ -12,7 +12,6 @@ class Background {
         Sprite(named: "laserside", x: size.width / 100, y: size.height / 2).addTo(background)
         Sprite(named: "laserside", x: size.width - size.width / 100, y: size.height / 2).addTo(background)
         background.addChild(Utility.skyFullofStars(size.width, height: size.height))
-        main.addChild(background)
     }
 
     func fadeMainLaser() {
@@ -33,5 +32,11 @@ class Background {
                 SKAction.moveTo(CGPoint(x: 0, y: size.height / 2), duration: 2),
         ])
         ))
+    }
+    
+    
+    func addTo(parentNode: SKNode) -> SKNode {
+        parentNode.addChild(background)
+        return background
     }
 }

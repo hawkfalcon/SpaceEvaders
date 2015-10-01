@@ -9,10 +9,12 @@ class MainMenuScene: SKScene {
         PopupMenu(size: size, title: "Space Evaders", label: "Play", id: "start").addTo(self)
     }
 
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        let touch = touches.first as! UITouch
-        let touched = self.nodeAtPoint(touch.locationInNode(self))
-        if let name = touched.name {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            let touched = self.nodeAtPoint(touch.locationInNode(self))
+            guard let name = touched.name else {
+                return;
+            }
             switch name {
             case "start":
                 let gameScene = GameScene(size: size)

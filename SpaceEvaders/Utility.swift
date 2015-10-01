@@ -23,7 +23,7 @@ struct Utility {
     static func pressButton(main: SKScene, touched: SKNode, score: String) {
         let size = main.size
         if let name = touched.name {
-            if startsWith(name, "option") {
+            if name.characters.startsWith("option".characters) {
                 toggle(name, sprite: touched as! SKSpriteNode, main: main)
             }
             switch name {
@@ -77,7 +77,7 @@ struct Utility {
         if Options.option.get(opt) {
             next = "off"
         }
-        var text = FadeText(x: 0, y: -70, label: "\(opt) \(next)")
+        let text = FadeText(x: 0, y: -70, label: "\(opt) \(next)")
         text.addTo(sprite)
 
         sprite.texture = SKTexture(imageNamed: "\(opt)\(next)")

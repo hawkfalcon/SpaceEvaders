@@ -10,8 +10,8 @@ class Iapp {
         iapp.position = CGPoint(x: x, y: y)
         iapp.zPosition = 20
         iapp.name = "iapp"
-        let bt = Button(x: -x / 3, y: -y / 3, width: x / 3, height: y / 3, label: "Back", id: "back").addTo(iapp)
-        let purchase = Button(x: x / 4, y: -y / 3, width: x * 2 / 3, height: y / 3, label: "Purchase", id: "purchase").addTo(iapp)
+        Button(x: -x / 3, y: -y / 3, width: x / 3, height: y / 3, label: "Back", id: "back").addTo(iapp)
+        Button(x: x / 4, y: -y / 3, width: x * 2 / 3, height: y / 3, label: "Purchase", id: "purchase").addTo(iapp)
         addLabels(x, y: y)
         let restore = addText("Restore Purchases", size: 60, x: -25, y: -y / 3 - 250)
         restore.name = "restore"

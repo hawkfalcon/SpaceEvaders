@@ -17,7 +17,7 @@ class GameScene: SKScene {
             runAction(SKAction.playSoundFileNamed("Start.mp3", waitForCompletion: false))
         }
         backgroundColor = UIColor.blackColor()
-        Background(size: size, main: self)
+        Background(size: size).addTo(self)
         rocket = Rocket(x: size.width / 2, y: size.height / 2).addTo(self) as! Rocket
         scoreboard = Scoreboard(x: 50, y: size.height - size.height / 5).addTo(self)
         scoreboard.viewController = self.viewController
@@ -31,8 +31,8 @@ class GameScene: SKScene {
     var currentPosition: CGPoint!
     var currentlyTouching = false
 
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        let touch = touches.first as! UITouch
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard let touch = touches.first else {return}
         currentPosition = touch.locationInNode(self)
         let touched = self.nodeAtPoint(currentPosition)
         if let name = touched.name {
@@ -59,12 +59,12 @@ class GameScene: SKScene {
         }
     }
 
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
-        let touch = touches.first as! UITouch
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard let touch = touches.first else {return}
         currentPosition = touch.locationInNode(self)
     }
 
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if Options.option.get("follow") {
             currentlyTouching = false
         }
@@ -120,8 +120,8 @@ class GameScene: SKScene {
     func spawnAliens(startAtTop: Bool) {
         if random() % 1000 < alienSpawnRate {
             let randomX = 10 + random() % Int(size.width) - 10
-            var startY = startAtTop.boolValue ? size.height : 0
-            var arrowY = startAtTop.boolValue ? size.height - 200 : 200
+            let startY = startAtTop.boolValue ? size.height : 0
+            let arrowY = startAtTop.boolValue ? size.height - 200 : 200
             let alien = Alien(x: CGFloat(randomX), y: startY, startAtTop: startAtTop).addTo(self)
             alien.zPosition = 2
             if Utility.checkPremium() && Options.option.get("indicators") {
@@ -139,9 +139,9 @@ class GameScene: SKScene {
 
     func spawnPowerup() {
         if random() % 1000 < 1 {
-            var x = CGFloat(random() % Int(size.width))
-            var y = CGFloat(random() % Int(size.height))
-            var powerup = Powerup(x: x, y: y).addTo(self)
+            let x = CGFloat(random() % Int(size.width))
+            let y = CGFloat(random() % Int(size.height))
+            let powerup = Powerup(x: x, y: y).addTo(self)
             powerup.runAction(
             SKAction.sequence([
                     SKAction.fadeAlphaTo(1, duration: 0.5),
@@ -230,7 +230,7 @@ class GameScene: SKScene {
                 if Options.option.get("sound") {
                     self.runAction(SKAction.playSoundFileNamed("Powerup.mp3", waitForCompletion: false))
                 }
-                var explosion = Explosion(x: node.position.x, y: node.position.y)
+                let explosion = Explosion(x: node.position.x, y: node.position.y)
                 node.removeFromParent()
                 explosion.addTo(self)
                 explosion.boom(self)
@@ -239,9 +239,12 @@ class GameScene: SKScene {
     }
 
     func loopBackground(name: String) {
-        var backgroundSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(name, ofType: "mp3")!)
-        var error: NSError?
-        audioPlayer = AVAudioPlayer(contentsOfURL: backgroundSound, error: &error)
+        let backgroundSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(name, ofType: "mp3")!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOfURL: backgroundSound)
+        } catch _ as NSError {
+            print("Failed to set sound")
+        }
         audioPlayer.numberOfLoops = -1
         audioPlayer.volume = 0.4
         audioPlayer.prepareToPlay()

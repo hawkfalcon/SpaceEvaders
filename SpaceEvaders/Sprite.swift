@@ -3,7 +3,7 @@ import SpriteKit
 class Sprite: SKSpriteNode {
     init(named: String, x: CGFloat, y: CGFloat) {
         let texture = SKTexture(imageNamed: named)
-        super.init(texture: texture, color: nil, size: texture!.size())
+        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         self.position = CGPoint(x: x, y: y)
         self.setScale(2)
         self.name = named

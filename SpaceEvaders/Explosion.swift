@@ -8,11 +8,11 @@ class Explosion: Sprite {
     func boom(main: GameScene) {
         let explode = SKEmitterNode(fileNamed: "Explode.sks")
         self.addChild(explode!)
-        self.runAction(
+        self.run(
         SKAction.sequence([
-                SKAction.scaleBy(7, duration: 0.5),
-                SKAction.runBlock({ main.removeAliens = true }),
-                SKAction.fadeAlphaBy(-0.9, duration: 0.6),
+                SKAction.scale(by: 7, duration: 0.5),
+                SKAction.run({ main.removeAliens = true }),
+                SKAction.fadeAlpha(by: -0.9, duration: 0.6),
                 SKAction.removeFromParent()
         ])
         )

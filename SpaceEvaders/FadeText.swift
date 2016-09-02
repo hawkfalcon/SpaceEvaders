@@ -7,21 +7,20 @@ class FadeText {
         text = SKLabelNode(text: label)
         text.position = CGPoint(x: x, y: y)
         text.fontName = "timeburner"
-        text.color = UIColor.whiteColor()
+        text.color = UIColor.white
         text.fontSize = 25
         text.zPosition = 500
-        text.verticalAlignmentMode = .Bottom
+        text.verticalAlignmentMode = .bottom
     }
     
-    func addTo(parentNode: SKNode) -> FadeText {
-        parentNode.addChild(text)
-        text.runAction(
+    func addTo(parent: SKNode) {
+        parent.addChild(text)
+        text.run(
             SKAction.sequence([
-                SKAction.scaleBy(1.2, duration: 1.0),
-                SKAction.fadeAlphaBy(-0.9, duration: 0.6),
+                SKAction.scale(by: 1.2, duration: 1.0),
+                SKAction.fadeAlpha(by: -0.9, duration: 0.6),
                 SKAction.removeFromParent()
             ])
         )
-        return self
     }
 }

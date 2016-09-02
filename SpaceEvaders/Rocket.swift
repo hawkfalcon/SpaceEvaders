@@ -16,8 +16,8 @@ class Rocket: Sprite {
         let fire = SKSpriteNode(texture: fireArray[0]);
         fire.anchorPoint = CGPoint(x: 0.5, y: 1.3)
         self.addChild(fire)
-        let animateAction = SKAction.animateWithTextures(self.fireArray, timePerFrame: 0.10);
-        fire.runAction(SKAction.repeatActionForever(animateAction))
+        let animateAction = SKAction.animate(with: self.fireArray, timePerFrame: 0.10);
+        fire.run(SKAction.repeatForever(animateAction))
     }
 
     func moveTo(x: CGFloat, y: CGFloat) {
@@ -33,7 +33,7 @@ class Rocket: Sprite {
             // Normalize and scale
             dx = dx / mag * speed
             dy = (dy + 50) / mag * speed
-            self.position = CGPointMake(self.position.x + dx, self.position.y + dy)
+            self.position = CGPoint(x: self.position.x + dx, y: self.position.y + dy)
         }
     }
 

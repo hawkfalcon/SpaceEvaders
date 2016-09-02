@@ -2,30 +2,31 @@ import UIKit
 import SpriteKit
 import Fabric
 import Crashlytics
+import GameAnalytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject:AnyObject]?) -> Bool {
-        Fabric.with([Crashlytics()])
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey:Any]?) -> Bool {
+        Fabric.with([Crashlytics.self, GameAnalytics.self])
         GCHelper.sharedInstance.authenticateLocalUser()
         return true
     }
 
-    func applicationWillResignActive(application: UIApplication) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(Options.option.getOptions(), forKey: "options")
+    func applicationWillResignActive(_ application: UIApplication) {
+        let defaults = UserDefaults.standard
+        defaults.set(Options.option.getOptions(), forKey: "options")
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
     }
 }
 

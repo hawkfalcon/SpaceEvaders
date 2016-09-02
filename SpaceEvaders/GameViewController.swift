@@ -10,67 +10,72 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     override func viewDidLoad() {
         product_id = "PREMIUM"
         super.viewDidLoad()
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let options: [String:Bool] = defaults.dictionaryForKey("options") as? [String:Bool] {
-            Options.option.setOptions(options)
+        let defaults = UserDefaults.standard
+        if let options: [String:Bool] = defaults.dictionary(forKey: "options") as? [String:Bool] {
+            Options.option.setOptions(options: options)
         }
         let scene = MainMenuScene(size: CGSize(width: 2048, height: 1536))
         let skView = self.view as! SKView
         //skView.showsFPS = true
         //skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         scene.viewController = self
         skView.presentScene(scene)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "shareAction:", name: "social", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "unlockPremium:", name: "premium", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "restore:", name: "restore", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.shareAction(_:)), name: NSNotification.Name(rawValue: "social"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.unlockPremium(_:)), name: NSNotification.Name(rawValue: "premium"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.restore(_:)), name: NSNotification.Name(rawValue: "restore"), object: nil)
 
-        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        SKPaymentQueue.default().add(self)
     }
 
     func viewControllerForPresentingModalView() -> UIViewController {
         return self
     }
 
-    override func shouldAutorotate() -> Bool {
-        return true
+    override var shouldAutorotate: Bool {
+        get {
+            return true
+        }
     }
 
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return true
+        }  
+    }  
 
-    func shareAction(notification: NSNotification) {
-        let score = notification.userInfo!["score"] as! String
-        let type = notification.userInfo!["type"] as! NSString
-        if SLComposeViewController.isAvailableForServiceType(type as String) {
+
+    func shareAction(_ notification: Notification) {
+        let score = (notification as NSNotification).userInfo!["score"] as! String
+        let type = (notification as NSNotification).userInfo!["type"] as! NSString
+        if SLComposeViewController.isAvailable(forServiceType: type as String) {
             let social = SLComposeViewController(forServiceType: type as String)
             var text = "I scored \(score) in Space Evaders! Can you beat that? https://appsto.re/us/lgcg5.i"
             if score == "-1" {
                 text = "Check out the iPhone game Space Evaders! https://appsto.re/us/lgcg5.i"
             }
-            social.setInitialText(text)
-            self.presentViewController(social, animated: true, completion: nil)
+            social?.setInitialText(text)
+            self.present(social!, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to your social media account to share!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "I will", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Accounts", message: "Please login to your social media account to share!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "I will", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 
     func openGC() {
-        GCHelper.sharedInstance.showGameCenter(self, viewState: .Default)
+        GCHelper.sharedInstance.showGameCenter(self, viewState: .default)
     }
 
-    func restore(notifaction: NSNotification) {
+    func restore(_ notifaction: Notification) {
         print("Restoring purchase!", terminator: "")
         if (SKPaymentQueue.canMakePayments()) {
-            SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+            SKPaymentQueue.default().restoreCompletedTransactions()
         }
     }
     
-    func unlockPremium(notification: NSNotification) {
+    func unlockPremium(_ notification: Notification) {
         if (SKPaymentQueue.canMakePayments()) {
             let productID = Set(arrayLiteral: self.product_id!)
             let productsRequest: SKProductsRequest = SKProductsRequest(productIdentifiers: productID)
@@ -82,7 +87,7 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         }
     }
 
-    func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         let count: Int = response.products.count
         if (count > 0) {
             let validProduct: SKProduct = response.products[0] 
@@ -100,24 +105,24 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     }
 
 
-    func request(request: SKRequest, didFailWithError error: NSError) {
+    func request(_ request: SKRequest, didFailWithError error: Error) {
         print("Error Fetching product information")
     }
 
-    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("Received Payment Transaction Response from Apple")
 
         for transaction: AnyObject in transactions {
             if let trans: SKPaymentTransaction = transaction as? SKPaymentTransaction {
                 switch trans.transactionState {
-                case .Purchased, .Restored:
+                case .purchased, .restored:
                     print("Product Purchased")
-                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
-                    Options.option.set("premium", val: true)
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    Options.option.set(option: "premium", val: true)
                     break
-                case .Failed:
+                case .failed:
                     print("Purchased Failed")
-                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     break
                 default:
                     break
@@ -126,9 +131,9 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         }
     }
 
-    func buyProduct(product: SKProduct) {
+    func buyProduct(_ product: SKProduct) {
         print("Sending the Payment Request to Apple")
         let payment = SKPayment(product: product)
-        SKPaymentQueue.defaultQueue().addPayment(payment)
+        SKPaymentQueue.default().add(payment)
     }
 }

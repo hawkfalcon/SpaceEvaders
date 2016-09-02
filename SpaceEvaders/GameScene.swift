@@ -12,18 +12,18 @@ class GameScene: SKScene {
     var pause: Pause!
     var audioPlayer = AVAudioPlayer()
 
-    override func didMoveToView(view: SKView) {
-        if Options.option.get("sound") {
-            runAction(SKAction.playSoundFileNamed("Start.mp3", waitForCompletion: false))
+    override func didMove(to view: SKView) {
+        if Options.option.get(option: "sound") {
+            run(SKAction.playSoundFileNamed("Start.mp3", waitForCompletion: false))
         }
-        backgroundColor = UIColor.blackColor()
-        Background(size: size).addTo(self)
-        rocket = Rocket(x: size.width / 2, y: size.height / 2).addTo(self) as! Rocket
-        scoreboard = Scoreboard(x: 50, y: size.height - size.height / 5).addTo(self)
+        backgroundColor = UIColor.black
+        Background(size: size).addTo(parent: self)
+        rocket = Rocket(x: size.width / 2, y: size.height / 2).addToSelf(parent: self) as! Rocket
+        scoreboard = Scoreboard(x: 50, y: size.height - size.height / 5).addTo(parentNode: self)
         scoreboard.viewController = self.viewController
-        pause = Pause(size: size, x: size.width - 50, y: size.height - size.height / 6).addTo(self)
-        if Options.option.get("music") {
-            loopBackground("Chamber-of-Jewels")
+        pause = Pause(size: size, x: size.width - 50, y: size.height - size.height / 6).addTo(parent: self)
+        if Options.option.get(option: "music") {
+            loopBackground(name: "Chamber-of-Jewels")
             audioPlayer.play()
         }
     }
@@ -31,10 +31,10 @@ class GameScene: SKScene {
     var currentPosition: CGPoint!
     var currentlyTouching = false
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {return}
-        currentPosition = touch.locationInNode(self)
-        let touched = self.nodeAtPoint(currentPosition)
+        currentPosition = touch.location(in: self)
+        let touched = self.atPoint(currentPosition)
         if let name = touched.name {
             switch name {
             case "gameover":
@@ -44,28 +44,28 @@ class GameScene: SKScene {
             case "leaderboard":
                 viewController?.openGC()
             case "option_music":
-                if Options.option.get("music") {
+                if Options.option.get(option: "music") {
                     audioPlayer.stop()
                 } else {
-                    loopBackground("Chamber-of-Jewels")
+                    loopBackground(name: "Chamber-of-Jewels")
                     //audioPlayer.play()
                 }
             default:
                 currentlyTouching = true
             }
-            Utility.pressButton(self, touched: touched, score: String(scoreboard.getScore()))
+            Utility.pressButton(main: self, touched: touched, score: String(scoreboard.getScore()))
         } else {
             currentlyTouching = true
         }
     }
 
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {return}
-        currentPosition = touch.locationInNode(self)
+        currentPosition = touch.location(in: self)
     }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if Options.option.get("follow") {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if Options.option.get(option: "follow") {
             currentlyTouching = false
         }
     }
@@ -73,24 +73,24 @@ class GameScene: SKScene {
     var pausemenu: PopupMenu!
     func pauseGame() {
         if gamePaused {
-            if Options.option.get("music") {
-                loopBackground("Chamber-of-Jewels")
+            if Options.option.get(option: "music") {
+                loopBackground(name: "Chamber-of-Jewels")
                 audioPlayer.play()
             }
             gamePaused = false
             //speed = 1
-            paused = false
+            isPaused = false
             removeDialog()
         } else {
             if !isGameOver {
-                if Options.option.get("music") {
+                if Options.option.get(option: "music") {
                     audioPlayer.stop()
                 }
                 gamePaused = true
                 //speed = 0
                 pause.removeThis()
                 pausemenu = PopupMenu(size: size, title: "Paused", label: "Continue?", id: "pause")
-                pausemenu.addTo(self)
+                pausemenu.addTo(parent: self)
             }
         }
     }
@@ -98,38 +98,38 @@ class GameScene: SKScene {
     func removeDialog() {
         if pausemenu != nil {
             pausemenu.removeThis()
-            pause = Pause(size: size, x: size.width - 50, y: size.height - size.height / 6).addTo(self)
+            pause = Pause(size: size, x: size.width - 50, y: size.height - size.height / 6).addTo(parent: self)
         }
     }
 
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         if !gamePaused {
             if !isGameOver {
                 if currentlyTouching {
-                    rocket.moveTo(currentPosition.x, y: currentPosition.y)
+                    rocket.moveTo(x: currentPosition.x, y: currentPosition.y)
                 }
                 spawnPowerup()
                 enumeratePowerups()
             }
-            spawnAliens(true)
-            spawnAliens(false)
+            spawnAliens(startAtTop: true)
+            spawnAliens(startAtTop: false)
             enumerateAliens()
         }
     }
 
     func spawnAliens(startAtTop: Bool) {
-        if random() % 1000 < alienSpawnRate {
-            let randomX = 10 + random() % Int(size.width) - 10
-            let startY = startAtTop.boolValue ? size.height : 0
-            let arrowY = startAtTop.boolValue ? size.height - 200 : 200
-            let alien = Alien(x: CGFloat(randomX), y: startY, startAtTop: startAtTop).addTo(self)
+        if Int(arc4random()) % 1000 < alienSpawnRate {
+            let randomX = 10 + Int(arc4random()) % Int(size.width) - 10
+            let startY = startAtTop ? size.height : 0
+            let arrowY = startAtTop ? size.height - 200 : 200
+            let alien = Alien(x: CGFloat(randomX), y: startY, startAtTop: startAtTop).addToSelf(parent: self)
             alien.zPosition = 2
-            if Utility.checkPremium() && Options.option.get("indicators") {
-                let arrow = Sprite(named: "credits", x: CGFloat(randomX), y: arrowY, scale: 0.05).addTo(self)
+            if Utility.checkPremium() && Options.option.get(option: "indicators") {
+                let arrow = Sprite(named: "credits", x: CGFloat(randomX), y: arrowY, scale: 0.05).addToSelf(parent: self)
                 arrow.zPosition = 1
-                arrow.runAction(
+                arrow.run(
                 SKAction.sequence([
-                        SKAction.fadeAlphaTo(0.5, duration: 1),
+                        SKAction.fadeAlpha(to: 0.5, duration: 1),
                         SKAction.removeFromParent(),
                 ])
                 )
@@ -138,15 +138,15 @@ class GameScene: SKScene {
     }
 
     func spawnPowerup() {
-        if random() % 1000 < 1 {
-            let x = CGFloat(random() % Int(size.width))
-            let y = CGFloat(random() % Int(size.height))
-            let powerup = Powerup(x: x, y: y).addTo(self)
-            powerup.runAction(
+        if Int(arc4random()) % 1000 < 1 {
+            let x = CGFloat(Int(arc4random()) % Int(size.width))
+            let y = CGFloat(Int(arc4random()) % Int(size.height))
+            let powerup = Powerup(x: x, y: y).addToSelf(parent: self)
+            powerup.run(
             SKAction.sequence([
-                    SKAction.fadeAlphaTo(1, duration: 0.5),
-                    SKAction.waitForDuration(4.5),
-                    SKAction.fadeAlphaTo(0, duration: 1.0),
+                    SKAction.fadeAlpha(to: 1, duration: 0.5),
+                    SKAction.wait(forDuration: 4.5),
+                    SKAction.fadeAlpha(to: 0, duration: 1.0),
                     SKAction.removeFromParent()
             ])
             )
@@ -154,20 +154,20 @@ class GameScene: SKScene {
     }
 
     func gameOver() {
-        if Options.option.get("sound") {
-            runAction(SKAction.playSoundFileNamed("Death.mp3", waitForCompletion: false))
+        if Options.option.get(option: "sound") {
+            run(SKAction.playSoundFileNamed("Death.mp3", waitForCompletion: false))
         }
         isGameOver = true
-        let exp = Explosion(x: rocket.position.x, y: rocket.position.y).addTo(self) as! Explosion
-        if Options.option.get("music") {
+        let exp = Explosion(x: rocket.position.x, y: rocket.position.y).addToSelf(parent: self) as! Explosion
+        if Options.option.get(option: "music") {
             audioPlayer.stop()
         }
-        exp.boom(self)
+        exp.boom(main: self)
         rocket.removeFromParent()
         pause.removeThis()
-        PopupMenu(size: size, title: "Game Over!", label: "Play Again?", id: "gameover").addTo(self)
+        PopupMenu(size: size, title: "Game Over!", label: "Play Again?", id: "gameover").addTo(parent: self)
         if scoreboard.isHighscore() {
-            addChild(scoreboard.getHighscoreLabel(size))
+            addChild(scoreboard.getHighscoreLabel(size: size))
         }
     }
 
@@ -175,15 +175,15 @@ class GameScene: SKScene {
         let gameScene = GameScene(size: size)
         gameScene.viewController = self.viewController
         gameScene.scaleMode = scaleMode
-        let reveal = SKTransition.doorsOpenVerticalWithDuration(0.5)
+        let reveal = SKTransition.doorsOpenVertical(withDuration: 0.5)
         view?.presentScene(gameScene, transition: reveal)
     }
 
     func enumerateAliens() {
-        self.enumerateChildNodesWithName("alien") {
+        self.enumerateChildNodes(withName: "alien") {
             node, stop in
             let alien = node as! Alien
-            self.alienBrains(alien)
+            self.alienBrains(alien: alien)
         }
         if (removeAliens) {
             removeAliens = false
@@ -193,28 +193,28 @@ class GameScene: SKScene {
     func alienBrains(alien: Alien) {
         let y = alien.position.y
         if !isGameOver {
-            if CGRectIntersectsRect(CGRectInset(alien.frame, 25, 25), CGRectInset(rocket.frame, 10, 10)) {
+            if alien.frame.insetBy(dx: 25, dy: 25).intersects(rocket.frame.insetBy(dx: 10, dy: 10)) {
                 gameOver()
             }
             //disabled by laser
             if !alien.isDisabled() {
                 let middle = size.height / 2
-                let startAtTop = alien.startAtTop.boolValue
-                if (!startAtTop && y > middle) || (startAtTop && y < middle) {
+                let startAtTop = alien.startAtTop
+                if (!startAtTop! && y > middle) || (startAtTop! && y < middle) {
                     alien.setDisabled()
-                    scoreboard.addScore(1)
-                    if Options.option.get("sound") {
-                        runAction(SKAction.playSoundFileNamed("Alien_Disable.mp3", waitForCompletion: false))
+                    scoreboard.addScore(score: 1)
+                    if Options.option.get(option: "sound") {
+                        run(SKAction.playSoundFileNamed("Alien_Disable.mp3", waitForCompletion: false))
                     }
                 }
             }
             if removeAliens {
                 if !alien.isDisabled() {
-                    scoreboard.addScore(1)
+                    scoreboard.addScore(score: 1)
                 }
                 alien.removeFromParent()
             }
-            alien.moveTo(CGPointMake(rocket.position.x, rocket.position.y))
+            alien.moveTo(point: CGPoint(x: rocket.position.x, y: rocket.position.y))
         } else {
             alien.move()
         }
@@ -224,24 +224,24 @@ class GameScene: SKScene {
     }
 
     func enumeratePowerups() {
-        self.enumerateChildNodesWithName("powerup") {
+        self.enumerateChildNodes(withName: "powerup") {
             node, stop in
-            if CGRectIntersectsRect(CGRectInset(node.frame, 5, 5), self.rocket.frame) {
-                if Options.option.get("sound") {
-                    self.runAction(SKAction.playSoundFileNamed("Powerup.mp3", waitForCompletion: false))
+            if node.frame.insetBy(dx: 5, dy: 5).intersects(self.rocket.frame) {
+                if Options.option.get(option: "sound") {
+                    self.run(SKAction.playSoundFileNamed("Powerup.mp3", waitForCompletion: false))
                 }
                 let explosion = Explosion(x: node.position.x, y: node.position.y)
                 node.removeFromParent()
-                explosion.addTo(self)
-                explosion.boom(self)
+                explosion.addTo(parent: self)
+                explosion.boom(main: self)
             }
         }
     }
 
     func loopBackground(name: String) {
-        let backgroundSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(name, ofType: "mp3")!)
+        let backgroundSound = URL(fileURLWithPath: Bundle.main.path(forResource: name, ofType: "mp3")!)
         do {
-            audioPlayer = try AVAudioPlayer(contentsOfURL: backgroundSound)
+            audioPlayer = try AVAudioPlayer(contentsOf: backgroundSound)
         } catch _ as NSError {
             print("Failed to set sound")
         }

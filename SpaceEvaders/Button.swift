@@ -4,11 +4,11 @@ class Button {
     var button: SKSpriteNode
 
     init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, label: String, id: String) {
-        button = SKSpriteNode(color: UIColor.orangeColor(), size: CGSizeMake(width, height))
-        button.position = CGPointMake(x, y);
+        button = SKSpriteNode(color: UIColor.orange, size: CGSize(width: width, height: height))
+        button.position = CGPoint(x: x, y: y);
         button.zPosition = 10
         button.name = id
-        addText(label, id: id)
+        addText(label: label, id: id)
     }
 
     func addText(label: String, id: String) {
@@ -16,13 +16,17 @@ class Button {
         text.fontName = "timeburner"
         text.name = id
         text.fontSize = 100
-        text.verticalAlignmentMode = .Center
+        text.verticalAlignmentMode = .center
         button.addChild(text)
     }
 
-    func addTo(parentNode: SKNode) -> Button {
-        parentNode.addChild(button)
-        return self
+    func addToSelf(parent: SKNode) -> SKSpriteNode {
+        parent.addChild(button)
+        return button
+    }
+    
+    func addTo(parent: SKNode) {
+        parent.addChild(button)
     }
 
     func removeThis() {

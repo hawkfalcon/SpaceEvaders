@@ -15,8 +15,8 @@ class Powerup: Sprite {
         for index in 1 ... 15 {
             bombArray.append(SKTexture(imageNamed: "powerup\(index)"))
         }
-        let animateAction = SKAction.animateWithTextures(bombArray, timePerFrame: 0.10);
-        self.runAction(SKAction.repeatActionForever(animateAction))
+        let animateAction = SKAction.animate(with: bombArray, timePerFrame: 0.10);
+        self.run(SKAction.repeatForever(animateAction))
     }
 
     required init?(coder aDecoder: NSCoder) {

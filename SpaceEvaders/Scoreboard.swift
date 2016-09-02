@@ -12,14 +12,14 @@ class Scoreboard {
         scoreboard.setScale(2.5)
         scoreboard.fontName = "timeburner"
         scoreboard.position = CGPoint(x: x, y: y)
-        scoreboard.horizontalAlignmentMode = .Left
+        scoreboard.horizontalAlignmentMode = .left
         scoreboard.zPosition = 10
     }
 
     func highScore() {
-        if score > NSUserDefaults.standardUserDefaults().integerForKey("highscore") {
-            NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore")
-            NSUserDefaults.standardUserDefaults().synchronize()
+        if score > UserDefaults.standard.integer(forKey: "highscore") {
+            UserDefaults.standard.set(score, forKey: "highscore")
+            UserDefaults.standard.synchronize()
             isHighScore = true
             GCHelper.sharedInstance.reportLeaderboardIdentifier("leaderBoardID", score: score)
         }
@@ -46,11 +46,11 @@ class Scoreboard {
 
     func getHighscoreLabel(size: CGSize) -> SKLabelNode {
         let highscore = SKLabelNode(text: "High Score!")
-        highscore.position = CGPointMake(size.width / 2, size.height / 2 + 50)
-        highscore.fontColor = UIColor.redColor()
+        highscore.position = CGPoint(x: size.width / 2, y: size.height / 2 + 50)
+        highscore.fontColor = UIColor.red
         highscore.fontSize = 80
         highscore.fontName = "timeburner"
-        highscore.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.fadeInWithDuration(0.3), SKAction.fadeOutWithDuration(0.3)])))
+        highscore.run(SKAction.repeatForever(SKAction.sequence([SKAction.fadeIn(withDuration: 0.3), SKAction.fadeOut(withDuration: 0.3)])))
         return highscore
     }
 }

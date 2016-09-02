@@ -19,6 +19,7 @@
 		541036881A55EFB000FA8BD2 /* Alien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541036871A55EFB000FA8BD2 /* Alien.swift */; };
 		5410368A1A55EFD200FA8BD2 /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541036891A55EFD200FA8BD2 /* Sprite.swift */; };
 		5414AC491AEEA2E10039724D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5414AC481AEEA2E10039724D /* StoreKit.framework */; };
+		5460DE7C1D79FAC900A22F03 /* GameAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5460DE7B1D79FAC900A22F03 /* GameAnalytics.framework */; };
 		547B0DAA1A5E105900B3985C /* Explosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B0DA91A5E105900B3985C /* Explosion.swift */; };
 		547B0DAC1A5F59BC00B3985C /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B0DAB1A5F59BC00B3985C /* Rocket.swift */; };
 		547B0DAF1A5F5D3E00B3985C /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B0DAE1A5F5D3E00B3985C /* Scoreboard.swift */; };
@@ -80,6 +81,7 @@
 		541036891A55EFD200FA8BD2 /* Sprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sprite.swift; sourceTree = "<group>"; };
 		5414AC481AEEA2E10039724D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		541A8A061A65F1FE0058AB46 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		5460DE7B1D79FAC900A22F03 /* GameAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GameAnalytics.framework; sourceTree = "<group>"; };
 		547B0DA91A5E105900B3985C /* Explosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explosion.swift; sourceTree = "<group>"; };
 		547B0DAB1A5F59BC00B3985C /* Rocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 		547B0DAE1A5F5D3E00B3985C /* Scoreboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				549C4AB71AC34BB500F26917 /* Crashlytics.framework in Frameworks */,
+				5460DE7C1D79FAC900A22F03 /* GameAnalytics.framework in Frameworks */,
 				5414AC491AEEA2E10039724D /* StoreKit.framework in Frameworks */,
 				54A2C7491A65A70A003746D3 /* GameKit.framework in Frameworks */,
 				549C4AB81AC34BB500F26917 /* Fabric.framework in Frameworks */,
@@ -144,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				549C4AB51AC34BB500F26917 /* Crashlytics.framework */,
+				5460DE7B1D79FAC900A22F03 /* GameAnalytics.framework */,
 				549C4AB61AC34BB500F26917 /* Fabric.framework */,
 				5403242A1A4B8B5300B61880 /* SpaceEvaders */,
 				55AD867E1A8E81FD00839E28 /* Frameworks */,
@@ -306,12 +310,13 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Tristen Miller";
 				TargetAttributes = {
 					540324271A4B8B5300B61880 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 6VJ9C2YY26;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -454,8 +459,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -464,6 +471,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -498,8 +506,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -507,6 +517,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -516,6 +527,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -538,6 +550,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hawkfalcon.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -559,6 +572,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hawkfalcon.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

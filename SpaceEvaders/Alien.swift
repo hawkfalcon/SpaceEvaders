@@ -8,7 +8,7 @@ class Alien: Sprite {
     init(x: CGFloat, y: CGFloat, startAtTop: Bool) {
         super.init(named: "alien", x: x, y: y)
         self.startAtTop = startAtTop
-        self.runAction(SKAction.repeatActionForever(SKAction.rotateByAngle(1, duration: 1)))
+        self.run(SKAction.repeatForever(SKAction.rotate(byAngle: 1, duration: 1)))
     }
 
     func setDisabled() {
@@ -34,16 +34,17 @@ class Alien: Sprite {
             // Normalize and scale
             dx = dx / mag * vel
             dy = dy / mag * vel
-            moveBy(dx, dy: dy)
+            moveBy(dx: dx, dy: dy)
         }
     }
 
     func move() {
-        moveBy(0, dy: startAtTop.boolValue ? -vel : vel)
+        //let dy = startAtTop ? -vel : vel
+        moveBy(dx: 0, dy: vel)
     }
 
     func moveBy(dx: CGFloat, dy: CGFloat) {
-        self.position = CGPointMake(self.position.x + dx, self.position.y + dy)
+        self.position = CGPoint(x: self.position.x + dx, y: self.position.y + dy)
     }
 
     required init?(coder aDecoder: NSCoder) {

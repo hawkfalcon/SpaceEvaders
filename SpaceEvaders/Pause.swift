@@ -16,7 +16,7 @@ class Pause {
         text.fontName = "timeburner"
         text.name = "pause"
         text.fontSize = 100
-        text.zRotation = CGFloat(M_PI_2)
+        text.zRotation = CGFloat(Double.pi / 2)
         text.horizontalAlignmentMode = .right
         pause.addChild(text)
     }

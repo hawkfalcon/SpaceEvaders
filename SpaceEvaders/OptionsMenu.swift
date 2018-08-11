@@ -1,6 +1,7 @@
 import SpriteKit
 
 class OptionsMenu {
+    @discardableResult
     init(menu: SKNode, size: CGSize) {
         let options = ["sound", "music", "follow", "indicators"]
         var pos: CGFloat = 51

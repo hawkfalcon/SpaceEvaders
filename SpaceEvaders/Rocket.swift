@@ -26,7 +26,7 @@ class Rocket: Sprite {
         // Compute vector components in direction of the touch
         dx = x - self.position.x
         dy = y - self.position.y + 50
-        self.zRotation = atan2(dy + 100, dx) - CGFloat(M_PI_2)
+        self.zRotation = atan2(dy + 100, dx) - CGFloat(Double.pi / 2)
         //Do not move if tap is on sprite
         if (dx >= 1 || dx <= -1) && (dy >= 1 || dy <= 1) {
             let mag = sqrt(dx * dx + dy * dy)

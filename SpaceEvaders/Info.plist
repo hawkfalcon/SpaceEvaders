@@ -15,36 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>10</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>5dab386aae7cdc92e5cbafb6b6cd742f0f4bfddb</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-			<dict>
-				<key>KitInfo</key>
-				<dict>
-					<key>api-key</key>
-					<string>480791b140cf2a5caa3abd7759ef005b</string>
-					<key>api-secret</key>
-					<string>43194b6e516668f5e7fbbb968616161b79c50c2d</string>
-				</dict>
-				<key>KitName</key>
-				<string>GameAnalytics</string>
-			</dict>
-		</array>
-	</dict>
+	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>

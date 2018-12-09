@@ -46,7 +46,7 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
     }  
 
 
-    func shareAction(_ notification: Notification) {
+    @objc func shareAction(_ notification: Notification) {
         let score = (notification as NSNotification).userInfo!["score"] as! String
         let type = (notification as NSNotification).userInfo!["type"] as! NSString
         if SLComposeViewController.isAvailable(forServiceType: type as String) {
@@ -59,7 +59,7 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
             self.present(social!, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to your social media account to share!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "I will", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "I will", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -68,14 +68,14 @@ class GameViewController: UIViewController, SKProductsRequestDelegate, SKPayment
         GCHelper.sharedInstance.showGameCenter(self, viewState: .default)
     }
 
-    func restore(_ notifaction: Notification) {
+    @objc func restore(_ notifaction: Notification) {
         print("Restoring purchase!", terminator: "")
         if (SKPaymentQueue.canMakePayments()) {
             SKPaymentQueue.default().restoreCompletedTransactions()
         }
     }
     
-    func unlockPremium(_ notification: Notification) {
+    @objc func unlockPremium(_ notification: Notification) {
         if (SKPaymentQueue.canMakePayments()) {
             let productID = Set(arrayLiteral: self.product_id!)
             let productsRequest: SKProductsRequest = SKProductsRequest(productIdentifiers: productID)

@@ -18,7 +18,7 @@ class GameScene: SKScene {
         }
         backgroundColor = UIColor.black
         Background(size: size).addTo(parent: self)
-        rocket = Rocket(x: size.width / 2, y: size.height / 2).addToSelf(parent: self) as! Rocket
+        rocket = Rocket(x: size.width / 2, y: size.height / 2).addToSelf(parent: self) as? Rocket
         scoreboard = Scoreboard(x: 50, y: size.height - size.height / 5).addTo(parentNode: self)
         scoreboard.viewController = self.viewController
         pause = Pause(size: size, x: size.width - 50, y: size.height - size.height / 6).addTo(parent: self)

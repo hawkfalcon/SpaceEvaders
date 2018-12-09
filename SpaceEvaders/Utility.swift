@@ -23,7 +23,7 @@ struct Utility {
     static func pressButton(main: SKScene, touched: SKNode, score: String) {
         let size = main.size
         if let name = touched.name {
-            if name.characters.starts(with: "option".characters) {
+            if name.starts(with: "option") {
                 toggle(option: name, sprite: touched as! SKSpriteNode, main: main)
             }
             switch name {
@@ -58,7 +58,7 @@ struct Utility {
             case "settings":
                 let parent = touched.parent! as SKNode
                 touched.removeFromParent()
-                OptionsMenu(menu: parent, size: size)
+                let _ = OptionsMenu(menu: parent, size: size)
             default:
                 break
             }
